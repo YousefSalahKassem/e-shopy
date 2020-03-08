@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:kortobaa_flutter_provider_boilerplate/ui/common/theme.dart';
+import 'package:kortobaa_flutter_provider_boilerplate/ui/router/router.gr.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  var delegate = await LocalizationDelegate.create(
+  final delegate = await LocalizationDelegate.create(
       fallbackLocale: 'ar', supportedLocales: ['ar', 'en']);
   runApp(LocalizedApp(delegate, KortobaaApp()));
 }
@@ -12,14 +14,12 @@ void main() async {
 class KortobaaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var localizationDelegate = LocalizedApp.of(context).delegate;
+    final localizationDelegate = LocalizedApp.of(context).delegate;
     return LocalizationProvider(
       state: LocalizationProvider.of(context).state,
       child: MaterialApp(
         title: 'Kortobaa Boilerplate',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: appTheme,
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
@@ -28,7 +28,9 @@ class KortobaaApp extends StatelessWidget {
         ],
         supportedLocales: localizationDelegate.supportedLocales,
         locale: localizationDelegate.currentLocale,
-        home: Container(),
+        onGenerateRoute: Router.onGenerateRoute,
+        navigatorKey: Router.navigator.key,
+        initialRoute: Router.homeScreen,
       ),
     );
   }
