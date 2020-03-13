@@ -7,7 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:kortobaa_flutter_provider_boilerplate/ui/screens/home_screen/home_screen.dart';
+import 'package:provider_boilerplate/ui/screens/home_screen/home_screen.dart';
 
 class Router {
   static const homeScreen = '/';

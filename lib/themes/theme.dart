@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kortobaa_flutter_provider_boilerplate/helpers/ui/app_colors.dart';
-import 'package:kortobaa_flutter_provider_boilerplate/helpers/ui/text_styles.dart';
+import 'package:provider_boilerplate/helpers/ui/app_colors.dart';
+import 'package:provider_boilerplate/helpers/ui/text_styles.dart';
 
 // TODO: Add theme data depending on design
 final ThemeData appTheme = ThemeData(

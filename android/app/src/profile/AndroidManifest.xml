@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kortobaa.kortobaa_flutter_provider_boilerplate">
+    package="com.kortobaa.provider_boilerplate">
     <!-- Flutter needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->

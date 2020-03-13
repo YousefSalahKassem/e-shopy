@@ -38,8 +38,8 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.kortobaa.kortobaa_flutter_provider_boilerplate"
-        minSdkVersion 16
+        applicationId "com.kortobaa.provider_boilerplate"
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_translate/flutter_translate.dart';
-import 'package:kortobaa_flutter_provider_boilerplate/main.dart';
+import 'package:provider_boilerplate/main.dart';
 
 void main() {
   testWidgets('Test localization title in appbar', (WidgetTester tester) async {
