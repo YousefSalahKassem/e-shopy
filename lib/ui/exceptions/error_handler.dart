@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/exceptions/validation_exception.dart';
+import '../../bloc/exceptions/validation_exception.dart';
 import '../../services/exceptions/fetch_exception.dart';
 import '../../services/exceptions/input_exception.dart';
 

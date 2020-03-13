@@ -1,5 +1,5 @@
 import 'package:kortobaa_flutter_provider_boilerplate/data_source/remote/dio_client.dart';
-import 'package:kortobaa_flutter_provider_boilerplate/domain/models/user.dart';
+import 'package:kortobaa_flutter_provider_boilerplate/bloc/models/user.dart';
 
 import 'package:kortobaa_flutter_provider_boilerplate/domain/value_objects/login_request_body.dart';
 import 'package:kortobaa_flutter_provider_boilerplate/services/exceptions/fetch_exception.dart';

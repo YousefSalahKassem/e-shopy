@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:kortobaa_flutter_provider_boilerplate/routes/router.gr.dart';
 import 'package:kortobaa_flutter_provider_boilerplate/ui/common/theme.dart';
-import 'package:kortobaa_flutter_provider_boilerplate/ui/router/router.gr.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
