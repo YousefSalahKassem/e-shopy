@@ -8,10 +8,10 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final delegate = await LocalizationDelegate.create(
       fallbackLocale: 'ar', supportedLocales: ['ar', 'en']);
-  runApp(LocalizedApp(delegate, KortobaaApp()));
+  runApp(LocalizedApp(delegate, MyApp()));
 }
 
-class KortobaaApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localizationDelegate = LocalizedApp.of(context).delegate;

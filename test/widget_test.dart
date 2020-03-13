@@ -9,7 +9,7 @@ void main() {
           fallbackLocale: 'ar', supportedLocales: ['ar']);
     });
 
-    await tester.pumpWidget(LocalizedApp(delegate, KortobaaApp()));
+    await tester.pumpWidget(LocalizedApp(delegate, MyApp()));
     await tester.pumpAndSettle();
 
     final titleFinder = find.text('Hello Kortobaa!');
