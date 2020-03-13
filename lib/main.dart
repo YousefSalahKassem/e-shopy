@@ -1,11 +1,18 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:provider_boilerplate/themes/theme.dart';
 import 'package:provider_boilerplate/routes/router.gr.dart';
+import 'package:logging/logging.dart' as log;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Log everything in debug builds.  Log warnings (and up) in release builds.
+  log.Logger.root.level = kDebugMode ? log.Level.ALL : log.Level.WARNING;
+  log.Logger.root.onRecord.listen((log.LogRecord rec) {
+    debugPrint('${rec.level.name}: ${rec.time}: ${rec.message}');
+  });
   final delegate = await LocalizationDelegate.create(
       fallbackLocale: 'ar', supportedLocales: ['ar', 'en']);
   runApp(LocalizedApp(delegate, MyApp()));

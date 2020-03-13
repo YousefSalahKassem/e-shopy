@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class DioClient {
   // dio instance
@@ -25,7 +26,7 @@ class DioClient {
       );
       return response.data;
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
       rethrow;
     }
   }
@@ -52,7 +53,7 @@ class DioClient {
       );
       return response.data;
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
 
       rethrow;
     }
@@ -80,7 +81,7 @@ class DioClient {
       );
       return response.data;
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
 
       rethrow;
     }
@@ -106,7 +107,7 @@ class DioClient {
       );
       return response.data;
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
 
       rethrow;
     }

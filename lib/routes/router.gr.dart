@@ -11,7 +11,7 @@ import 'package:provider_boilerplate/ui/screens/home_screen/home_screen.dart';
 
 class Router {
   static const homeScreen = '/';
-  static final navigator = ExtendedNavigator();
+  static final ExtendedNavigator navigator = ExtendedNavigator();
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
