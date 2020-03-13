@@ -1,9 +1,10 @@
 import 'package:kortobaa_flutter_provider_boilerplate/bloc/value_objects/login_request_body.dart';
-import 'package:kortobaa_flutter_provider_boilerplate/data_source/remote/dio_client.dart';
+
 import 'package:kortobaa_flutter_provider_boilerplate/bloc/models/user.dart';
+import 'package:kortobaa_flutter_provider_boilerplate/data/remote/dio_client.dart';
 import 'package:kortobaa_flutter_provider_boilerplate/services/exceptions/fetch_exception.dart';
 import 'package:kortobaa_flutter_provider_boilerplate/services/interfaces/i_auth_api.dart';
-import 'package:kortobaa_flutter_provider_boilerplate/data_source/remote/constants/endpoints.dart'
+import 'package:kortobaa_flutter_provider_boilerplate/data/remote/constants/endpoints.dart'
     as endpoints;
 
 class AuthApi implements IAuthApi {
