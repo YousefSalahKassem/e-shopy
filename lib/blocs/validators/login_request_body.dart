@@ -1,6 +1,5 @@
+import 'package:kortobaa_flutter_provider_boilerplate/exceptions/validation_exception.dart';
 import 'package:meta/meta.dart';
-
-import '../exceptions/validation_exception.dart';
 
 @immutable
 class LoginRequestBody {

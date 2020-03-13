@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kortobaa_flutter_provider_boilerplate/blocs/exceptions/validation_exception.dart';
+import 'package:kortobaa_flutter_provider_boilerplate/exceptions/validation_exception.dart';
+
 import 'package:kortobaa_flutter_provider_boilerplate/services/exceptions/fetch_exception.dart';
 import 'package:kortobaa_flutter_provider_boilerplate/services/exceptions/input_exception.dart';
 
