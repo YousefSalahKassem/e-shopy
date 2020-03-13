@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/exceptions/validation_exception.dart';
-import '../../service/exceptions/fetch_exception.dart';
-import '../../service/exceptions/input_exception.dart';
+import '../../services/exceptions/fetch_exception.dart';
+import '../../services/exceptions/input_exception.dart';
 
 class ErrorHandler {
   //go through all custom errors and return the corresponding error message
