@@ -1,6 +1,6 @@
-# Thawani Mobile Application
+# Flutter Provider Boilerplate for Kortobaa
 
-Welcome to Thawani mobile application before writing any code please read the instructions below. and for the Wiki and in details tech rules please go to [Wiki Page](https://github.com/thawani-technologies/MobileAppAlpha/blob/master/wiki.md)
+Welcome to Flutter Provider Boilerplate for Kortobaa before writing any code please read the instructions below. and for the Wiki and in details tech rules please go to [Wiki Page](https://github.com/kortobaa/Flutter-boilerplate/blob/master/wiki.md)
 
 ## Architecture
 
@@ -21,23 +21,27 @@ Thawani_app
 │       └── ar.json
 │       └── en.json
 ├── lib
-│   ├── screens
-│       └── home_screen
-│           └── index.dart
-│           └── user_info.dart
-│           └── slider.dart
-│       └── another_screen.dart
-│       └── profile_screen.dart
-│   ├── widgets
-│   ├── models
-│   ├── repositories
-│   ├── providers
+│   ├── ui
+│   │   └── screens
+│   │   │   └── home_screen
+│   │   │   │  └── home_screen.dart
+│   │   │   └── another_screen.dart
+│   │   └── widgets
+│   │       └── custom_appbar.dart
+│   ├── blocs
+│   │   └── interfaces
+│   │   └── models
+│   │   └── repositories
+│   │   └── providers
+│   │   └── validators
 │   ├── services
 │   ├── helpers
+│   │   └── ui
+│   │       └── app_colors.dart
+│   │       └── text_styles.dart
 │   ├── exceptions
 │   ├── utils
 │   └── themes
-│   ├── constant
 │   ├── data  // all data related files
 │   │     └── local
 │   │     └── remote
@@ -61,7 +65,7 @@ flutter:
 Why ?
 because this means you are telling Flutter to load all assets inside this folder even if you don't use them on your code, and when you are developing your application many times you are changing your assets and may forget to delete them or add a big image that can affect your app size
 
-Recomended
+Recommended
 
 ```dart
 flutter:
@@ -80,7 +84,7 @@ flutter:
 1. Interface Segregation Principle
 1. Dependency Inversion Principle
 
-## To know more about SOLID preinciples in Dart please read this [Article](https://medium.com/flutter-community/s-o-l-i-d-the-first-5-principles-of-object-oriented-design-with-dart-f31d62135b7e)
+## To know more about SOLID principles in Dart please read this [Article](https://medium.com/flutter-community/s-o-l-i-d-the-first-5-principles-of-object-oriented-design-with-dart-f31d62135b7e)
 
 ### General resources about SOLID Principles
 
@@ -147,7 +151,7 @@ bad
 
 ### *AVOID describing the parameters in the function’s or method’s name.*
 
-The user will see the argument at the callsite, so it usually doesn’t help readability to also refer to it in the name itself.
+The user will see the argument at the call site, so it usually doesn’t help readability to also refer to it in the name itself.
 
 good
 
@@ -603,7 +607,7 @@ paragraph. If more than a single sentence of explanation is useful, put the
 rest in later paragraphs.
 
 This helps you write a tight first sentence that summarizes the documentation.
-Also, tools like Dartdoc use the first paragraph as a short summary in places
+Also, tools like Dart doc use the first paragraph as a short summary in places
 like lists of classes and members.
 
 good
