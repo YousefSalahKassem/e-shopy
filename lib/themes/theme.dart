@@ -46,7 +46,7 @@ final ThemeData appTheme = ThemeData(
       color: textColor.withOpacity(0.7),
     ),
   ),
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     subhead: subHeaderStyle,
     headline: headerStyle,
   ),
