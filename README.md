@@ -9,7 +9,7 @@ As we use Provider as the main state management solutions on our app we had to f
 ## Folder structure
 
 ```shell
-Thawani_app
+App
 ├── android
 ├── ios
 ├── assets
@@ -43,12 +43,15 @@ Thawani_app
 │   │       └── app_colors.dart
 │   │       └── text_styles.dart
 │   ├── exceptions
-│   └── themes
-│   ├── data  // all data related files
+│   ├── themes
+│   ├── data 
 │   │     └── local
 │   │     └── remote
 │   └── main.dart
-└── pubspec.yaml
+├── test
+│   └── unit
+│   └── widget
+├── pubspec.yaml
 └── README.md
 ```
 
