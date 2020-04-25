@@ -1,3 +1,8 @@
 {
-    "greeting": "Hello Kortobaa!"
+    "greeting": "Hello, Kortobaa!",
+    "ar" : "العربية",
+    "en": "English",
+    "user_actions": {
+        "start": "Start"
+    }
 }

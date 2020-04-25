@@ -1,3 +1,8 @@
 {
-    "greeting": "مرحباً, قرطبة"
+    "greeting": "مرحباً, قرطبة",
+    "ar" : "العربية",
+    "en": "English",
+    "user_actions": {
+        "start": "ابدأ"
+    }
 }
