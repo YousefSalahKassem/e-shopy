@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:provider_boilerplate/helpers/locale_preferences.dart';
 import 'package:provider_boilerplate/themes/theme.dart';
 import 'package:provider_boilerplate/routes/router.gr.dart';
 import 'package:logging/logging.dart' as log;
@@ -14,7 +15,9 @@ Future<void> main() async {
     debugPrint('${rec.level.name}: ${rec.time}: ${rec.message}');
   });
   final delegate = await LocalizationDelegate.create(
-      fallbackLocale: 'ar', supportedLocales: ['ar', 'en']);
+      fallbackLocale: 'ar',
+      supportedLocales: ['ar', 'en'],
+      preferences: LocalePreferences());
   runApp(LocalizedApp(delegate, MyApp()));
 }
 
