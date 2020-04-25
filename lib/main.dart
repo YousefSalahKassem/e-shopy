@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         locale: localizationDelegate.currentLocale,
         onGenerateRoute: Router.onGenerateRoute,
         navigatorKey: Router.navigator.key,
-        initialRoute: Router.homeScreen,
+        initialRoute: Router.splashScreen,
       ),
     );
   }
