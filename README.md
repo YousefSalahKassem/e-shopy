@@ -2,6 +2,31 @@
 
 Welcome to Flutter Provider Boilerplate for Kortobaa before writing any code please read the instructions below. and for the Wiki and in details tech rules please go to [Wiki Page](https://github.com/kortobaa/Flutter-boilerplate/blob/master/wiki.md)
 
+## After Cloning for new project
+
+1. Rename Package: 
+
+   a. Android run the command:
+    ```shell
+    flutter pub run change_app_package_name:main com.new.package.name
+   ```
+   b. iOS search and replace: 
+   `com.kortobaa.provider_boilerplate`
+   to the new package name and change the value of `	<key>CFBundleName</key>
+` to the new bundle name.
+
+2. Change the path to native splash image and color at the bottom of `pubspec.yaml` to the new image path for the new app:
+```yaml
+  flutter_native_splash:
+    image: assets/images/splash.png
+    color: "42a5f5"
+  ```
+then run the command
+```shell
+flutter pub pub run flutter_native_splash:create
+```
+
+
 ## Architecture
 
 As we use Provider as the main state management solutions on our app we had to follow Provider architecture structure and it should looks like bellow
