@@ -1,4 +1,5 @@
 {
+    "app_name": "Application name", 
     "greeting": "Hello, Kortobaa!",
     "ar" : "العربية",
     "en": "English",
