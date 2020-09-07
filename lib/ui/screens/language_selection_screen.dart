@@ -32,7 +32,6 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
         body: Center(
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
                   width: width * 0.9,
@@ -112,7 +111,7 @@ class LanguageButton extends StatelessWidget {
             updateState();
           },
           child: Text(
-            translate('$value'),
+            translate(value),
             style: TextStyle(
               color: locale == value
                   ? Theme.of(context).primaryColor

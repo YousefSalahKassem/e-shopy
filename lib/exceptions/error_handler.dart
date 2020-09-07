@@ -53,7 +53,7 @@ class ErrorHandler {
     }
     Scaffold.of(context).showSnackBar(
       SnackBar(
-        content: Text('${errorMessage(error)}'),
+        content: Text(errorMessage(error) ?? ''),
       ),
     );
   }

@@ -25,7 +25,7 @@ final ThemeData appTheme = ThemeData(
       color: textColor.withOpacity(0.1),
     ),
   ),
-  primaryIconTheme: IconThemeData(color: Colors.black54),
+  primaryIconTheme: const IconThemeData(color: Colors.black54),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(),
   appBarTheme: const AppBarTheme(
     elevation: 0,
@@ -35,9 +35,9 @@ final ThemeData appTheme = ThemeData(
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.zero,
       gapPadding: 0,
-      borderSide: BorderSide(color: textColor.withOpacity(0.5), width: 1),
+      borderSide: BorderSide(color: textColor.withOpacity(0.5)),
     ),
-    border: OutlineInputBorder(
+    border: const OutlineInputBorder(
       borderRadius: BorderRadius.zero,
       gapPadding: 0,
     ),
@@ -47,7 +47,7 @@ final ThemeData appTheme = ThemeData(
     ),
   ),
   textTheme: const TextTheme(
-    subhead: subHeaderStyle,
-    headline: headerStyle,
+    subtitle1: subHeaderStyle,
+    headline5: headerStyle,
   ),
 );
