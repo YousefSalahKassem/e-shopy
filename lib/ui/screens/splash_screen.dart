@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 
@@ -20,10 +21,10 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(const Duration(seconds: 5), () async {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       if (prefs.getString(savedLocaleKey) != null) {
-        Router.navigator.pushReplacementNamed(Router.homeScreen);
+        ExtendedNavigator.root.replace(Routes.homeScreen);
       } else {
         changeLocale(context, 'ar');
-        Router.navigator.pushReplacementNamed(Router.languageSelectionScreen);
+        ExtendedNavigator.root.replace(Routes.languageSelectionScreen);
       }
     });
     super.initState();

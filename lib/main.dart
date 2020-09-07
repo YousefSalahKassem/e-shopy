@@ -1,13 +1,14 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:in_app_update/in_app_update.dart';
 import 'package:provider_boilerplate/helpers/locale_preferences.dart';
-import 'package:provider_boilerplate/themes/theme.dart';
 import 'package:provider_boilerplate/routes/router.gr.dart';
+import 'package:provider_boilerplate/themes/theme.dart';
 import 'package:logging/logging.dart' as log;
 
 Future<void> main() async {
@@ -48,9 +49,7 @@ class MyApp extends StatelessWidget {
         ],
         supportedLocales: localizationDelegate.supportedLocales,
         locale: localizationDelegate.currentLocale,
-        onGenerateRoute: Router.onGenerateRoute,
-        navigatorKey: Router.navigator.key,
-        initialRoute: Router.splashScreen,
+        builder: ExtendedNavigator.builder<Router>(router: Router()),
       ),
     );
   }
