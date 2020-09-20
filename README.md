@@ -223,52 +223,6 @@ The package is quite complex but not complicated, [you can read all about its fe
 
 Please note that we are using a Dio client located at `lib/data/remote/dio_client.dart` to have a single instance of the Dio client and we set its options and pass it to different API files.
 
-### Auto Route:
-It is  a route generation library, where everything needed for navigation is automatically generated for you.
-
-The setup for auto route is already created in the boilerplate, it also uses annotations and creates argument object for us when we run the command: 
-
-`flutter packages pub run build_runner watch --delete-conflicting-outputs`
-
-On adding new route you should add it to the `router.dart` file, then run the command above:
-
-```dart 
-@MaterialAutoRouter(routes: <AutoRoute>[
-  MaterialRoute(page: SplashScreen, initial: true),
-  MaterialRoute(page: HomeScreen),
-  MaterialRoute(page: LanguageSelectionScreen),
-  // new route added below
-  MaterialRoute(page: LoginScreen),
-])
-```
-
-Then you navigate using the root navigator like:
-
-```dart
-// Instead of pushNamed
-ExtendedNavigator.root.push(Routes.homeScreen);
-//Instead of pushReplacementNamed
-ExtendedNavigator.root.replace(Routes.homeScreen);
-```
-
-You can use Custom Route Transitions either provided by the package:
-
-```dart
-@CustomRoute(transitionsBuilder: TransitionBuilders.slideBottom,durationInMilliseconds: 400)
-LoginScreen loginScreenRoute;
-```
- or create your own as in:
-
- ```dart
- Widget zoomInTransition(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
- // you get an animation object and a widget
- // make your own transition
-    return ScaleTransition(scale: animation, child: child);
-  }
- ```
-
- The package has more features like route guards, nested navigators, wrapped routes and more.[ It's all documented on the pub.dev page of the package.](https://pub.dev/packages/auto_route)
-
 ### Lint:
 
 lint is a hand-picked, open-source, community-driven collection of lint rules for Dart and Flutter projects. The set of rules follows the [Effective Dart: Style Guide](https://dart.dev/guides/language/effective-dart/style).
