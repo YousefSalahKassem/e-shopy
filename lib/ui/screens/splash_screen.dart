@@ -1,11 +1,10 @@
 import 'dart:async';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 
 import 'package:provider_boilerplate/helpers/shared_preferences_keys.dart';
-import 'package:provider_boilerplate/routes/router.gr.dart';
+import 'package:provider_boilerplate/routes/router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,10 +20,11 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(const Duration(seconds: 5), () async {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       if (prefs.getString(savedLocaleKey) != null) {
-        ExtendedNavigator.root.replace(Routes.homeScreen);
+        Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
       } else {
         changeLocale(context, 'ar');
-        ExtendedNavigator.root.replace(Routes.languageSelectionScreen);
+        Navigator.of(context)
+            .pushReplacementNamed(Routes.languageSelectionScreen);
       }
     });
     super.initState();

@@ -1,7 +1,6 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
-import 'package:provider_boilerplate/routes/router.gr.dart';
+import 'package:provider_boilerplate/routes/router.dart';
 
 class LanguageSelectionScreen extends StatefulWidget {
   const LanguageSelectionScreen({Key key}) : super(key: key);
@@ -80,7 +79,8 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                 ),
                 RaisedButton(
                   onPressed: () {
-                    ExtendedNavigator.root.replace(Routes.homeScreen);
+                    Navigator.of(context)
+                        .pushReplacementNamed(Routes.homeScreen);
                   },
                   child: Text(translate('user_actions.start')),
                 ),
