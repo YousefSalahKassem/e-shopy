@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_translate/flutter_translate.dart';
 import 'package:in_app_update/in_app_update.dart';
-import 'package:provider_boilerplate/helpers/locale_preferences.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_boilerplate/helpers/localizations_provider.dart';
 import 'package:provider_boilerplate/routes/router.dart';
 import 'package:provider_boilerplate/themes/theme.dart';
 import 'package:logging/logging.dart' as log;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,33 +24,24 @@ Future<void> main() async {
   log.Logger.root.onRecord.listen((log.LogRecord rec) {
     debugPrint('${rec.level.name}: ${rec.time}: ${rec.message}');
   });
-  final delegate = await LocalizationDelegate.create(
-      fallbackLocale: 'ar',
-      supportedLocales: ['ar', 'en'],
-      preferences: LocalePreferences());
-  runApp(LocalizedApp(delegate, MyApp()));
+  final localizationsProvider = LocalizationsProvider();
+  await localizationsProvider.init();
+
+  runApp(ChangeNotifierProvider(
+      create: (_) => localizationsProvider, builder: (_, __) => MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final localizationDelegate = LocalizedApp.of(context).delegate;
-    return LocalizationProvider(
-      state: LocalizationProvider.of(context).state,
-      child: MaterialApp(
-        title: 'Kortobaa Boilerplate',
-        theme: appTheme,
-        localizationsDelegates: [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          localizationDelegate
-        ],
-        supportedLocales: localizationDelegate.supportedLocales,
-        locale: localizationDelegate.currentLocale,
-        onGenerateRoute: CustomRouter.generateRoute,
-        initialRoute: Routes.splashScreen,
-      ),
+    return MaterialApp(
+      title: 'Kortobaa Boilerplate',
+      theme: appTheme,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: context.watch<LocalizationsProvider>().locale,
+      onGenerateRoute: CustomRouter.generateRoute,
+      initialRoute: Routes.splashScreen,
     );
   }
 }

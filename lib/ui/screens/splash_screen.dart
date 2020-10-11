@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_translate/flutter_translate.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_boilerplate/helpers/localizations_provider.dart';
 
 import 'package:provider_boilerplate/helpers/shared_preferences_keys.dart';
 import 'package:provider_boilerplate/routes/router.dart';
@@ -22,7 +23,8 @@ class _SplashScreenState extends State<SplashScreen> {
       if (prefs.getString(savedLocaleKey) != null) {
         Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
       } else {
-        changeLocale(context, 'ar');
+        Provider.of<LocalizationsProvider>(context, listen: false)
+            .changeLocale(kDefaultLocale);
         Navigator.of(context)
             .pushReplacementNamed(Routes.languageSelectionScreen);
       }
