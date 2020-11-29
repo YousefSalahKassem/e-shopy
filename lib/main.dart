@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:in_app_update/in_app_update.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:provider_boilerplate/helpers/locale_preferences.dart';
 import 'package:provider_boilerplate/routes/custom_router.dart';
 import 'package:provider_boilerplate/themes/theme.dart';
@@ -41,19 +42,21 @@ class MyApp extends StatelessWidget {
     final localizationDelegate = LocalizedApp.of(context).delegate;
     return LocalizationProvider(
       state: LocalizationProvider.of(context).state,
-      child: MaterialApp(
-        title: 'Kortobaa Boilerplate',
-        theme: appTheme,
-        localizationsDelegates: [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          localizationDelegate
-        ],
-        supportedLocales: localizationDelegate.supportedLocales,
-        locale: localizationDelegate.currentLocale,
-        onGenerateRoute: CustomRouter.generateRoute,
-        initialRoute: Routes.splashScreen,
+      child: OverlaySupport(
+        child: MaterialApp(
+          title: 'Kortobaa Boilerplate',
+          theme: appTheme,
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            localizationDelegate
+          ],
+          supportedLocales: localizationDelegate.supportedLocales,
+          locale: localizationDelegate.currentLocale,
+          onGenerateRoute: CustomRouter.generateRoute,
+          initialRoute: Routes.splashScreen,
+        ),
       ),
     );
   }
