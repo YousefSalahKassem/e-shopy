@@ -9,6 +9,7 @@ import 'package:provider_boilerplate/helpers/locale_preferences.dart';
 import 'package:provider_boilerplate/routes/custom_router.dart';
 import 'package:provider_boilerplate/themes/theme.dart';
 import 'package:logging/logging.dart' as log;
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,10 +25,13 @@ Future<void> main() async {
   log.Logger.root.onRecord.listen((log.LogRecord rec) {
     debugPrint('${rec.level.name}: ${rec.time}: ${rec.message}');
   });
+  // Shared Preference
+  final sharedPreferences = await SharedPreferences.getInstance();
+
   final delegate = await LocalizationDelegate.create(
       fallbackLocale: 'ar',
       supportedLocales: ['ar', 'en'],
-      preferences: LocalePreferences());
+      preferences: LocalePreferences(sharedPreferences));
   runApp(LocalizedApp(delegate, MyApp()));
 }
 

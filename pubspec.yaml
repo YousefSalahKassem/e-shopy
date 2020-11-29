@@ -27,6 +27,7 @@ dependencies:
   shared_preferences: ^0.5.10
   json_annotation: ^3.1.1
   dio: ^3.0.10
+  flutter_translate: ^1.6.0
   logging: ^0.11.4
   in_app_update: ^1.1.14
   upgrader: ^2.7.3
