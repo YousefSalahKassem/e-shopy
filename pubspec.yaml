@@ -25,11 +25,12 @@ dependencies:
   provider: ^4.3.2+2 
   intl: ^0.16.1
   shared_preferences: ^0.5.10
-  json_annotation: ^3.0.1
+  json_annotation: ^3.1.1
   dio: ^3.0.10
   logging: ^0.11.4
-  in_app_update: ^1.1.11
-  upgrader: ^2.6.0
+  in_app_update: ^1.1.14
+  upgrader: ^2.7.3
+  overlay_support: ^1.0.5
 
 
 
@@ -37,8 +38,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^1.8.0
-  json_serializable: ^3.4.1
+  build_runner: ^1.10.6
+  json_serializable: ^3.5.0
   lint: ^1.2.0
   change_app_package_name: ^0.1.2
   flutter_native_splash: ^0.1.9

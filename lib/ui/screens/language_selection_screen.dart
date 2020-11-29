@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:provider_boilerplate/helpers/localizations_provider.dart';
-import 'package:provider_boilerplate/routes/router.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_translate/flutter_translate.dart';
+import 'package:provider_boilerplate/routes/custom_router.dart';
 
 class LanguageSelectionScreen extends StatefulWidget {
   const LanguageSelectionScreen({Key key}) : super(key: key);
@@ -84,7 +82,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                     Navigator.of(context)
                         .pushReplacementNamed(Routes.homeScreen);
                   },
-                  child: Text(AppLocalizations.of(context).start),
+                  child: Text(translate('user_actions.start')),
                 ),
               ],
             ),
@@ -109,14 +107,11 @@ class LanguageButton extends StatelessWidget {
         height: 48,
         child: FlatButton(
           onPressed: () {
-            Provider.of<LocalizationsProvider>(context, listen: false)
-                .changeLocale(Locale(value));
+            changeLocale(context, value);
             updateState();
           },
           child: Text(
-            value == 'ar'
-                ? AppLocalizations.of(context).ar
-                : AppLocalizations.of(context).en,
+            translate(value),
             style: TextStyle(
               color: locale == value
                   ? Theme.of(context).primaryColor

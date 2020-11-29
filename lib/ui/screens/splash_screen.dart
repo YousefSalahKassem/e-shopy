@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:provider_boilerplate/helpers/localizations_provider.dart';
 
 import 'package:provider_boilerplate/helpers/shared_preferences_keys.dart';
-import 'package:provider_boilerplate/routes/router.dart';
+import 'package:provider_boilerplate/routes/custom_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
