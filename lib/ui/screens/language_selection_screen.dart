@@ -82,7 +82,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                     Navigator.of(context)
                         .pushReplacementNamed(Routes.homeScreen);
                   },
-                  child: Text(translate('user_actions.start')),
+                  child: Text(translate('start')),
                 ),
               ],
             ),
