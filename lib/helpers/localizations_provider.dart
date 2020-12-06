@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/all.dart';
 import 'package:provider_boilerplate/helpers/shared_preferences_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const kDefaultLocale = Locale('ar');
+
+final localizationsProvider =
+    ChangeNotifierProvider((ref) => LocalizationsProvider());
 
 class LocalizationsProvider with ChangeNotifier {
   Locale _locale;

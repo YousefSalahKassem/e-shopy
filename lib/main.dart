@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/all.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:in_app_update/in_app_update.dart';
 import 'package:overlay_support/overlay_support.dart';
@@ -33,7 +34,7 @@ Future<void> main() async {
       fallbackLocale: 'ar',
       supportedLocales: ['ar', 'en'],
       preferences: LocalePreferences(sharedPreferences));
-  runApp(LocalizedApp(delegate, MyApp()));
+  runApp(ProviderScope(child: LocalizedApp(delegate, MyApp())));
 }
 
 class MyApp extends StatelessWidget {
