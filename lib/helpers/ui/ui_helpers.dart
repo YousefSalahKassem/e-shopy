@@ -190,7 +190,7 @@ class UiHelper {
       VoidCallback action,
       String message,
       String okButtonText,
-      String calncelButtonText}) {
+      String cancelButtonText}) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -205,7 +205,7 @@ class UiHelper {
               Navigator.of(context).pop(false);
             },
             child: Text(
-              calncelButtonText,
+              cancelButtonText,
               style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
