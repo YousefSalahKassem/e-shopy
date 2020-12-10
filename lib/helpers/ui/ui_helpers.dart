@@ -1,91 +1,130 @@
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
 
+// ignore_for_file: avoid_classes_with_only_static_members
+///
 /// Contains useful functions to reduce boilerplate code
-class UIHelper {
-  // Vertical spacing constants. Adjust to your liking.
+///
+class UiHelper {
+  //* <--------------------- Vertical spacing constants. Adjust to your liking.
   static const double _verticalSpaceXSmall = 4.0;
   static const double _verticalSpaceSmall = 8.0;
   static const double _verticalSpaceMedium = 12.0;
   static const double _verticalSpaceLarge = 24.0;
   static const double _verticalSpaceXLarge = 32.0;
 
-  // Vertical spacing constants. Adjust to your liking.
+  //* <------------------  Horizontal spacing constants. Adjust to your liking.
   static const double _horizontalSpaceXSmall = 4.0;
   static const double _horizontalSpaceSmall = 8.0;
   static const double _horizontalSpaceMedium = 12.0;
   static const double _horizontalSpaceLarge = 24.0;
   static const double _horizontalSpaceXLarge = 32.0;
 
-  /// Returns a vertical space with height set to [_VerticalSpaceSmall]
-  static Widget verticalSpaceSmall() {
-    return const SizedBox(
-      height: _verticalSpaceSmall,
-    );
+  //* <------------------ This is the screen size you develop / design on (i.e : emulator)
+  static const double _refrenceScreenHeight = 683.4285714285714;
+  static const double _refrenceScreenWidth = 411.42857142857144;
+
+  // Actual device screen size
+  static double _screenHeight;
+  static double _screenWidth;
+
+  // You should call this after you get the first MaterialApp context
+  static void updateScreenDimensions(BuildContext context) {
+    _screenWidth = context.width;
+    _screenHeight = context.height;
   }
+
+  // Height, Width, Size Functions
+  static double height(double height) {
+    if (_screenHeight == null) return height;
+    return _screenHeight * height / _refrenceScreenHeight;
+  }
+
+  static double width(double width) {
+    if (_screenWidth == null) return width;
+    return (_screenWidth * width / _refrenceScreenWidth).ceilToDouble();
+  }
+
+  static double size(double size) => width(size);
 
   /// Returns a vertical space with height set to [_VerticalSpaceXSmall]
   static Widget verticalSpaceXSmall() {
-    return const SizedBox(
-      height: _verticalSpaceXSmall,
+    return SizedBox(
+      height: height(_verticalSpaceXSmall),
+    );
+  }
+
+  /// Returns a vertical space with height set to [_VerticalSpaceSmall]
+  static Widget verticalSpaceSmall() {
+    return SizedBox(
+      height: height(_verticalSpaceSmall),
     );
   }
 
   /// Returns a vertical space with height set to [_VerticalSpaceMedium]
   static Widget verticalSpaceMedium() {
-    return const SizedBox(
-      height: _verticalSpaceMedium,
+    return SizedBox(
+      height: height(_verticalSpaceMedium),
     );
   }
 
   /// Returns a vertical space with height set to [_VerticalSpaceLarge]
   static Widget verticalSpaceLarge() {
-    return const SizedBox(
-      height: _verticalSpaceLarge,
+    return SizedBox(
+      height: height(_verticalSpaceLarge),
     );
   }
 
   /// Returns a vertical space with height set to [_VerticalSpaceXLarge]
   static Widget verticalSpaceXLarge() {
-    return const SizedBox(
-      height: _verticalSpaceXLarge,
+    return SizedBox(
+      height: height(_verticalSpaceXLarge),
     );
   }
 
   /// Returns a horizontal space with height set to [_HorizontalSpaceXSmall]
   static Widget horizontalSpaceXSmall() {
-    return const SizedBox(
-      width: _horizontalSpaceXSmall,
+    return SizedBox(
+      width: width(_horizontalSpaceXSmall),
     );
   }
 
   /// Returns a horizontal space with height set to [_HorizontalSpaceSmall]
   static Widget horizontalSpaceSmall() {
-    return const SizedBox(
-      width: _horizontalSpaceSmall,
+    return SizedBox(
+      width: width(_horizontalSpaceSmall),
     );
   }
 
   /// Returns a horizontal space with height set to [_HorizontalSpaceMedium]
   static Widget horizontalSpaceMedium() {
-    return const SizedBox(
-      width: _horizontalSpaceMedium,
+    return SizedBox(
+      width: width(_horizontalSpaceMedium),
     );
   }
 
   /// Returns a horizontal space with height set to [HorizontalSpaceLarge]
   static Widget horizontalSpaceLarge() {
-    return const SizedBox(
-      width: _horizontalSpaceLarge,
+    return SizedBox(
+      width: width(_horizontalSpaceLarge),
     );
   }
 
   /// Returns a horizontal space with height set to [HorizontalSpaceXLarge]
   static Widget horizontalSpaceXLarge() {
-    return const SizedBox(
-      width: _horizontalSpaceXLarge,
+    return SizedBox(
+      width: width(_horizontalSpaceXLarge),
     );
   }
+
+  /// Custom Margins
+  static Widget verticalSpace(double space) => SizedBox(
+        height: height(space),
+      );
+
+  static Widget horizontalSpace(double space) => SizedBox(
+        width: width(space),
+      );
 
   //* <---------------------------------------------------------  Border Radius
   /// Radius Boders
@@ -115,6 +154,14 @@ class UIHelper {
         bottomRight: Radius.circular(radius));
   }
 
+  //* <------------------------------------------------  Text Fieald Decoration
+  /// Outline Border
+  static InputBorder get noBorder => const OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.transparent),
+      );
+
+  //* <------------------------------------------------ Notification & Messages
+
   // Show Notifications
   static void showNotification(String message,
       {NotificationPosition position}) {
@@ -143,7 +190,7 @@ class UIHelper {
       VoidCallback action,
       String message,
       String okButtonText,
-      String cancelButtonText}) {
+      String calncelButtonText}) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -158,7 +205,7 @@ class UIHelper {
               Navigator.of(context).pop(false);
             },
             child: Text(
-              cancelButtonText,
+              calncelButtonText,
               style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
@@ -171,7 +218,20 @@ class UIHelper {
       ),
     );
   }
-}
+
+  //* <----------------------------------------- Functions & Extensions
+  // Post Frame Callbacks
+  static void postBuildCallback(void Function(Duration) callback) {
+    WidgetsBinding.instance.addPostFrameCallback(callback);
+  }
+
+  static void navigatorPostBuildCallback(
+      {@required BuildContext context, @required String destination}) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Navigator.pushReplacementNamed(context, destination);
+    });
+  }
+} // Class UiHelper
 
 /// *** Extensions on BuildContext class *** ----------------------------------
 extension SugarExt on BuildContext {
