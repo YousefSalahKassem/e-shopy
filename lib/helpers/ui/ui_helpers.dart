@@ -6,6 +6,9 @@ import 'package:overlay_support/overlay_support.dart';
 /// Contains useful functions to reduce boilerplate code
 ///
 class UiHelper {
+  //* <--------------------- Notifications State
+  static String _notificationMessage = '';
+
   //* <--------------------- Vertical spacing constants. Adjust to your liking.
   static const double _verticalSpaceXSmall = 4.0;
   static const double _verticalSpaceSmall = 8.0;
@@ -23,6 +26,12 @@ class UiHelper {
   //* <------------------ This is the screen size you develop / design on (i.e : emulator)
   static const double _refrenceScreenHeight = 683.4285714285714;
   static const double _refrenceScreenWidth = 411.42857142857144;
+
+  // radius border values
+
+  static const double _radius1 = 16;
+  static const double _radius2 = 8;
+  static const double _radius3 = 4;
 
   // Actual device screen size
   static double _screenHeight;
@@ -125,9 +134,64 @@ class UiHelper {
   static Widget horizontalSpace(double space) => SizedBox(
         width: width(space),
       );
-
   //* <---------------------------------------------------------  Border Radius
   /// Radius Boders
+
+  static BorderRadius radiusBig() {
+    return const BorderRadius.all(Radius.circular(_radius1));
+  }
+
+  static BorderRadius radiusMedium() {
+    return const BorderRadius.all(Radius.circular(_radius2));
+  }
+
+  static BorderRadius radiusSmall() {
+    return const BorderRadius.all(Radius.circular(_radius2));
+  }
+
+  static BorderRadius topRoundedEdgesBig() {
+    return const BorderRadius.only(
+        topLeft: Radius.circular(_radius1),
+        topRight: Radius.circular(_radius1));
+  }
+
+  static BorderRadius topRoundedEdgesSmall() {
+    return const BorderRadius.only(
+        topLeft: Radius.circular(_radius3),
+        topRight: Radius.circular(_radius3));
+  }
+
+  static BorderRadius rightRoundedEdgesBig() {
+    return const BorderRadius.only(
+        bottomRight: Radius.circular(_radius1),
+        topRight: Radius.circular(_radius1));
+  }
+
+  static BorderRadius rightRoundedEdgesSmall() {
+    return const BorderRadius.only(
+        bottomRight: Radius.circular(_radius3),
+        topRight: Radius.circular(_radius3));
+  }
+
+  static BorderRadius leftRoundedEdgesBig() {
+    return const BorderRadius.only(
+        bottomLeft: Radius.circular(_radius1),
+        topLeft: Radius.circular(_radius1));
+  }
+
+  static BorderRadius leftRoundedEdgesSmall() {
+    return const BorderRadius.only(
+        bottomLeft: Radius.circular(_radius3),
+        topLeft: Radius.circular(_radius3));
+  }
+
+  static BorderRadius bottomRoundedEdges({double radius = _radius1}) {
+    return BorderRadius.only(
+        bottomLeft: Radius.circular(radius),
+        bottomRight: Radius.circular(radius));
+  }
+
+  // Custom Methods
   static BorderRadius allRoundedEdges(double radius) {
     return BorderRadius.all(Radius.circular(radius));
   }
@@ -148,12 +212,6 @@ class UiHelper {
         topLeft: Radius.circular(radius), bottomLeft: Radius.circular(radius));
   }
 
-  static BorderRadius bottomRoundedEdges(double radius) {
-    return BorderRadius.only(
-        bottomLeft: Radius.circular(radius),
-        bottomRight: Radius.circular(radius));
-  }
-
   //* <------------------------------------------------  Text Fieald Decoration
   /// Outline Border
   static InputBorder get noBorder => const OutlineInputBorder(
@@ -162,26 +220,34 @@ class UiHelper {
 
   //* <------------------------------------------------ Notification & Messages
 
-  // Show Notifications
+// Show Notification
   static void showNotification(String message,
-      {NotificationPosition position}) {
-    showOverlayNotification(
-      (context) => Card(
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 64),
-        elevation: 3,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        color: Theme.of(context).accentColor,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-          child: Text(
-            message,
-            style: context.textTheme.button,
+      {NotificationPosition position, bool isError = true}) {
+    if (_notificationMessage != message) {
+      _notificationMessage = message;
+      showOverlayNotification(
+        (context) => Card(
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 64),
+          elevation: 3,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          color: isError
+              ? Theme.of(context).accentColor
+              : Theme.of(context).primaryColor,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+            child: Text(
+              message,
+              textAlign: TextAlign.center,
+              style: context.textTheme.button,
+            ),
           ),
         ),
-      ),
-      duration: const Duration(seconds: 3),
-      position: position,
-    );
+        duration: const Duration(seconds: 3),
+        position: position,
+      ).dismissed.then((value) {
+        _notificationMessage = '';
+      });
+    }
   }
 
   // Show Alert Dialog
@@ -249,4 +315,9 @@ extension SugarExt on BuildContext {
   //* Theme Extensions
   TextTheme get textTheme => Theme.of(this).textTheme;
   ThemeData get theme => Theme.of(this);
+
+  //* Close Keyboard
+  void closeKeyboard() {
+    FocusScope.of(this).requestFocus(FocusNode());
+  }
 }
