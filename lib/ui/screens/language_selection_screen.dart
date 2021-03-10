@@ -11,12 +11,9 @@ class LanguageSelectionScreen extends StatefulWidget {
 }
 
 class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
-  String locale;
-
   @override
   void initState() {
     super.initState();
-    locale = 'ar';
   }
 
   @override
@@ -33,13 +30,11 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
               Container(
                 width: width * 0.9,
                 height: 400,
-                color: Theme.of(context).primaryColor,
-                padding: const EdgeInsets.only(top: 104),
+                padding: const EdgeInsets.only(top: 80),
                 child: Center(
                   child: Image.asset(
                     'assets/images/kortobaa.png',
-                    fit: BoxFit.cover,
-                    width: 100,
+                    fit: BoxFit.fitHeight,
                     height: 200,
                   ),
                 ),
@@ -52,22 +47,12 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                 child: Row(
                   children: <Widget>[
                     LanguageButton(
-                      locale: locale,
+                      locale: context.locale.languageCode,
                       value: 'ar',
-                      updateState: () {
-                        setState(() {
-                          locale = 'ar';
-                        });
-                      },
                     ),
                     LanguageButton(
-                      locale: locale,
+                      locale: context.locale.languageCode,
                       value: 'en',
-                      updateState: () {
-                        setState(() {
-                          locale = 'en';
-                        });
-                      },
                     ),
                   ],
                 ),
@@ -90,11 +75,13 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
 }
 
 class LanguageButton extends StatelessWidget {
-  const LanguageButton({Key key, this.locale, this.value, this.updateState})
-      : super(key: key);
+  const LanguageButton({
+    Key key,
+    this.locale,
+    this.value,
+  }) : super(key: key);
   final String locale;
   final String value;
-  final Function updateState;
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +91,6 @@ class LanguageButton extends StatelessWidget {
         child: FlatButton(
           onPressed: () {
             context.locale = Locale(value);
-            updateState();
           },
           child: Text(
             tr(value),

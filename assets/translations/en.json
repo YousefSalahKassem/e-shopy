@@ -3,7 +3,8 @@
     "greeting": "Hello, Kortobaa!",
 
     "home_screen" : {
-        "body" : "Home Screen Text Body"
+        "body" : "Home Screen Body Text" , 
+        "toggle_language" :"Toggle Language"
     },
 
     "ar" : "العربية",

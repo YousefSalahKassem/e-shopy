@@ -2,7 +2,8 @@
     "appName": "أسم التطبيق", 
     "greeting": "مرحباً، قرطبة",
     "home_screen" : {
-        "body" : "نص الصفحة الرئيسية"
+        "body" : "نص الصفحة الرئيسية",
+        "toggle_language" :"غيّر اللغة"
     },
     "ar" : "العربية",
     "en": "English",
