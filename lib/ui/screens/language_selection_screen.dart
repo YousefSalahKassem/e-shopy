@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:provider_boilerplate/routes/custom_router.dart';
+import 'package:flutter_boilerplate/routes/custom_router.dart';
 
 class LanguageSelectionScreen extends StatefulWidget {
   const LanguageSelectionScreen({Key key}) : super(key: key);

@@ -1,4 +1,4 @@
-# Flutter Provider Boilerplate for Kortobaa
+# Kortobaa Flutter Boilerplate
 
 Welcome to Flutter Provider Boilerplate for Kortobaa before writing any code please read the instructions below. and for the Wiki and in details tech rules please go to [Wiki Page](https://github.com/kortobaa/Flutter-boilerplate/blob/master/wiki.md)
 
@@ -11,7 +11,7 @@ Welcome to Flutter Provider Boilerplate for Kortobaa before writing any code ple
     flutter pub run change_app_package_name:main com.new.package.name
    ```
    b. iOS search and replace: 
-   `com.kortobaa.provider_boilerplate`
+   `com.kortobaa.flutter_boilerplate`
    to the new package name and change the value of `	<key>CFBundleName</key>
 ` to the new bundle name.
 

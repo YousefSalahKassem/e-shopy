@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:provider_boilerplate/ui/app.dart';
+import 'package:flutter_boilerplate/ui/app.dart';
 
 void main() {
   setUp(

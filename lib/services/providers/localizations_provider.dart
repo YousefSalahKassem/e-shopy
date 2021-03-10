@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
-import 'package:provider_boilerplate/helpers/storage_keys.dart';
+import 'package:flutter_boilerplate/helpers/storage_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const kDefaultLocale = Locale('ar');

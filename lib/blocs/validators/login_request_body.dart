@@ -1,4 +1,4 @@
-import 'package:provider_boilerplate/exceptions/validation_exception.dart';
+import 'package:flutter_boilerplate/exceptions/validation_exception.dart';
 import 'package:meta/meta.dart';
 
 @immutable

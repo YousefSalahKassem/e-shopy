@@ -1,4 +1,4 @@
-name: provider_boilerplate
+name: flutter_boilerplate
 description: Flutter boilerplate for apps with riverpod and clean architecture
 
 version: 1.0.0+1
@@ -76,5 +76,5 @@ flutter:
   
 
 flutter_native_splash:
-  image: assets/images/splash.png
+  image: assets/images/kortobaa.png
   color: "ffffff"

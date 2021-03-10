@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider_boilerplate/ui/screens/home_screen/home_screen.dart';
-import 'package:provider_boilerplate/ui/screens/language_selection_screen.dart';
-import 'package:provider_boilerplate/ui/screens/splash_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/home_screen/home_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/language_selection_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/splash_screen.dart';
 
 class Routes {
   static const String splashScreen = '/';

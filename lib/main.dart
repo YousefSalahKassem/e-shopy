@@ -9,8 +9,8 @@ import 'package:flutter_riverpod/all.dart';
 import 'package:in_app_update/in_app_update.dart';
 
 import 'package:logging/logging.dart' as log;
-import 'package:provider_boilerplate/services/providers/shared_preferences_provider.dart';
-import 'package:provider_boilerplate/ui/app.dart';
+import 'package:flutter_boilerplate/services/providers/shared_preferences_provider.dart';
+import 'package:flutter_boilerplate/ui/app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

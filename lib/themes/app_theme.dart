@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:provider_boilerplate/services/providers/app_theme_provider.dart';
-import 'package:provider_boilerplate/themes/themes.dart';
+import 'package:flutter_boilerplate/services/providers/app_theme_provider.dart';
+import 'package:flutter_boilerplate/themes/themes.dart';
 
 class AppTheme extends StatelessWidget {
   final Widget navigator;

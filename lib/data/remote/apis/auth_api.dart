@@ -1,10 +1,10 @@
-import 'package:provider_boilerplate/blocs/models/user.dart';
-import 'package:provider_boilerplate/blocs/validators/login_request_body.dart';
-import 'package:provider_boilerplate/data/remote/dio_client.dart';
-import 'package:provider_boilerplate/data/remote/constants/endpoints.dart'
+import 'package:flutter_boilerplate/blocs/models/user.dart';
+import 'package:flutter_boilerplate/blocs/validators/login_request_body.dart';
+import 'package:flutter_boilerplate/data/remote/dio_client.dart';
+import 'package:flutter_boilerplate/data/remote/constants/endpoints.dart'
     as endpoints;
-import 'package:provider_boilerplate/data/remote/interfaces/i_auth_api.dart';
-import 'package:provider_boilerplate/exceptions/fetch_exception.dart';
+import 'package:flutter_boilerplate/data/remote/interfaces/i_auth_api.dart';
+import 'package:flutter_boilerplate/exceptions/fetch_exception.dart';
 
 class AuthApi implements IAuthApi {
   final DioClient _dioClient;

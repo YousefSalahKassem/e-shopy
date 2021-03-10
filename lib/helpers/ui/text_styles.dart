@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider_boilerplate/helpers/ui/ui_helpers.dart';
+import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 //* ######################## App TextStyles #########################
 
 final kHeaderStyle =

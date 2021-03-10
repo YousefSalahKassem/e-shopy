@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider_boilerplate/helpers/ui/colors.dart';
-import 'package:provider_boilerplate/helpers/ui/enums.dart';
-import 'package:provider_boilerplate/helpers/ui/text_styles.dart';
-import 'package:provider_boilerplate/helpers/ui/ui_helpers.dart';
+import 'package:flutter_boilerplate/helpers/ui/colors.dart';
+import 'package:flutter_boilerplate/helpers/ui/enums.dart';
+import 'package:flutter_boilerplate/helpers/ui/text_styles.dart';
+import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 
 // TODO: Refactor this function to handle more than two Theme Flavors
 // This function takes a theme flavor and returns corresponding ThemeData object

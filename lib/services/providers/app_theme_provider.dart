@@ -11,9 +11,9 @@
  *******************************************************/
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:provider_boilerplate/helpers/ui/enums.dart';
-import 'package:provider_boilerplate/helpers/storage_keys.dart';
-import 'package:provider_boilerplate/services/providers/shared_preferences_provider.dart';
+import 'package:flutter_boilerplate/helpers/ui/enums.dart';
+import 'package:flutter_boilerplate/helpers/storage_keys.dart';
+import 'package:flutter_boilerplate/services/providers/shared_preferences_provider.dart';
 
 final appThemeProvider = ChangeNotifierProvider((ref) => AppThemeProvider());
 
