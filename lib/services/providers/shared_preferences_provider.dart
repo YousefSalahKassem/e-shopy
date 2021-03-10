@@ -1,18 +1,11 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final sharedPreferencesProvider =
-    Provider((ref) => SharedPreferencesProvider());
-
+// ignore: avoid_classes_with_only_static_members
 class SharedPreferencesProvider {
-  SharedPreferences _sharedPreferences;
-  SharedPreferences get sharedPreferencesInstance => _sharedPreferences;
+  static SharedPreferences _sharedPreferences;
+  static SharedPreferences get instance => _sharedPreferences;
 
-  SharedPreferencesProvider() {
-    _initSharedPreferences();
-  }
-
-  Future _initSharedPreferences() async {
+  static Future<void> ensureInit() async {
     _sharedPreferences = await SharedPreferences.getInstance();
   }
 }

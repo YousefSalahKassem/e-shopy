@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_translate/flutter_translate.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:upgrader/upgrader.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,13 +7,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(translate("greeting")),
+        title: Text(tr("greeting")),
         centerTitle: true,
       ),
       body: UpgradeAlert(
-          showIgnore: false,
-          showLater: false,
-          child: const Center(child: Text('Home screen'))),
+        showIgnore: false,
+        showLater: false,
+        child: Center(
+          child: const Text('home_screen.body').tr(),
+        ),
+      ),
     );
   }
 }

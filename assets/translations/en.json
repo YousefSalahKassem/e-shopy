@@ -1,6 +1,11 @@
 {
     "appName": "Application name",
     "greeting": "Hello, Kortobaa!",
+
+    "home_screen" : {
+        "body" : "Home Screen Text Body"
+    },
+
     "ar" : "العربية",
     "en": "English",
     "start": "Start"

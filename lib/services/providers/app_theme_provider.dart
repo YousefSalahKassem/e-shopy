@@ -16,13 +16,9 @@ import 'package:provider_boilerplate/helpers/ui/enums.dart';
 import 'package:provider_boilerplate/helpers/storage_keys.dart';
 import 'package:provider_boilerplate/services/providers/shared_preferences_provider.dart';
 
-final appThemeProvider = ChangeNotifierProvider((ref) => AppThemeProvider(
-    ref.read(sharedPreferencesProvider).sharedPreferencesInstance));
+final appThemeProvider = ChangeNotifierProvider((ref) => AppThemeProvider());
 
 class AppThemeProvider extends ChangeNotifier {
-  //* Dependency
-  final SharedPreferences _sharedPreferences;
-
   //* State
   ThemeFlavor _themeFlavor;
 
@@ -31,19 +27,21 @@ class AppThemeProvider extends ChangeNotifier {
   bool get isDarkTheme => _themeFlavor == ThemeFlavor.dark;
 
   //* Constructor and Methods
-  AppThemeProvider(this._sharedPreferences) {
+  AppThemeProvider() {
     // Load Theme as soon as the provider is created
     load();
   }
 
   Future<void> setThemeFlavor(ThemeFlavor flavor) async {
     _themeFlavor = flavor;
-    _sharedPreferences.setInt(kSavedThemeIndexKey, flavor.index);
+    SharedPreferencesProvider.instance
+        .setInt(kSavedThemeIndexKey, flavor.index);
     notifyListeners();
   }
 
   Future<void> load() async {
-    final int userFlavor = _sharedPreferences.getInt(kSavedThemeIndexKey);
+    final int userFlavor =
+        SharedPreferencesProvider.instance.getInt(kSavedThemeIndexKey);
     if (userFlavor == null) {
       setThemeFlavor(ThemeFlavor.light); // <----- Default Theme Flavor
     } else {

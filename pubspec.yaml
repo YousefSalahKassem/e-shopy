@@ -1,5 +1,5 @@
 name: provider_boilerplate
-description: Flutter boilerplate for apps with provider and clean architecture
+description: Flutter boilerplate for apps with riverpod and clean architecture
 
 version: 1.0.0+1
 
@@ -26,7 +26,8 @@ dependencies:
 
 
   # Localization
-  flutter_translate: ^1.6.0
+  easy_localization: ^2.3.3
+
 
   # Local Storage
   shared_preferences: ^0.5.10
@@ -61,12 +62,19 @@ flutter:
   uses-material-design: true
 
   assets:
-   - assets/i18n/
+   - assets/translations/
+   - assets/fonts/
    - assets/images/
    - assets/animations/
 
-
+  fonts:
+    - family: Tajawal
+      fonts:
+        - asset: assets/fonts/Tajawal-Regular.ttf
+        - asset: assets/fonts/Tajawal-Bold.ttf
+    
+  
 
 flutter_native_splash:
   image: assets/images/splash.png
-  color: "42a5f5"
+  color: "ffffff"

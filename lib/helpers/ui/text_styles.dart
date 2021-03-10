@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-//* ######################## App Constant TextStyles #########################
+import 'package:provider_boilerplate/helpers/ui/ui_helpers.dart';
+//* ######################## App TextStyles #########################
 
-const kHeaderStyle = TextStyle(fontSize: 35, fontWeight: FontWeight.w900);
-const kSubHeaderStyle = TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500);
+final kHeaderStyle =
+    TextStyle(fontSize: UiHelper.size(35.0), fontWeight: FontWeight.w900);
+final kSubHeaderStyle =
+    TextStyle(fontSize: UiHelper.size(16.0), fontWeight: FontWeight.w500);

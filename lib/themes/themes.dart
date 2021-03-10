@@ -73,7 +73,7 @@ ThemeData getThemeData(ThemeFlavor themeFlavor) {
     ),
 
     // <------------------------------------------------ Text Theme
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
       subtitle1: kSubHeaderStyle,
       headline5: kHeaderStyle,
     ),
