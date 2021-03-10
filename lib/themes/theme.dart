@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider_boilerplate/helpers/ui/app_colors.dart';
+import 'package:provider_boilerplate/helpers/ui/colors.dart';
 import 'package:provider_boilerplate/helpers/ui/text_styles.dart';
 
 // TODO: Add theme data depending on design

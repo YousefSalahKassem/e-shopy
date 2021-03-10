@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
 
+import 'dimensions.dart';
+
 // ignore_for_file: avoid_classes_with_only_static_members
 ///
 /// Contains useful functions to reduce boilerplate code
@@ -8,31 +10,6 @@ import 'package:overlay_support/overlay_support.dart';
 class UiHelper {
   //* <--------------------- Notifications State
   static String _notificationMessage = '';
-
-  //* <--------------------- Vertical spacing constants. Adjust to your liking.
-  static const double _verticalSpaceXSmall = 4.0;
-  static const double _verticalSpaceSmall = 8.0;
-  static const double _verticalSpaceMedium = 12.0;
-  static const double _verticalSpaceLarge = 24.0;
-  static const double _verticalSpaceXLarge = 32.0;
-
-  //* <------------------  Horizontal spacing constants. Adjust to your liking.
-  static const double _horizontalSpaceXSmall = 4.0;
-  static const double _horizontalSpaceSmall = 8.0;
-  static const double _horizontalSpaceMedium = 12.0;
-  static const double _horizontalSpaceLarge = 24.0;
-  static const double _horizontalSpaceXLarge = 32.0;
-
-  //* <------------------ This is the screen size you develop / design on (i.e : emulator)
-  static const double _refrenceScreenHeight = 683.4285714285714;
-  static const double _refrenceScreenWidth = 411.42857142857144;
-
-  // radius border values
-
-  static const double _radius1 = 16;
-  static const double _radius2 = 8;
-  static const double _radius3 = 4;
-
   // Actual device screen size
   static double _screenHeight;
   static double _screenWidth;
@@ -46,12 +23,12 @@ class UiHelper {
   // Height, Width, Size Functions
   static double height(double height) {
     if (_screenHeight == null) return height;
-    return _screenHeight * height / _refrenceScreenHeight;
+    return _screenHeight * height / kRefrenceScreenHeight;
   }
 
   static double width(double width) {
     if (_screenWidth == null) return width;
-    return (_screenWidth * width / _refrenceScreenWidth).ceilToDouble();
+    return (_screenWidth * width / kRefrenceScreenWidth).ceilToDouble();
   }
 
   static double size(double size) => width(size);
@@ -59,70 +36,70 @@ class UiHelper {
   /// Returns a vertical space with height set to [_VerticalSpaceXSmall]
   static Widget verticalSpaceXSmall() {
     return SizedBox(
-      height: height(_verticalSpaceXSmall),
+      height: height(kVerticalSpaceXSmall),
     );
   }
 
   /// Returns a vertical space with height set to [_VerticalSpaceSmall]
   static Widget verticalSpaceSmall() {
     return SizedBox(
-      height: height(_verticalSpaceSmall),
+      height: height(kVerticalSpaceSmall),
     );
   }
 
   /// Returns a vertical space with height set to [_VerticalSpaceMedium]
   static Widget verticalSpaceMedium() {
     return SizedBox(
-      height: height(_verticalSpaceMedium),
+      height: height(kVerticalSpaceMedium),
     );
   }
 
   /// Returns a vertical space with height set to [_VerticalSpaceLarge]
   static Widget verticalSpaceLarge() {
     return SizedBox(
-      height: height(_verticalSpaceLarge),
+      height: height(kVerticalSpaceLarge),
     );
   }
 
   /// Returns a vertical space with height set to [_VerticalSpaceXLarge]
   static Widget verticalSpaceXLarge() {
     return SizedBox(
-      height: height(_verticalSpaceXLarge),
+      height: height(kVerticalSpaceXLarge),
     );
   }
 
   /// Returns a horizontal space with height set to [_HorizontalSpaceXSmall]
   static Widget horizontalSpaceXSmall() {
     return SizedBox(
-      width: width(_horizontalSpaceXSmall),
+      width: width(kHorizontalSpaceXSmall),
     );
   }
 
   /// Returns a horizontal space with height set to [_HorizontalSpaceSmall]
   static Widget horizontalSpaceSmall() {
     return SizedBox(
-      width: width(_horizontalSpaceSmall),
+      width: width(kHorizontalSpaceSmall),
     );
   }
 
   /// Returns a horizontal space with height set to [_HorizontalSpaceMedium]
   static Widget horizontalSpaceMedium() {
     return SizedBox(
-      width: width(_horizontalSpaceMedium),
+      width: width(kHorizontalSpaceMedium),
     );
   }
 
   /// Returns a horizontal space with height set to [HorizontalSpaceLarge]
   static Widget horizontalSpaceLarge() {
     return SizedBox(
-      width: width(_horizontalSpaceLarge),
+      width: width(kHorizontalSpaceLarge),
     );
   }
 
   /// Returns a horizontal space with height set to [HorizontalSpaceXLarge]
   static Widget horizontalSpaceXLarge() {
     return SizedBox(
-      width: width(_horizontalSpaceXLarge),
+      width: width(kHorizontalSpaceXLarge),
     );
   }
 
@@ -138,54 +115,54 @@ class UiHelper {
   /// Radius Boders
 
   static BorderRadius radiusBig() {
-    return const BorderRadius.all(Radius.circular(_radius1));
+    return const BorderRadius.all(Radius.circular(kRadius1));
   }
 
   static BorderRadius radiusMedium() {
-    return const BorderRadius.all(Radius.circular(_radius2));
+    return const BorderRadius.all(Radius.circular(kRadius2));
   }
 
   static BorderRadius radiusSmall() {
-    return const BorderRadius.all(Radius.circular(_radius2));
+    return const BorderRadius.all(Radius.circular(kRadius2));
   }
 
   static BorderRadius topRoundedEdgesBig() {
     return const BorderRadius.only(
-        topLeft: Radius.circular(_radius1),
-        topRight: Radius.circular(_radius1));
+        topLeft: Radius.circular(kRadius1),
+        topRight: Radius.circular(kRadius1));
   }
 
   static BorderRadius topRoundedEdgesSmall() {
     return const BorderRadius.only(
-        topLeft: Radius.circular(_radius3),
-        topRight: Radius.circular(_radius3));
+        topLeft: Radius.circular(kRadius3),
+        topRight: Radius.circular(kRadius3));
   }
 
   static BorderRadius rightRoundedEdgesBig() {
     return const BorderRadius.only(
-        bottomRight: Radius.circular(_radius1),
-        topRight: Radius.circular(_radius1));
+        bottomRight: Radius.circular(kRadius1),
+        topRight: Radius.circular(kRadius1));
   }
 
   static BorderRadius rightRoundedEdgesSmall() {
     return const BorderRadius.only(
-        bottomRight: Radius.circular(_radius3),
-        topRight: Radius.circular(_radius3));
+        bottomRight: Radius.circular(kRadius3),
+        topRight: Radius.circular(kRadius3));
   }
 
   static BorderRadius leftRoundedEdgesBig() {
     return const BorderRadius.only(
-        bottomLeft: Radius.circular(_radius1),
-        topLeft: Radius.circular(_radius1));
+        bottomLeft: Radius.circular(kRadius1),
+        topLeft: Radius.circular(kRadius1));
   }
 
   static BorderRadius leftRoundedEdgesSmall() {
     return const BorderRadius.only(
-        bottomLeft: Radius.circular(_radius3),
-        topLeft: Radius.circular(_radius3));
+        bottomLeft: Radius.circular(kRadius3),
+        topLeft: Radius.circular(kRadius3));
   }
 
-  static BorderRadius bottomRoundedEdges({double radius = _radius1}) {
+  static BorderRadius bottomRoundedEdges({double radius = kRadius1}) {
     return BorderRadius.only(
         bottomLeft: Radius.circular(radius),
         bottomRight: Radius.circular(radius));
