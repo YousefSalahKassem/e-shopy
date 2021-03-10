@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:flutter_boilerplate/helpers/ui/dimensions.dart';
 
 import 'dimensions.dart';
 
@@ -33,70 +34,70 @@ class UiHelper {
 
   static double size(double size) => width(size);
 
-  /// Returns a vertical space with height set to [_VerticalSpaceXSmall]
+  /// Returns a vertical space with height set to [4]
   static Widget verticalSpaceXSmall() {
     return SizedBox(
       height: height(kVerticalSpaceXSmall),
     );
   }
 
-  /// Returns a vertical space with height set to [_VerticalSpaceSmall]
+  /// Returns a vertical space with height set to [8]
   static Widget verticalSpaceSmall() {
     return SizedBox(
       height: height(kVerticalSpaceSmall),
     );
   }
 
-  /// Returns a vertical space with height set to [_VerticalSpaceMedium]
+  /// Returns a vertical space with height set to [12]
   static Widget verticalSpaceMedium() {
     return SizedBox(
       height: height(kVerticalSpaceMedium),
     );
   }
 
-  /// Returns a vertical space with height set to [_VerticalSpaceLarge]
+  /// Returns a vertical space with height set to [24]
   static Widget verticalSpaceLarge() {
     return SizedBox(
       height: height(kVerticalSpaceLarge),
     );
   }
 
-  /// Returns a vertical space with height set to [_VerticalSpaceXLarge]
+  /// Returns a vertical space with height set to [32]
   static Widget verticalSpaceXLarge() {
     return SizedBox(
       height: height(kVerticalSpaceXLarge),
     );
   }
 
-  /// Returns a horizontal space with height set to [_HorizontalSpaceXSmall]
+  /// Returns a horizontal space with height set to [4]
   static Widget horizontalSpaceXSmall() {
     return SizedBox(
       width: width(kHorizontalSpaceXSmall),
     );
   }
 
-  /// Returns a horizontal space with height set to [_HorizontalSpaceSmall]
+  /// Returns a horizontal space with height set to [8]
   static Widget horizontalSpaceSmall() {
     return SizedBox(
       width: width(kHorizontalSpaceSmall),
     );
   }
 
-  /// Returns a horizontal space with height set to [_HorizontalSpaceMedium]
+  /// Returns a horizontal space with height set to [12]
   static Widget horizontalSpaceMedium() {
     return SizedBox(
       width: width(kHorizontalSpaceMedium),
     );
   }
 
-  /// Returns a horizontal space with height set to [HorizontalSpaceLarge]
+  /// Returns a horizontal space with height set to [24]
   static Widget horizontalSpaceLarge() {
     return SizedBox(
       width: width(kHorizontalSpaceLarge),
     );
   }
 
-  /// Returns a horizontal space with height set to [HorizontalSpaceXLarge]
+  /// Returns a horizontal space with height set to [32]
   static Widget horizontalSpaceXLarge() {
     return SizedBox(
       width: width(kHorizontalSpaceXLarge),

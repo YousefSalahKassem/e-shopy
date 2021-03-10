@@ -23,8 +23,7 @@ class CustomRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case Routes.languageSelectionScreen:
-        return MaterialPageRoute(
-            builder: (_) => const LanguageSelectionScreen());
+        return MaterialPageRoute(builder: (_) => LanguageSelectionScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
