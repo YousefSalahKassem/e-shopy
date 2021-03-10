@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
-import 'package:provider_boilerplate/helpers/localizations_provider.dart';
+import 'package:provider_boilerplate/services/providers/localizations_provider.dart';
 
-import 'package:provider_boilerplate/helpers/shared_preferences_keys.dart';
+import 'package:provider_boilerplate/helpers/storage_keys.dart';
 import 'package:provider_boilerplate/routes/custom_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,7 +15,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 5), () async {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      if (prefs.getString(savedLocaleKey) != null) {
+      if (prefs.getString(kSavedLocaleKey) != null) {
         Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
       } else {
         context.read(localizationsProvider).changeLocale(kDefaultLocale);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
-import 'package:provider_boilerplate/helpers/shared_preferences_keys.dart';
+import 'package:provider_boilerplate/helpers/storage_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const kDefaultLocale = Locale('ar');
@@ -19,10 +19,10 @@ class LocalizationsProvider with ChangeNotifier {
   Future<void> init() async {
     final preferences = await SharedPreferences.getInstance();
 
-    if (!preferences.containsKey(savedLocaleKey)) {
+    if (!preferences.containsKey(kSavedLocaleKey)) {
       _locale = kDefaultLocale;
     } else {
-      final locale = preferences.getString(savedLocaleKey);
+      final locale = preferences.getString(kSavedLocaleKey);
 
       _locale = Locale(locale);
     }
@@ -31,7 +31,7 @@ class LocalizationsProvider with ChangeNotifier {
   Future<void> savePreferredLocale(Locale locale) async {
     final preferences = await SharedPreferences.getInstance();
 
-    await preferences.setString(savedLocaleKey, locale.languageCode);
+    await preferences.setString(kSavedLocaleKey, locale.languageCode);
   }
 
   Future<void> changeLocale(Locale passedLocale) async {

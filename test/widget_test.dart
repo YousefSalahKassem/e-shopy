@@ -2,7 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:provider_boilerplate/helpers/locale_preferences.dart';
-import 'package:provider_boilerplate/main.dart';
+import 'package:provider_boilerplate/ui/app.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -19,8 +20,14 @@ void main() {
 
   testWidgets('Test localization language selection screen',
       (WidgetTester tester) async {
-    await tester
-        .pumpWidget(LocalizedApp(delegate, ProviderScope(child: MyApp())));
+    await tester.pumpWidget(
+      LocalizedApp(
+        delegate,
+        ProviderScope(
+          child: App(),
+        ),
+      ),
+    );
     await tester.pumpAndSettle(const Duration(seconds: 7));
 
     final englishFinder = find.text('English');
