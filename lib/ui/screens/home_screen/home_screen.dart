@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            tr(LocaleKeys.greeting)), // <-- Generated LocaleKeys usage example
+            tr(LocaleKeys.greeting)), //* <-- Generated LocaleKeys usage example
         centerTitle: true,
       ),
       body: UpgradeAlert(

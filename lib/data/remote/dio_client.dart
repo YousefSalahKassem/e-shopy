@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
+// TODO : Add Requests interceptors / token and lang code injection
 class DioClient {
   // dio instance
   final Dio _dio;
