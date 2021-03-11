@@ -7,7 +7,7 @@ final tokenRepositoryProvider =
     ChangeNotifierProvider((ref) => TokenRepository());
 
 /// [TokenRepository] is used to handle authentication token `CRUD` operations
-/// `read , write , delete ` using [FlutterSecureStorage].
+/// `read , write , delete` using [FlutterSecureStorage].
 
 class TokenRepository with ChangeNotifier {
   // Dependency

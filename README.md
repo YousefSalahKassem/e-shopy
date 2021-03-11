@@ -93,7 +93,7 @@ Data comes from data sources whether `local` or `remote` or both that provide da
 
 ### Directories structure and their uses
 
-- `assets` folder in the root directory of the project for holding all asset data (Images, fonts, animations, i18n files, etc..)
+- `assets` folder in the root directory of the project for holding all asset data (Images, fonts, animations, translations files, etc..)
 
 - `test` folder in the root directory of the project for holding all tests related to the project.
 
@@ -126,7 +126,7 @@ Riverpod is the package we use for state management and dependency injection, si
 
 ### Shared Preferences:
 
-Shared Preferences is used to save simple key value data locally like current chosen locale, user chosen theme or authenticated user token.
+Shared Preferences is used to save simple key value data locally like current chosen locale, user chosen theme.
 
 Its usage is straight-forward:
 ```dart
@@ -156,7 +156,23 @@ _incrementCounter() async {
 
 You can use it to `setInt`, `setDouble` , `setBool`, `setString` or `setStringList` to set a value to a key. and you can get their values using the `getInt`.. etc. passing in the key only.
 
-We use the `lib/helpers/shared_preferences_keys.dart` to save its keys across the application for easier usage, to avoid typos and for easier change when we want to.
+We use the `lib/helpers/storage_keys.dart` to save its keys across the application for easier usage, to avoid typos and for easier change when we want to.
+
+
+------------
+
+### Flutter Secure Storage:
+A Flutter plugin to store data in secure storage:
+
+- [Keychain](https://developer.apple.com/library/content/documentation/Security/Conceptual/keychainServConcepts/01introduction/introduction.html#//apple_ref/doc/uid/TP30000897-CH203-TP1 "Keychain") is used for iOS
+- AES encryption is used for Android. AES secret key is encrypted with RSA and RSA key is stored in [KeyStore](https://developer.android.com/training/articles/keystore.html "KeyStore").
+
+Note KeyStore was introduced in Android 4.3 (API level 18). The plugin wouldn't work for earlier versions.
+
+> We use this package to store sensitive data suth as authentication tokens as it is more secure than the normal method with `Shared Preferences`.
+
+------------
+
 
 ### Json serializable:
 This package auto generates files for json serialization, its usage is straight-forward 
