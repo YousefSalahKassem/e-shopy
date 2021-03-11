@@ -1,14 +1,3 @@
-// ignore: slash_for_doc_comments
-/*******************************************************
- * Copyright (C) 2020-2021 Kortobaa LLC <license@kortobaa.com>
- * 
- * This file is part of Kortobaa E-commerce SDK.
- * 
- * Kortobaa E-commerce SDK is licensed under a Creative Commons Attribution-NoDerivatives 4.0 International License.
- * Kortobaa E-commerce SDK can not be copied and/or distributed without the express
- * permission of Kortobaa Integrated Solutions
- * Proprietary and confidential
- *******************************************************/
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_boilerplate/helpers/ui/enums.dart';
