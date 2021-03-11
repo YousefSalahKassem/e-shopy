@@ -169,7 +169,7 @@ A Flutter plugin to store data in secure storage:
 
 Note KeyStore was introduced in Android 4.3 (API level 18). The plugin wouldn't work for earlier versions.
 
-> We use this package to store sensitive data suth as authentication tokens as it is more secure than the normal method with `Shared Preferences`.
+> We use this package to store sensitive data such as authentication tokens as it is more secure than the normal method with `Shared Preferences`.
 
 ------------
 
