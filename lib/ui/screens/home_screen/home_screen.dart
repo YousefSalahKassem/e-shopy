@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'home_screen.body',
+                LocaleKeys.home_screen_body,
                 style: context.textTheme.headline5,
               ).tr(),
               UiHelper.verticalSpaceMedium(),
@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                   },
                   color: Colors.cyan,
                   child: const Text(
-                    'home_screen.toggle_language',
+                    LocaleKeys.home_screen_toggle_language,
                     style: TextStyle(color: Colors.white),
                   ).tr())
             ],
