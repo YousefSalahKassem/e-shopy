@@ -26,7 +26,7 @@ class DioClient {
         //* Apply an interceptor on API requests error(s)
         onError: (error) async {
       debugPrint(
-          'Intercepted an error on\n# Api request :    ${error.request.path}\n# Error message:  ${error.response?.data['error']}\n${error.message}');
+          'Intercepted an error on\n# Api request : ${error.request.path}\n# Error message: ${error.message}');
       _errorHandler.dispatchDioError(error);
 
       if (error.type == DioErrorType.CONNECT_TIMEOUT) {

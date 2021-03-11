@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
-
-abstract class  LocaleKeys {
+// ignore_for_file: constant_identifier_names
+abstract class LocaleKeys {
   static const appName = 'appName';
   static const greeting = 'greeting';
   static const home_screen_body = 'home_screen.body';
@@ -20,5 +20,4 @@ abstract class  LocaleKeys {
   static const dio_error_server_error = 'dio_error.server_error';
   static const dio_error_null = 'dio_error.null';
   static const dio_error = 'dio_error';
-
 }
