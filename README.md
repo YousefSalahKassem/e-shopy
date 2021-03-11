@@ -1,6 +1,6 @@
 # Kortobaa Flutter Boilerplate
 
-Welcome to Flutter Provider Boilerplate for Kortobaa before writing any code please read the instructions below. and for the Wiki and in details tech rules please go to [Wiki Page](https://github.com/kortobaa/Flutter-boilerplate/blob/master/wiki.md)
+Welcome to Flutter Boilerplate for Kortobaa before writing any code please read the instructions below. and for the Wiki and in details tech rules please go to [Wiki Page](https://github.com/kortobaa/Flutter-boilerplate/blob/master/wiki.md)
 
 ## After Cloning for new project
 
@@ -29,7 +29,7 @@ flutter pub pub run flutter_native_splash:create
 
 ## Architecture
 
-As we use Provider as the main state management solutions on our app we follow the following architecture structure described below
+As we use Riverpod as the main state management solution on our app we follow the architecture structure described below
 
 ## Folder structure
 
@@ -191,7 +191,13 @@ Please note that we are using a Dio client located at `lib/data/remote/dio_clien
 
 lint is a hand-picked, open-source, community-driven collection of lint rules for Dart and Flutter projects. The set of rules follows the [Effective Dart: Style Guide](https://dart.dev/guides/language/effective-dart/style).
 
-The package is already set up and it will provide you with warnings when you are not following the effective dart style guide. 
+The package is already set up and it will provide you with warnings when you are not following the effective dart style guide.
+
+### Easy Localization:
+
+Provides an easy and fast internationalization for flutter apps.
+We provide a complete usage example in the boilerplate which you could edit to serve your own needs. for more information about the package refre to the [offical docs](https://pub.dev/packages/easy_localization/versions/2.3.3 "offical docs").
+
 
 ## Dealing with Assets
 
