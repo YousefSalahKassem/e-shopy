@@ -9,5 +9,17 @@
 
     "ar" : "العربية",
     "en": "English",
-    "start": "Start"
+    "start": "Start" ,
+    "dio_error": {
+        "cancel": "Request cancelled",
+        "timeout": "Request took too much time, please try again",
+        "default": "Request failed to reach the server, please check your connection",
+        "unknown": "Request failed for unknown reason, please try again",
+        "forbidden": "You are not authorized to make that request",
+        "unauthorized": "Login Failure",
+        "bad_request": "Your request is invalid",
+        "not_found": "What you requested is not found",
+        "server_error": "There is something wrong with our servers, please wait",
+        "null": "Request failed for unknown reason"
+      }
 }

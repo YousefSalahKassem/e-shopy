@@ -1,13 +1,46 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/blocs/repositories/token_repository.dart';
+import 'package:flutter_boilerplate/exceptions/dio_error_handler.dart';
 
-// TODO : Add Requests interceptors / token and lang code injection
 class DioClient {
-  // dio instance
+  //* Dependencies
   final Dio _dio;
+  final TokenRepository _tokenRepository;
+  final DioErrorHandler _errorHandler;
 
-  // injecting dio instance
-  DioClient(this._dio);
+  //* Constructor
+  DioClient(
+    this._dio,
+    this._tokenRepository,
+    this._errorHandler,
+  ) {
+    _dio.interceptors.add(InterceptorsWrapper(
+        //* Apply an interceptor on API requests , to inject token on the fly
+        onRequest: (options) {
+      options.queryParameters.addAll({'token': true});
+      return options;
+    },
+        //* Apply an interceptor on API requests error(s)
+        onError: (error) async {
+      debugPrint(
+          'Intercepted an error on\n# Api request :    ${error.request.path}\n# Error message:  ${error.response?.data['error']}\n${error.message}');
+      _errorHandler.dispatchDioError(error);
+
+      if (error.type == DioErrorType.CONNECT_TIMEOUT) {
+        try {
+          final Response response = await _retry(error.request);
+          return response.data;
+        } catch (e) {
+          debugPrint(e.toString());
+          return error.response;
+        }
+      }
+      return error.response;
+    }));
+  }
 
   // Get:-----------------------------------------------------------------------
   Future<dynamic> get(
@@ -44,6 +77,34 @@ class DioClient {
   }) async {
     try {
       final Response response = await _dio.post(
+        uri,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
+      return response.data;
+    } catch (e) {
+      debugPrint(e.toString());
+
+      rethrow;
+    }
+  }
+
+  // Put:-----------------------------------------------------------------------
+  Future<dynamic> put(
+    String uri, {
+    dynamic data,
+    Map<String, dynamic> queryParameters,
+    Options options,
+    CancelToken cancelToken,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    try {
+      final Response response = await _dio.put(
         uri,
         data: data,
         queryParameters: queryParameters,
@@ -113,4 +174,28 @@ class DioClient {
       rethrow;
     }
   }
+
+// <---------------------------------------------- Retry Request Implementation
+  Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
+    final options = Options(
+      method: requestOptions.method,
+      headers: requestOptions.headers,
+    );
+    return _dio.request<dynamic>(requestOptions.path,
+        data: requestOptions.data,
+        queryParameters: requestOptions.queryParameters,
+        options: options);
+  }
+
+  // API Headers _____________________________________________________________
+  Map<String, String> headersWithToken() => {
+        HttpHeaders.authorizationHeader: 'Bearer ${_tokenRepository.authToken}',
+        HttpHeaders.contentTypeHeader: "application/json",
+        HttpHeaders.acceptHeader: "application/json"
+      };
+
+  Map<String, String> jsonHeaders() => {
+        HttpHeaders.contentTypeHeader: "application/json",
+        HttpHeaders.acceptHeader: "application/json"
+      };
 }
