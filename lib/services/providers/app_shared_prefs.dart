@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: avoid_classes_with_only_static_members
-class SharedPreferencesProvider {
+class AppSharedPrefs {
   static SharedPreferences _sharedPreferences;
   static SharedPreferences get instance => _sharedPreferences;
 

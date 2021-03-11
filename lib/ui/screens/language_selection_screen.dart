@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter_boilerplate/routes/custom_router.dart';
 import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
-import 'package:flutter_boilerplate/services/providers/shared_preferences_provider.dart';
+import 'package:flutter_boilerplate/services/providers/app_shared_prefs.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
 
 class LanguageSelectionScreen extends StatelessWidget {
@@ -52,7 +52,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                 color: Colors.cyan,
                 onPressed: () {
                   // Ensure not to show this screen again
-                  SharedPreferencesProvider.instance
+                  AppSharedPrefs.instance
                       .setBool(kShowLanguageSelectionScreen, false);
                   // Navigate to Home
                   Navigator.of(context).pushReplacementNamed(Routes.homeScreen);

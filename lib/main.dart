@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/all.dart';
 import 'package:in_app_update/in_app_update.dart';
 
 import 'package:logging/logging.dart' as log;
-import 'package:flutter_boilerplate/services/providers/shared_preferences_provider.dart';
+import 'package:flutter_boilerplate/services/providers/app_shared_prefs.dart';
 import 'package:flutter_boilerplate/ui/app.dart';
 
 Future<void> main() async {
@@ -28,7 +28,7 @@ Future<void> main() async {
   });
 
   // Init Shared Preferences
-  SharedPreferencesProvider.ensureInit();
+  AppSharedPrefs.ensureInit();
 
   runApp(
     ProviderScope(

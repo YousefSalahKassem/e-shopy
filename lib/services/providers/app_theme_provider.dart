@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/services/providers/app_shared_prefs.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_boilerplate/helpers/ui/enums.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
-import 'package:flutter_boilerplate/services/providers/shared_preferences_provider.dart';
 
 final appThemeProvider = ChangeNotifierProvider((ref) => AppThemeProvider());
 
@@ -22,14 +22,12 @@ class AppThemeProvider extends ChangeNotifier {
 
   Future<void> setThemeFlavor(ThemeFlavor flavor) async {
     _themeFlavor = flavor;
-    SharedPreferencesProvider.instance
-        .setInt(kSavedThemeIndexKey, flavor.index);
+    AppSharedPrefs.instance.setInt(kSavedThemeIndexKey, flavor.index);
     notifyListeners();
   }
 
   Future<void> load() async {
-    final int userFlavor =
-        SharedPreferencesProvider.instance.getInt(kSavedThemeIndexKey);
+    final int userFlavor = AppSharedPrefs.instance.getInt(kSavedThemeIndexKey);
     if (userFlavor == null) {
       setThemeFlavor(ThemeFlavor.light); // <----- Default Theme Flavor
     } else {

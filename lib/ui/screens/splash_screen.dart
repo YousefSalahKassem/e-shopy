@@ -5,7 +5,7 @@ import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
 import 'package:flutter_boilerplate/routes/custom_router.dart';
 
-import 'package:flutter_boilerplate/services/providers/shared_preferences_provider.dart';
+import 'package:flutter_boilerplate/services/providers/app_shared_prefs.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen();
@@ -13,8 +13,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 3), () async {
-      if (SharedPreferencesProvider.instance
-              .getBool(kShowLanguageSelectionScreen) !=
+      if (AppSharedPrefs.instance.getBool(kShowLanguageSelectionScreen) !=
           null) {
         Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
       } else {
