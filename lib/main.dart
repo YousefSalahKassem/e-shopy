@@ -28,7 +28,7 @@ Future<void> main() async {
   });
 
   // Init Shared Preferences
-  AppSharedPrefs.ensureInit();
+  await AppSharedPrefs.ensureInit();
 
   runApp(
     ProviderScope(

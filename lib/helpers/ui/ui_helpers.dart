@@ -34,70 +34,70 @@ class UiHelper {
 
   static double size(double size) => width(size);
 
-  /// Returns a vertical space with height set to [4]
+  /// Returns a vertical space with height set to [kVerticalSpaceXSmall]
   static Widget verticalSpaceXSmall() {
     return SizedBox(
       height: height(kVerticalSpaceXSmall),
     );
   }
 
-  /// Returns a vertical space with height set to [8]
+  /// Returns a vertical space with height set to [kVerticalSpaceSmall]
   static Widget verticalSpaceSmall() {
     return SizedBox(
       height: height(kVerticalSpaceSmall),
     );
   }
 
-  /// Returns a vertical space with height set to [12]
+  /// Returns a vertical space with height set to [kVerticalSpaceMedium]
   static Widget verticalSpaceMedium() {
     return SizedBox(
       height: height(kVerticalSpaceMedium),
     );
   }
 
-  /// Returns a vertical space with height set to [24]
+  /// Returns a vertical space with height set to [kVerticalSpaceLarge]
   static Widget verticalSpaceLarge() {
     return SizedBox(
       height: height(kVerticalSpaceLarge),
     );
   }
 
-  /// Returns a vertical space with height set to [32]
+  /// Returns a vertical space with height set to [kVerticalSpaceXLarge]
   static Widget verticalSpaceXLarge() {
     return SizedBox(
       height: height(kVerticalSpaceXLarge),
     );
   }
 
-  /// Returns a horizontal space with height set to [4]
+  /// Returns a horizontal space with height set to [kHorizontalSpaceXSmall]
   static Widget horizontalSpaceXSmall() {
     return SizedBox(
       width: width(kHorizontalSpaceXSmall),
     );
   }
 
-  /// Returns a horizontal space with height set to [8]
+  /// Returns a horizontal space with height set to [kHorizontalSpaceSmall]
   static Widget horizontalSpaceSmall() {
     return SizedBox(
       width: width(kHorizontalSpaceSmall),
     );
   }
 
-  /// Returns a horizontal space with height set to [12]
+  /// Returns a horizontal space with height set to [kHorizontalSpaceMedium]
   static Widget horizontalSpaceMedium() {
     return SizedBox(
       width: width(kHorizontalSpaceMedium),
     );
   }
 
-  /// Returns a horizontal space with height set to [24]
+  /// Returns a horizontal space with height set to [kHorizontalSpaceLarge]
   static Widget horizontalSpaceLarge() {
     return SizedBox(
       width: width(kHorizontalSpaceLarge),
     );
   }
 
-  /// Returns a horizontal space with height set to [32]
+  /// Returns a horizontal space with height set to [kHorizontalSpaceXLarge]
   static Widget horizontalSpaceXLarge() {
     return SizedBox(
       width: width(kHorizontalSpaceXLarge),
