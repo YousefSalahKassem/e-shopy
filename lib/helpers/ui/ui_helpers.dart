@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:flutter_boilerplate/helpers/ui/dimensions.dart';
-
+import 'package:intl/intl.dart' as intl;
 import 'dimensions.dart';
 
 // ignore_for_file: avoid_classes_with_only_static_members
@@ -287,8 +287,8 @@ extension SugarExt on BuildContext {
   double widthR(double value) => MediaQuery.of(this).size.width * value;
 
   //* Locale Extensions
-  String get langCode => Localizations.localeOf(this).languageCode;
-  bool get isAr => Localizations.localeOf(this).languageCode == 'ar';
+  bool get isRTL =>
+      intl.Bidi.isRtlLanguage(Localizations.localeOf(this).languageCode);
 
   //* Theme Extensions
   TextTheme get textTheme => Theme.of(this).textTheme;

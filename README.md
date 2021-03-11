@@ -42,7 +42,7 @@ App
 │   └── images
 │   └── animations
 │   └── json
-│   └── i18n
+│   └── translations
 │       └── ar.json
 │       └── en.json
 ├── lib
@@ -62,11 +62,13 @@ App
 │   ├── services
 │   │   └── interfaces
 │   │   └── providers
-│   │   └── exceptions
 │   ├── helpers
 │   │   └── ui
-│   │       └── app_colors.dart
-│   │       └── text_styles.dart
+│   │   │   └── colors.dart
+│   │   │   └── dimensions.dart
+│   │   │   └── text_styles.dart
+│   │   │   └── ui_helper.dart
+│   │   └── enums.dart    
 │   ├── exceptions
 │   ├── themes
 │   ├── data 
