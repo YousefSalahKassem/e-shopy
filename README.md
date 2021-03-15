@@ -199,7 +199,7 @@ class Person {
 
 `flutter packages pub run build_runner watch --delete-conflicting-outputs`
 
-and the package will generate the serialization and deserialization logic for you, the package uses `json_annotations` you can [learn more about them from the package's docs](https://pub.dev/packages/json_serializable#annotation-values)
+and the package will generate the serialization and de-serialization logic for you, the package uses `json_annotations` you can [learn more about them from the package's docs](https://pub.dev/packages/json_serializable#annotation-values)
 
 ------------
 
@@ -225,7 +225,7 @@ The package is already set up and it will provide you with warnings when you are
 ### Easy Localization:
 
 Provides an easy and fast internationalization for flutter apps.
-We provide a complete usage example in the boilerplate which you could edit to serve your own needs. for more information about the package refre to the [offical docs](https://pub.dev/packages/easy_localization/versions/2.3.3 "offical docs").
+We provide a complete usage example in the boilerplate which you could edit to serve your own needs. for more information about the package refer to the [official docs](https://pub.dev/packages/easy_localization/versions/2.3.3 "official docs").
 
 USE PACKAGE WITH CODE GENERATION
 - LocaleKeys Generation Command
