@@ -37,13 +37,16 @@ Future<void> main() async {
         expect(find.byType(Column), findsOneWidget);
         expect(find.text('العربية'), findsOneWidget);
         expect(find.text('English'), findsOneWidget);
-        expect(find.text('ابدأ'), findsOneWidget);
+        expect(find.text('Start'), findsOneWidget);
         expect(find.byKey(const Key('changeAr')), findsOneWidget);
 
-        await tester.pump();
-        await tester.pumpAndSettle(const Duration(seconds: 2));
-        await tester.idle();
-        // expect(find.text('ابدأ'), findsOneWidget);
+        await tester.tap(find.byKey(const Key('changeAr')));
+        await tester.pumpAndSettle();
+
+        // check text in screen after change language into arabic
+        expect(find.text('ابدأ'), findsOneWidget);
+
+        // expect is true after tap change language to arabic
         expect(tr('start'), 'ابدأ');
       });
     },
@@ -60,7 +63,7 @@ class MakeTestAbleWidget extends StatelessWidget {
       child: EasyLocalization(
         supportedLocales: const [Locale('en'), Locale('ar')],
         path: 'assets/translations',
-        startLocale: const Locale('ar'),
+        startLocale: const Locale('en'),
         child: Builder(builder: (ctx) {
           return OverlaySupport(
             child: MaterialApp(
