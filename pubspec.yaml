@@ -18,42 +18,42 @@ dependencies:
 ################# My Dependencies ################
 
   # UI
-  overlay_support: ^1.0.5
-  intl: ^0.16.1
+  overlay_support: ^1.2.0
+  intl: ^0.17.0
 
   # State Management
-  flutter_riverpod: ^0.12.1
+  flutter_riverpod: ^0.13.1+1
 
 
   # Localization
-  easy_localization: ^2.3.3
+  easy_localization: ^3.0.0
 
 
   # Local Storage
-  shared_preferences: ^0.5.10
-  flutter_secure_storage: ^3.3.5
+  shared_preferences: ^2.0.5
+  flutter_secure_storage: ^4.1.0
 
   # API
-  json_annotation: ^3.1.1
+  json_annotation: ^4.0.1
   dio: ^3.0.10
 
 
   # Debugging and Testing
-  logging: ^0.11.4
+  logging: ^1.0.0
 
   # App Updates
-  in_app_update: ^1.1.14
-  upgrader: ^2.7.3
+  in_app_update: ^2.0.0
+  #upgrader: ^3.1.0
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^1.10.6
-  json_serializable: ^3.5.0
-  lint: ^1.2.0
+  build_runner: ^1.12.2
+  json_serializable: ^4.1.0
+  lint: ^1.5.3
   change_app_package_name: ^0.1.2
-  flutter_native_splash: ^0.1.9
+  flutter_native_splash: ^1.1.5+1
 
 
 

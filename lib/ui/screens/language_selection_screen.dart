@@ -15,7 +15,7 @@ class LanguageSelectionScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Container(
+              SizedBox(
                 width: context.widthR(0.8),
                 height: UiHelper.height(300),
                 child: Center(
@@ -29,7 +29,7 @@ class LanguageSelectionScreen extends StatelessWidget {
               const SizedBox(
                 height: 64,
               ),
-              Container(
+              SizedBox(
                 width: context.widthR(0.8),
                 child: Directionality(
                   textDirection: TextDirection.rtl,
@@ -80,11 +80,11 @@ class LanguageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
+      child: SizedBox(
         height: UiHelper.height(48),
         child: FlatButton(
           onPressed: () {
-            context.locale = Locale(value);
+            context.setLocale(Locale(value));
           },
           child: Text(
             tr(value),
