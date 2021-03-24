@@ -34,6 +34,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       LanguageButton(
+                        key: const Key('changeAr'),
                         locale: context.locale.languageCode,
                         value: 'ar',
                       ),
