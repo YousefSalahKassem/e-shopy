@@ -244,7 +244,7 @@ class UiHelper {
           style: Theme.of(context).textTheme.subtitle2,
         ),
         actions: <Widget>[
-          FlatButton(
+          MaterialButton(
             onPressed: () {
               Navigator.of(context).pop(false);
             },
@@ -253,7 +253,7 @@ class UiHelper {
               style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
-          FlatButton(
+          MaterialButton(
             onPressed: action,
             child: Text(okButtonText,
                 style: Theme.of(context).textTheme.subtitle2),

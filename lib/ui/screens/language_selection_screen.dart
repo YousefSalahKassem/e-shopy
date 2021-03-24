@@ -26,9 +26,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 64,
-              ),
+              UiHelper.verticalSpaceXLarge(),
               SizedBox(
                 width: context.widthR(0.8),
                 child: Directionality(
@@ -39,6 +37,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                         locale: context.locale.languageCode,
                         value: 'ar',
                       ),
+                      UiHelper.horizontalSpaceMedium(),
                       LanguageButton(
                         locale: context.locale.languageCode,
                         value: 'en',
@@ -48,8 +47,8 @@ class LanguageSelectionScreen extends StatelessWidget {
                 ),
               ),
               UiHelper.verticalSpaceXLarge(),
-              RaisedButton(
-                color: Colors.cyan,
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.cyan),
                 onPressed: () {
                   // Ensure not to show this screen again
                   AppSharedPrefs.instance
@@ -82,16 +81,16 @@ class LanguageButton extends StatelessWidget {
     return Expanded(
       child: SizedBox(
         height: UiHelper.height(48),
-        child: FlatButton(
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(primary: Colors.deepOrangeAccent),
           onPressed: () {
             context.setLocale(Locale(value));
           },
           child: Text(
             tr(value),
             style: TextStyle(
-              color: locale == value
-                  ? Theme.of(context).primaryColor
-                  : Colors.black45,
+              color:
+                  locale == value ? context.theme.primaryColor : Colors.black45,
             ),
           ),
         ),

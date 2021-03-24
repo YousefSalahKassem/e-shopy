@@ -25,7 +25,7 @@ Future<void> main() async {
 
   // Init Shared Preferences
   await AppSharedPrefs.ensureInit();
-
+  await EasyLocalization.ensureInitialized();
   runApp(
     ProviderScope(
       child: EasyLocalization(
