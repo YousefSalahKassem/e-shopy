@@ -12,7 +12,7 @@ class AppTheme extends StatelessWidget {
     return Consumer(builder: (_, watch, __) {
       final currentThemeFlavor = watch(appThemeProvider).themeFlavor;
       return Theme(
-        data: getThemeData(currentThemeFlavor), //     <-----     Theme
+        data: getThemeData(currentThemeFlavor!), //     <-----     Theme
         child: navigator!,
       );
     });

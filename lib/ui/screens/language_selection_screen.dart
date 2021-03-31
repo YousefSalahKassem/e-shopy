@@ -71,11 +71,11 @@ class LanguageSelectionScreen extends StatelessWidget {
 class LanguageButton extends StatelessWidget {
   const LanguageButton({
     Key? key,
-    this.locale,
-    this.value,
+    required this.locale,
+    required this.value,
   }) : super(key: key);
-  final String? locale;
-  final String? value;
+  final String locale;
+  final String value;
 
   @override
   Widget build(BuildContext context) {
@@ -85,10 +85,10 @@ class LanguageButton extends StatelessWidget {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(primary: Colors.deepOrangeAccent),
           onPressed: () {
-            context.setLocale(Locale(value!));
+            context.setLocale(Locale(value));
           },
           child: Text(
-            tr(value!),
+            tr(value),
             style: TextStyle(
               color:
                   locale == value ? context.theme.primaryColor : Colors.black45,

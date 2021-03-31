@@ -7,7 +7,7 @@ import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 // TODO: Refactor this function to handle more than two Theme Flavors
 // This function takes a theme flavor and returns corresponding ThemeData object
 // It works like a ThemeData 'Factory'
-ThemeData getThemeData(ThemeFlavor? themeFlavor) {
+ThemeData getThemeData(ThemeFlavor themeFlavor) {
   // Theme Flavor Check
   // final bool isLightTheme = themeFlavor == ThemeFlavor.light;
 
