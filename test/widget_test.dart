@@ -52,9 +52,9 @@ Future<void> main() async {
 }
 
 class MakeTestAbleWidget extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
 
-  const MakeTestAbleWidget({Key key, this.child}) : super(key: key);
+  const MakeTestAbleWidget({Key? key, this.child}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ProviderScope(

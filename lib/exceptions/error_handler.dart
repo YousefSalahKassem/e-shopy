@@ -5,9 +5,9 @@ import 'package:flutter_boilerplate/exceptions/validation_exception.dart';
 
 class ErrorHandler {
   //go through all custom errors and return the corresponding error message
-  static String errorMessage(dynamic error) {
+  static String errorMessage(Error? error) {
     if (error == null) {
-      return null;
+      return '';
     }
     if (error is ValidationException) {
       return error.message;
@@ -32,7 +32,7 @@ class ErrorHandler {
   }
 
   //Display an AlertDialog with the error message
-  static void showErrorDialog(BuildContext context, dynamic error) {
+  static void showErrorDialog(BuildContext context, Error? error) {
     if (error == null) {
       return;
     }
@@ -47,14 +47,14 @@ class ErrorHandler {
   }
 
   //Display an snackBar with the error message
-  static void showSnackBar(BuildContext context, dynamic error) {
+  static void showSnackBar(BuildContext context, Error? error) {
     if (error == null) {
       return;
     }
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(errorMessage(error) ?? ''),
+        content: Text(errorMessage(error)),
       ),
     );
   }

@@ -3,7 +3,7 @@ import 'package:flutter_boilerplate/ui/screens/login_screen.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  Widget makeTestAbleWidget({Widget child}) {
+  Widget makeTestAbleWidget({Widget? child}) {
     return MaterialApp(
       home: child,
     );

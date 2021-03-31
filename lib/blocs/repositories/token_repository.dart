@@ -15,11 +15,11 @@ class TokenRepository with ChangeNotifier {
   final FlutterSecureStorage _secureStorage;
 
   //* State
-  String _authToken;
+  String? _authToken;
   bool _isTokenExpired = false;
 
   //* Getters
-  String get authToken => _authToken;
+  String? get authToken => _authToken;
 
   /// Token expiry state.
   bool get isTokenExpired => _isTokenExpired;
@@ -29,7 +29,7 @@ class TokenRepository with ChangeNotifier {
 
   //* Token Methods
   /// Updates token expiry state and [notifyListeners()]
-  void updateTokenState({@required bool isExpired}) {
+  void updateTokenState({required bool isExpired}) {
     _isTokenExpired = isExpired;
     notifyListeners();
   }
@@ -47,6 +47,6 @@ class TokenRepository with ChangeNotifier {
   }
 
   /// Read token from local storage.
-  Future<String> readToken() async =>
+  Future<String?> readToken() async =>
       _authToken = await _secureStorage.read(key: kAuthToken);
 }

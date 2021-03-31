@@ -13,7 +13,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 3), () async {
-      if (AppSharedPrefs.instance.getBool(kShowLanguageSelectionScreen) !=
+      if (AppSharedPrefs.instance!.getBool(kShowLanguageSelectionScreen) !=
           null) {
         Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
       } else {

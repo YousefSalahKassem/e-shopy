@@ -52,7 +52,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(primary: Colors.cyan),
                 onPressed: () {
                   // Ensure not to show this screen again
-                  AppSharedPrefs.instance
+                  AppSharedPrefs.instance!
                       .setBool(kShowLanguageSelectionScreen, false);
                   // Navigate to Home
                   Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
@@ -70,12 +70,12 @@ class LanguageSelectionScreen extends StatelessWidget {
 
 class LanguageButton extends StatelessWidget {
   const LanguageButton({
-    Key key,
+    Key? key,
     this.locale,
     this.value,
   }) : super(key: key);
-  final String locale;
-  final String value;
+  final String? locale;
+  final String? value;
 
   @override
   Widget build(BuildContext context) {
@@ -85,10 +85,10 @@ class LanguageButton extends StatelessWidget {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(primary: Colors.deepOrangeAccent),
           onPressed: () {
-            context.setLocale(Locale(value));
+            context.setLocale(Locale(value!));
           },
           child: Text(
-            tr(value),
+            tr(value!),
             style: TextStyle(
               color:
                   locale == value ? context.theme.primaryColor : Colors.black45,

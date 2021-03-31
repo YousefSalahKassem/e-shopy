@@ -12,8 +12,8 @@ class UiHelper {
   //* <--------------------- Notifications State
   static String _notificationMessage = '';
   // Actual device screen size
-  static double _screenHeight;
-  static double _screenWidth;
+  static double? _screenHeight;
+  static double? _screenWidth;
 
   // You should call this after you get the first MaterialApp context
   static void updateScreenDimensions(BuildContext context) {
@@ -24,12 +24,12 @@ class UiHelper {
   // Height, Width, Size Functions
   static double height(double height) {
     if (_screenHeight == null) return height;
-    return _screenHeight * height / kRefrenceScreenHeight;
+    return _screenHeight! * height / kRefrenceScreenHeight;
   }
 
   static double width(double width) {
     if (_screenWidth == null) return width;
-    return (_screenWidth * width / kRefrenceScreenWidth).ceilToDouble();
+    return (_screenWidth! * width / kRefrenceScreenWidth).ceilToDouble();
   }
 
   static double size(double size) => width(size);
@@ -200,7 +200,7 @@ class UiHelper {
 
 // Show Notification
   static void showNotification(String message,
-      {NotificationPosition position, bool isError = true}) {
+      {NotificationPosition? position, bool isError = true}) {
     if (_notificationMessage != message) {
       _notificationMessage = message;
       showOverlayNotification(
@@ -221,7 +221,7 @@ class UiHelper {
           ),
         ),
         duration: const Duration(seconds: 3),
-        position: position,
+        position: position!,
       ).dismissed.then((value) {
         _notificationMessage = '';
       });
@@ -230,17 +230,17 @@ class UiHelper {
 
   // Show Alert Dialog
   static void showSimpleAlertDialog(
-      {BuildContext context,
-      VoidCallback action,
-      String message,
-      String okButtonText,
-      String cancelButtonText}) {
+      {required BuildContext context,
+      VoidCallback? action,
+      String? message,
+      String? okButtonText,
+      String? cancelButtonText}) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         content: Text(
-          message,
+          message!,
           style: Theme.of(context).textTheme.subtitle2,
         ),
         actions: <Widget>[
@@ -249,13 +249,13 @@ class UiHelper {
               Navigator.of(context).pop(false);
             },
             child: Text(
-              cancelButtonText,
+              cancelButtonText!,
               style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
           MaterialButton(
             onPressed: action,
-            child: Text(okButtonText,
+            child: Text(okButtonText!,
                 style: Theme.of(context).textTheme.subtitle2),
           ),
         ],
@@ -266,12 +266,12 @@ class UiHelper {
   //* <----------------------------------------- Functions & Extensions
   // Post Frame Callbacks
   static void postBuildCallback(void Function(Duration) callback) {
-    WidgetsBinding.instance.addPostFrameCallback(callback);
+    WidgetsBinding.instance!.addPostFrameCallback(callback);
   }
 
   static void navigatorPostBuildCallback(
-      {@required BuildContext context, @required String destination}) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+      {required BuildContext context, required String destination}) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       Navigator.pushReplacementNamed(context, destination);
     });
   }

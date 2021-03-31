@@ -46,7 +46,7 @@ class DioErrorHandler {
   }
 
   String _handleStatusCode(DioError error) {
-    switch (error.response.statusCode) {
+    switch (error.response!.statusCode) {
       case 400:
         return 'dio_error.bad_request';
       case 401:

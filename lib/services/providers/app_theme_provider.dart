@@ -8,10 +8,10 @@ final appThemeProvider = ChangeNotifierProvider((ref) => AppThemeProvider());
 
 class AppThemeProvider extends ChangeNotifier {
   //* State
-  ThemeFlavor _themeFlavor;
+  ThemeFlavor? _themeFlavor;
 
   //* Getters
-  ThemeFlavor get themeFlavor => _themeFlavor;
+  ThemeFlavor? get themeFlavor => _themeFlavor;
   bool get isDarkTheme => _themeFlavor == ThemeFlavor.dark;
 
   //* Constructor and Methods
@@ -22,12 +22,12 @@ class AppThemeProvider extends ChangeNotifier {
 
   Future<void> setThemeFlavor(ThemeFlavor flavor) async {
     _themeFlavor = flavor;
-    AppSharedPrefs.instance.setInt(kSavedThemeIndexKey, flavor.index);
+    AppSharedPrefs.instance!.setInt(kSavedThemeIndexKey, flavor.index);
     notifyListeners();
   }
 
   Future<void> load() async {
-    final int userFlavor = AppSharedPrefs.instance.getInt(kSavedThemeIndexKey);
+    final int? userFlavor = AppSharedPrefs.instance!.getInt(kSavedThemeIndexKey);
     if (userFlavor == null) {
       setThemeFlavor(ThemeFlavor.light); // <----- Default Theme Flavor
     } else {
