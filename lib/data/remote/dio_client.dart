@@ -35,6 +35,7 @@ class DioClient {
           debugPrint(e.toString());
         }
       }
+      return handler.next(error);
     }));
   }
 
