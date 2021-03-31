@@ -20,22 +20,22 @@ class DioErrorHandler {
   String _getDioErrorMessage(DioError dioError) {
     String message;
     switch (dioError.type) {
-      case DioErrorType.CANCEL:
+      case DioErrorType.cancel:
         message = 'dio_error.cancel';
         break;
-      case DioErrorType.CONNECT_TIMEOUT:
+      case DioErrorType.connectTimeout:
         message = "dio_error.timeout";
         break;
-      case DioErrorType.DEFAULT:
+      case DioErrorType.other:
         message = "dio_error.default";
         break;
-      case DioErrorType.RECEIVE_TIMEOUT:
+      case DioErrorType.receiveTimeout:
         message = "dio_error.timeout";
         break;
-      case DioErrorType.RESPONSE:
+      case DioErrorType.response:
         message = _handleStatusCode(dioError);
         break;
-      case DioErrorType.SEND_TIMEOUT:
+      case DioErrorType.sendTimeout:
         message = "dio_error.timeout";
         break;
       default:

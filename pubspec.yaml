@@ -36,7 +36,7 @@ dependencies:
 
   # API
   json_annotation: ^4.0.1
-  dio: ^3.0.10
+  dio: ^4.0.0
 
 
   # Debugging and Testing

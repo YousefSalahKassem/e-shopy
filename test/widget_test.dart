@@ -5,8 +5,6 @@ import 'package:flutter_boilerplate/routes/custom_router.dart';
 import 'package:flutter_boilerplate/services/providers/app_shared_prefs.dart';
 import 'package:flutter_boilerplate/themes/app_theme.dart';
 import 'package:flutter_boilerplate/ui/screens/language_selection_screen.dart';
-import 'package:flutter_boilerplate/ui/screens/splash_screen.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:overlay_support/overlay_support.dart';
