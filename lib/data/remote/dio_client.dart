@@ -35,25 +35,23 @@ class DioClient {
     this._errorHandler,
   ) {
     _dio.interceptors.add(InterceptorsWrapper(
-        //* Apply an interceptor on API requests , to inject token on the fly
-        onRequest: (options, handler) {
-      options.queryParameters.addAll({'token': true});
-    },
+        //* Apply an interceptor on API requests , to inject anything on the fly
+        onRequest: (options, handler) {},
         //* Apply an interceptor on API requests error(s)
         onError: (error, handler) async {
-      debugPrint(
-          'Intercepted an error on\n# Api request : ${error.requestOptions.path}\n# Error message: ${error.message}');
-      _errorHandler.dispatchDioError(error);
+          debugPrint(
+              'Intercepted an error on\n# Api request : ${error.requestOptions.path}\n# Error message: ${error.message}');
+          _errorHandler.dispatchDioError(error);
 
-      if (error.type == DioErrorType.connectTimeout) {
-        try {
-          await _retry(error.requestOptions);
-        } catch (e) {
-          debugPrint(e.toString());
-        }
-      }
-      return handler.next(error);
-    }));
+          if (error.type == DioErrorType.connectTimeout) {
+            try {
+              await _retry(error.requestOptions);
+            } catch (e) {
+              debugPrint(e.toString());
+            }
+          }
+          return handler.next(error);
+        }));
   }
 
   // Get:-----------------------------------------------------------------------
