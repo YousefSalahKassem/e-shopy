@@ -4,6 +4,23 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/repositories/token_repository.dart';
 import 'package:flutter_boilerplate/exceptions/error_handler.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+/// The [Provider] for [Dio] instance throughout the app
+final dioProvider = Provider<Dio>((ref) {
+  return Dio();
+});
+
+/// A [Provider] for [DioClient] to handle REST API requests
+///
+/// It also adds an interceptor for showing a notification on errors
+final dioClientProvider = Provider<DioClient>((ref) {
+  final dio = ref.watch(dioProvider);
+  final tokenRepo = ref.watch(tokenRepositoryProvider);
+  final errorHandler = ref.watch(errorHandlerProvider);
+
+  return DioClient(dio, tokenRepo, errorHandler);
+});
 
 class DioClient {
   //* Dependencies

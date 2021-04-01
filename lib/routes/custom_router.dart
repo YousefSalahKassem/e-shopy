@@ -19,11 +19,14 @@ class CustomRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.splashScreen:
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
+        return MaterialPageRoute(
+            builder: (_) => const SplashScreen(), settings: settings);
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return MaterialPageRoute(
+            builder: (_) => HomeScreen(), settings: settings);
       case Routes.languageSelectionScreen:
-        return MaterialPageRoute(builder: (_) => LanguageSelectionScreen());
+        return MaterialPageRoute(
+            builder: (_) => LanguageSelectionScreen(), settings: settings);
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
