@@ -1,61 +1,99 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/exceptions/fetch_exception.dart';
-import 'package:flutter_boilerplate/exceptions/input_exception.dart';
-import 'package:flutter_boilerplate/exceptions/validation_exception.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ErrorHandler {
-  //go through all custom errors and return the corresponding error message
-  static String errorMessage(Error? error) {
-    if (error == null) {
-      return '';
-    }
-    if (error is ValidationException) {
-      return error.message;
-    }
+/// This is the [ErrorHandler] provider
+///
+/// Its purpose is to provide a way to dispatch / read to errors throught the entire app.
+/// it should be used around the [MaterialApp] to listen to error messages as follow:
+///```dart
+///  ProviderScope(
+///         overrides: [],
+///           child: ProviderListener<ErrorHandler>(
+///               provider: errorHandlerProvider,
+///               onChange: (_, value) =>
+///                   UiHelper.showNotification(tr(value.errorMessage)),
+///               child: App()),
+///         ),
+///
+///     );```
+///
+// Provider Variables
+// =========== *** ===========
+final errorHandlerProvider = ChangeNotifierProvider<ErrorHandler>((ref) {
+  return ErrorHandler();
+});
 
-    if (error is NotNumberException) {
-      return error.message;
-    }
-    if (error is NotInRangeException) {
-      return error.message;
-    }
-    if (error is NetworkErrorException) {
-      return error.message;
-    }
+// =========== *** ===========
 
-    if (error is UserNotFoundException) {
-      return error.message;
-    }
+/// Error Handler
+///
+/// it exposes two functions to dispatch both dio errors [DioError] => `dispatchDioError`,
+/// and normal error messages [String] => `showErrorMessage`.
+/// and a single getter to get the current error message to show in the ui => `errorMessage`.
+class ErrorHandler with ChangeNotifier {
+//* State
+  String _errorMessage = '';
 
-    // throw unexpected error.
-    throw error;
+  /// A Getter to read error message from the ui.
+  String get errorMessage => _errorMessage;
+
+  /// Dispatches dio errors [DioError] usually from a `DioClient`.
+  void dispatchDioError(DioError dioError) {
+    final errorMessage = _getDioErrorMessage(dioError);
+    showErrorMessage(errorMessage);
   }
 
-  //Display an AlertDialog with the error message
-  static void showErrorDialog(BuildContext context, Error? error) {
-    if (error == null) {
-      return;
-    }
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          content: Text(errorMessage(error)),
-        );
-      },
-    );
+  /// Shows an error message from any where in the app.
+  void showErrorMessage(String message) {
+    _errorMessage = message;
+    notifyListeners();
   }
 
-  //Display an snackBar with the error message
-  static void showSnackBar(BuildContext context, Error? error) {
-    if (error == null) {
-      return;
+  String _getDioErrorMessage(DioError dioError) {
+    String message;
+    switch (dioError.type) {
+      case DioErrorType.cancel:
+        message = 'dio_error.cancel';
+        break;
+      case DioErrorType.connectTimeout:
+        message = "dio_error.timeout";
+        break;
+      case DioErrorType.other:
+        message = "dio_error.default";
+        break;
+      case DioErrorType.receiveTimeout:
+        message = "dio_error.timeout";
+        break;
+      case DioErrorType.response:
+        message = _handleStatusCode(dioError);
+        break;
+      case DioErrorType.sendTimeout:
+        message = "dio_error.timeout";
+        break;
+      default:
+        message = 'dio_error.unknown';
+        break;
     }
+    return message;
+  }
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(errorMessage(error)),
-      ),
-    );
+  String _handleStatusCode(DioError error) {
+    switch (error.response?.statusCode) {
+      case 400:
+        return 'dio_error.bad_request';
+
+      case 401:
+        return 'dio_error.unauthorized';
+      case 403:
+        return 'dio_error.forbidden';
+      case 404:
+        return 'dio_error.not_found';
+
+      case 500:
+        return 'dio_error.server_error';
+      default:
+        return 'dio_error.unknown';
+    }
   }
 }

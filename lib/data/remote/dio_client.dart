@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/repositories/token_repository.dart';
-import 'package:flutter_boilerplate/exceptions/dio_error_handler.dart';
+import 'package:flutter_boilerplate/exceptions/error_handler.dart';
 
 class DioClient {
   //* Dependencies
   final Dio _dio;
   final TokenRepository _tokenRepository;
-  final DioErrorHandler _errorHandler;
+  final ErrorHandler _errorHandler;
 
   //* Constructor
   DioClient(
