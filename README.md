@@ -270,6 +270,37 @@ flutter:
     - images/background.png
 ```
 
+
+### Loading assets images
+Flutter can load resolution-appropriate images for the current device pixel ratio.
+
+#### Declaring resolution-aware image assets
+AssetImage understands how to map a logical requested asset onto one that most closely matches the current device pixel ratio. In order for this mapping to work, assets should be arranged according to a particular directory structure:
+
+```dart
+.../image.png
+.../Mx/image.png
+.../Nx/image.png
+```
+
+> Where **M** and **N** are numeric identifiers that correspond to the nominal resolution of the images contained within. In other words, they specify the device pixel ratio that the images are intended for.
+
+The main asset is assumed to correspond to a resolution of 1.0. For example, consider the following asset layout for an image named my_icon.png:
+
+```dart
+.../my_icon.png
+.../2.0x/my_icon.png
+.../3.0x/my_icon.png
+```
+> On devices with a device pixel ratio of 1.8, the asset .../2.0x/my_icon.png is chosen. For a device pixel ratio of 2.7, the asset .../3.0x/my_icon.png is chosen.
+
+
+
+**Note for Andriod** \
+ `mdpi , hdpi , xhdpi , xxhdpi , xxxhdpi ` folders corresponds to `1.0x , 1.5x , 2.0x , 3.0x , 4.0x` respectively.
+
+------------
+
 ## Use  S.O.L.I.D principles when you are coding
 
 ## SOLID Principles
