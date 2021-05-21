@@ -296,8 +296,8 @@ The main asset is assumed to correspond to a resolution of 1.0. For example, con
 
 
 
-**Note for Andriod** \
- `mdpi , hdpi , xhdpi , xxhdpi , xxxhdpi ` folders corresponds to `1.0x , 1.5x , 2.0x , 3.0x , 4.0x` respectively.
+**Note for Android** \
+ `mdpi , hdpi , xhdpi , xxhdpi , xxxhdpi`  folders corresponds to  `1.0x , 1.5x , 2.0x , 3.0x , 4.0x` respectively.
 
 ------------
 
