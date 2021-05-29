@@ -12,10 +12,11 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  final _appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
     // App Localization
-    final _appRouter = AppRouter();
 
     return OverlaySupport(
       child: EasyLocalization(
