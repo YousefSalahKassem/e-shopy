@@ -1,7 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
-import 'package:flutter_boilerplate/routes/custom_router.dart';
 import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
+import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_boilerplate/services/providers/app_shared_prefs.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
 
@@ -55,7 +56,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                   AppSharedPrefs.instance!
                       .setBool(kShowLanguageSelectionScreen, false);
                   // Navigate to Home
-                  Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
+                  AutoRouter.of(context).replace(const HomeRoute());
                 },
                 child: Text(tr('start'),
                     style: const TextStyle(color: Colors.white)),

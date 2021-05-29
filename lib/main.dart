@@ -29,12 +29,7 @@ Future<void> main() async {
   await EasyLocalization.ensureInitialized();
   runApp(
     ProviderScope(
-      child: EasyLocalization(
-        supportedLocales: const [Locale('en'), Locale('ar')],
-        path: 'assets/translations',
-        fallbackLocale: const Locale('en'),
-        child: App(),
-      ),
+      child: App(),
     ),
   );
 }

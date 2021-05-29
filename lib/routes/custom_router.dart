@@ -1,38 +1,15 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
+
 import 'package:flutter_boilerplate/ui/screens/home_screen/home_screen.dart';
 import 'package:flutter_boilerplate/ui/screens/language_selection_screen.dart';
 import 'package:flutter_boilerplate/ui/screens/splash_screen.dart';
 
-class Routes {
-  static const String splashScreen = '/';
-  static const String homeScreen = '/home-screen';
-  static const String languageSelectionScreen = '/language-selection-screen';
-  static const all = <String>{
-    splashScreen,
-    homeScreen,
-    languageSelectionScreen,
-  };
-}
-
-class CustomRouter {
-  static Route<dynamic> generateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case Routes.splashScreen:
-        return MaterialPageRoute(
-            builder: (_) => const SplashScreen(), settings: settings);
-      case Routes.homeScreen:
-        return MaterialPageRoute(
-            builder: (_) => HomeScreen(), settings: settings);
-      case Routes.languageSelectionScreen:
-        return MaterialPageRoute(
-            builder: (_) => LanguageSelectionScreen(), settings: settings);
-      default:
-        return MaterialPageRoute(
-            builder: (_) => Scaffold(
-                  body: Center(
-                      child: Text('No route defined for ${settings.name}')),
-                ));
-    }
-  }
-}
+@MaterialAutoRouter(
+  replaceInRouteName: 'Screen,Route',
+  routes: <AutoRoute>[
+    AutoRoute(page: SplashScreen, initial: true),
+    AutoRoute(page: HomeScreen),
+    AutoRoute(page: LanguageSelectionScreen)
+  ],
+)
+class $AppRouter {}
