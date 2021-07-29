@@ -15,6 +15,8 @@ class AppThemeProvider extends ChangeNotifier {
   bool get isDarkTheme => _themeFlavor == ThemeFlavor.dark;
 
   //* Constructor and Methods
+
+  // this test
   AppThemeProvider() {
     // Load Theme as soon as the provider is created
     load();
@@ -27,7 +29,8 @@ class AppThemeProvider extends ChangeNotifier {
   }
 
   Future<void> load() async {
-    final int? userFlavor = AppSharedPrefs.instance!.getInt(kSavedThemeIndexKey);
+    final int? userFlavor =
+        AppSharedPrefs.instance!.getInt(kSavedThemeIndexKey);
     if (userFlavor == null) {
       setThemeFlavor(ThemeFlavor.light); // <----- Default Theme Flavor
     } else {
