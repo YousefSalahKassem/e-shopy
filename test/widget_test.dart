@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
-import 'package:flutter_boilerplate/services/providers/app_shared_prefs.dart';
 import 'package:flutter_boilerplate/themes/app_theme.dart';
 import 'package:flutter_boilerplate/ui/screens/language_selection_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,7 +10,6 @@ import 'package:easy_logger/easy_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
-  await AppSharedPrefs.ensureInit();
   SharedPreferences.setMockInitialValues({});
   EasyLocalization.logger.enableLevels = <LevelMessages>[
     LevelMessages.error,

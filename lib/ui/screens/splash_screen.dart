@@ -6,8 +6,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
-
-import 'package:flutter_boilerplate/services/providers/app_shared_prefs.dart';
+import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen();
@@ -22,7 +22,9 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
       Timer(const Duration(seconds: 3), () async {
-        if (AppSharedPrefs.instance!.getBool(kShowLanguageSelectionScreen) !=
+        if (context
+                .read(sharedPrefsProvider)!
+                .getBool(kShowLanguageSelectionScreen) !=
             null) {
           AutoRouter.of(context).replace(const HomeRoute());
         } else {

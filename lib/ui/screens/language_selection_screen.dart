@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
-import 'package:flutter_boilerplate/services/providers/app_shared_prefs.dart';
+import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LanguageSelectionScreen extends StatelessWidget {
   @override
@@ -53,7 +54,8 @@ class LanguageSelectionScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(primary: Colors.cyan),
                 onPressed: () {
                   // Ensure not to show this screen again
-                  AppSharedPrefs.instance!
+                  context
+                      .read(sharedPrefsProvider)!
                       .setBool(kShowLanguageSelectionScreen, false);
                   // Navigate to Home
                   AutoRouter.of(context).replace(const HomeRoute());

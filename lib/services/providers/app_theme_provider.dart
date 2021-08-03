@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/services/providers/app_shared_prefs.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_boilerplate/helpers/ui/enums.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
 
-final appThemeProvider = ChangeNotifierProvider((ref) => AppThemeProvider());
+final appThemeProvider = ChangeNotifierProvider(
+    (ref) => AppThemeProvider(ref.watch(sharedPrefsProvider)));
 
 class AppThemeProvider extends ChangeNotifier {
+  //* Dependency
+  late final SharedPreferences? _sharedPreferences;
   //* State
   ThemeFlavor? _themeFlavor;
 
@@ -17,20 +21,19 @@ class AppThemeProvider extends ChangeNotifier {
   //* Constructor and Methods
 
   // this test
-  AppThemeProvider() {
+  AppThemeProvider(this._sharedPreferences) {
     // Load Theme as soon as the provider is created
     load();
   }
 
   Future<void> setThemeFlavor(ThemeFlavor flavor) async {
     _themeFlavor = flavor;
-    AppSharedPrefs.instance!.setInt(kSavedThemeIndexKey, flavor.index);
+    _sharedPreferences!.setInt(kSavedThemeIndexKey, flavor.index);
     notifyListeners();
   }
 
   Future<void> load() async {
-    final int? userFlavor =
-        AppSharedPrefs.instance!.getInt(kSavedThemeIndexKey);
+    final int? userFlavor = _sharedPreferences!.getInt(kSavedThemeIndexKey);
     if (userFlavor == null) {
       setThemeFlavor(ThemeFlavor.light); // <----- Default Theme Flavor
     } else {
