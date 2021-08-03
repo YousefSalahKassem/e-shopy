@@ -10,8 +10,6 @@ import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dar
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen();
-
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
