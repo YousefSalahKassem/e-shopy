@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/helpers/ui/colors.dart';
 import 'package:flutter_boilerplate/helpers/ui/enums.dart';
-import 'package:flutter_boilerplate/helpers/ui/text_styles.dart';
-import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
+import 'package:flutter_boilerplate/themes/dimensions.dart';
+import 'package:flutter_boilerplate/themes/colors.dart' as colors;
+import 'package:flutter_boilerplate/themes/text_styles.dart' as text_styles;
 
 // TODO: Refactor this function to handle more than two Theme Flavors
 // This function takes a theme flavor and returns corresponding ThemeData object
@@ -17,15 +17,15 @@ ThemeData getThemeData(ThemeFlavor themeFlavor) {
     fontFamily: 'Tajawal',
 
     // <------------------------------------------------ Colors Theme
-    accentColor: kPrimaryColor,
-    primaryColor: kAccentColor,
+    accentColor: colors.kPrimaryColor,
+    primaryColor: colors.kAccentColor,
     primaryColorLight: Colors.cyan[300],
     secondaryHeaderColor: Colors.black54,
     backgroundColor: Colors.white,
     cardColor: Colors.white,
     bottomAppBarColor: Colors.white,
     dividerColor: Colors.black.withOpacity(0.10),
-    hintColor: kPrimaryColor,
+    hintColor: colors.kPrimaryColor,
     disabledColor: Colors.grey,
     scaffoldBackgroundColor: Colors.white,
 
@@ -33,15 +33,15 @@ ThemeData getThemeData(ThemeFlavor themeFlavor) {
     primaryIconTheme: const IconThemeData(color: Colors.black54),
 
     // <------------------------------------------------ Icon Theme
-    iconTheme: IconThemeData(color: kTextColor.withOpacity(0.45)),
+    iconTheme: IconThemeData(color: colors.kTextColor.withOpacity(0.45)),
 
     // <------------------------------------------------ Tab Bar Theme
     tabBarTheme: TabBarTheme(
-      labelColor: kTextColor,
+      labelColor: colors.kTextColor,
       //labelStyle: ,
-      unselectedLabelColor: kTextColor,
+      unselectedLabelColor: colors.kTextColor,
       indicator: BoxDecoration(
-        color: kTextColor.withOpacity(0.1),
+        color: colors.kTextColor.withOpacity(0.1),
       ),
     ),
 
@@ -55,27 +55,27 @@ ThemeData getThemeData(ThemeFlavor themeFlavor) {
 
     // <------------------------------------------------ Input Decoration Theme
     inputDecorationTheme: InputDecorationTheme(
-      contentPadding: EdgeInsets.symmetric(
-          vertical: UiHelper.height(12), horizontal: UiHelper.width(8)),
+      contentPadding: const EdgeInsets.symmetric(
+          vertical: kSpaceLarge, horizontal: kSpaceSmall),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.zero,
         gapPadding: 0,
-        borderSide: BorderSide(color: kTextColor.withOpacity(0.5)),
+        borderSide: BorderSide(color: colors.kTextColor.withOpacity(0.5)),
       ),
       border: const OutlineInputBorder(
         borderRadius: BorderRadius.zero,
         gapPadding: 0,
       ),
       labelStyle: TextStyle(
-        fontSize: UiHelper.size(12),
-        color: kTextColor.withOpacity(0.7),
+        fontSize: kSpaceMedium,
+        color: colors.kTextColor.withOpacity(0.7),
       ),
     ),
 
     // <------------------------------------------------ Text Theme
-    textTheme: TextTheme(
-      subtitle1: kSubHeaderStyle,
-      headline5: kHeaderStyle,
+    textTheme: const TextTheme(
+      subtitle1: text_styles.kSubHeaderStyle,
+      headline5: text_styles.kHeaderStyle,
     ),
   );
 }

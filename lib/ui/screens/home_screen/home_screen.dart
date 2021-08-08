@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
+import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
+import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:upgrader/upgrader.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -22,19 +23,21 @@ class HomeScreen extends StatelessWidget {
                 LocaleKeys.home_screen_body,
                 style: context.textTheme.headline5,
               ).tr(),
-              UiHelper.verticalSpaceMedium(),
-              MaterialButton(
-                  onPressed: () {
-                    final currentLangCode = context.locale.languageCode;
-                    currentLangCode == 'en'
-                        ? context.setLocale(const Locale('ar'))
-                        : context.setLocale(const Locale('en'));
-                  },
-                  color: Colors.cyan,
-                  child: const Text(
-                    LocaleKeys.home_screen_toggle_language,
-                    style: TextStyle(color: Colors.white),
-                  ).tr())
+              const SizedBox(height: kSpaceMedium),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.cyan),
+                onPressed: () {
+                  final currentLangCode = context.locale.languageCode;
+                  currentLangCode == 'en'
+                      ? context.setLocale(const Locale('ar'))
+                      : context.setLocale(const Locale('en'));
+                },
+                child: Text(
+                    tr(
+                      LocaleKeys.home_screen_toggle_language,
+                    ),
+                    style: const TextStyle(color: Colors.white)),
+              ),
             ],
           ),
         ),

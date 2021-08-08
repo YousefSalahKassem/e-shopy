@@ -4,7 +4,3 @@ analyzer:
   errors:
     missing_return: error
 
-  exclude:
-    [
-        lib/generated/locale_keys.g.dart,
-    ]

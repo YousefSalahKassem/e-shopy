@@ -1,11 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
-import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
+import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 
 class LanguageSelectionScreen extends StatelessWidget {
   @override
@@ -19,16 +20,16 @@ class LanguageSelectionScreen extends StatelessWidget {
             children: <Widget>[
               SizedBox(
                 width: context.widthR(0.8),
-                height: UiHelper.height(300),
+                height: context.heightR(0.45),
                 child: Center(
                   child: Image.asset(
                     'assets/images/kortobaa.png',
                     fit: BoxFit.fitHeight,
-                    height: UiHelper.height(180),
+                    height: context.heightR(0.25),
                   ),
                 ),
               ),
-              UiHelper.verticalSpaceXLarge(),
+              const SizedBox(height: kSpaceXXLarge),
               SizedBox(
                 width: context.widthR(0.8),
                 child: Directionality(
@@ -40,7 +41,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                         locale: context.locale.languageCode,
                         value: 'ar',
                       ),
-                      UiHelper.horizontalSpaceMedium(),
+                      const SizedBox(width: kSpaceLarge),
                       LanguageButton(
                         locale: context.locale.languageCode,
                         value: 'en',
@@ -49,7 +50,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              UiHelper.verticalSpaceXLarge(),
+              const SizedBox(height: kSpaceXXLarge),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(primary: Colors.cyan),
                 onPressed: () {
@@ -84,9 +85,9 @@ class LanguageButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SizedBox(
-        height: UiHelper.height(48),
+        height: context.heightR(0.075),
         child: ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Colors.deepOrangeAccent),
+          style: ElevatedButton.styleFrom(primary: Colors.white),
           onPressed: () {
             context.setLocale(Locale(value));
           },

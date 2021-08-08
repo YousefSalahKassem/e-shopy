@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
+import 'package:flutter_boilerplate/themes/dimensions.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -17,9 +17,13 @@ class LoginScreen extends StatelessWidget {
               size: 100,
               semanticLabel: "login_icon",
             ),
-            UiHelper.verticalSpaceLarge(),
+            const SizedBox(
+              height: kSpaceLarge,
+            ),
             TextFormField(),
-            UiHelper.verticalSpaceSmall(),
+            const SizedBox(
+              height: kSpaceSmall,
+            ),
             TextFormField(),
           ],
         ),

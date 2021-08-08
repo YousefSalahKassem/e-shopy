@@ -29,16 +29,6 @@ class _AppState extends State<App> {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-
-            // ! Remove This Part if You Don't Want To Apply Responsiveness to TextStyles
-            //* We use this approach to apply UiHelper responsive methods
-            // on text styles file
-            // first we get a context that has MediaQuery data in it
-            // using the 'builder' property in Material App
-            // then we update the dimensions in UiHelper and after that we use
-            // our completly responsive text sizes / theme normally
-
-            // ! Remove This Part if You Don't Want To Apply Responsiveness to TextStyles
             routerDelegate: AutoRouterDelegate(_appRouter),
             routeInformationParser: _appRouter.defaultRouteParser(),
           ),

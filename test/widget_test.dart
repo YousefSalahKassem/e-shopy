@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 import 'package:flutter_boilerplate/themes/app_theme.dart';
 import 'package:flutter_boilerplate/ui/screens/language_selection_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -66,9 +65,6 @@ class MakeTestAbleWidget extends StatelessWidget {
               supportedLocales: ctx.supportedLocales,
               locale: ctx.locale,
               builder: (context, navigator) {
-                // Update Screen Dimensions
-                UiHelper.updateScreenDimensions(context);
-
                 return AppTheme(navigator: navigator);
               },
               home: child,
