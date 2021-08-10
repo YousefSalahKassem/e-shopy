@@ -31,9 +31,3 @@ extension SugarExt on BuildContext {
     FocusScope.of(this).requestFocus(FocusNode());
   }
 }
-
-/// *** Extension on Strings ***
-extension StringParse on String {
-  String toDecimal(int fractionDigits) =>
-      double.parse(this).toStringAsFixed(fractionDigits);
-}

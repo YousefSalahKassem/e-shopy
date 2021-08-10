@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 
@@ -11,33 +10,7 @@ class UiHelper {
   //* <--------------------- Notifications State
   static String _notificationMessage = '';
 
-  //* <------------------------------------------------------  Border Radius
-
-  /// Radius Boders
-  static BorderRadius allRoundedEdges([double radius = kDefaultRadius]) {
-    return BorderRadius.all(Radius.circular(radius));
-  }
-
-  //* <------------------------------------------------  Text Fieald Decoration
-  /// Outline Border
-  static InputBorder get noBorder => const OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.transparent),
-      );
-
-  //* <------------------------------------------------  Gradient Decoration
-  static Gradient scaffoldGradient({required List<Color> colors}) =>
-      LinearGradient(
-          colors: colors,
-          begin: const Alignment(-1.0, -4.0),
-          end: const Alignment(1.0, 4.0));
-
-  static Gradient buttonGradient({required List<Color> colors}) =>
-      LinearGradient(
-          colors: colors,
-          begin: Alignment.centerRight,
-          end: Alignment.centerLeft);
-
-  //* <------------------------------------------------ Notification & Messages
+//* <------------------------------------------------ Notification & Messages
 
 // Show Notification
   static void showNotification(String message,
