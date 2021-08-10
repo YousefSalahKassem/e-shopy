@@ -4,9 +4,9 @@ import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 
 // ignore_for_file: avoid_classes_with_only_static_members
 ///
-/// Contains useful functions to reduce boilerplate code
+/// Contains useful functions to reduce boilerplate code in ui
 ///
-class UiHelper {
+class UiHelpers {
   //* <--------------------- Notifications State
   static String _notificationMessage = '';
 
@@ -83,6 +83,6 @@ class UiHelper {
   static void postBuildCallback(void Function(Duration) callback) {
     WidgetsBinding.instance?.addPostFrameCallback(callback);
   }
-} // Class UiHelper
+} // Class UiHelpers
 
 
