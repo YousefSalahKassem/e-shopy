@@ -197,7 +197,8 @@ class Person {
 ```
 2. then you run the following command:
 
-`flutter packages pub run build_runner watch --delete-conflicting-outputs`
+`./scripts/buildrunner`
+
 
 and the package will generate the serialization and de-serialization logic for you, the package uses `json_annotations` you can [learn more about them from the package's docs](https://pub.dev/packages/json_serializable#annotation-values)
 
@@ -231,7 +232,7 @@ USE PACKAGE WITH CODE GENERATION
 - LocaleKeys Generation Command
 > use this to generates key variables from your json keys
 ```shell
-flutter pub run easy_localization:generate -S assets/translations -f keys -o locale_keys.g.dart
+./scripts/localegen
 ```
 
 - How to use generated keys

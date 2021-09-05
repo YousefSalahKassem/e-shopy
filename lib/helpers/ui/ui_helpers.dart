@@ -1,206 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
-import 'package:flutter_boilerplate/helpers/ui/dimensions.dart';
-import 'package:intl/intl.dart' as intl;
-import 'dimensions.dart';
+import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 
 // ignore_for_file: avoid_classes_with_only_static_members
 ///
-/// Contains useful functions to reduce boilerplate code
+/// Contains useful functions to reduce boilerplate code in ui
 ///
-class UiHelper {
+class UiHelpers {
   //* <--------------------- Notifications State
   static String _notificationMessage = '';
-  // Actual device screen size
-  static double? _screenHeight;
-  static double? _screenWidth;
 
-  // You should call this after you get the first MaterialApp context
-  static void updateScreenDimensions(BuildContext context) {
-    _screenWidth = context.width;
-    _screenHeight = context.height;
-  }
-
-  // Height, Width, Size Functions
-  static double height(double height) {
-    if (_screenHeight == null) return height;
-    return _screenHeight! * height / kRefrenceScreenHeight;
-  }
-
-  static double width(double width) {
-    if (_screenWidth == null) return width;
-    return (_screenWidth! * width / kRefrenceScreenWidth).ceilToDouble();
-  }
-
-  static double size(double size) => width(size);
-
-  /// Returns a vertical space with height set to [kVerticalSpaceXSmall]
-  static Widget verticalSpaceXSmall() {
-    return SizedBox(
-      height: height(kVerticalSpaceXSmall),
-    );
-  }
-
-  /// Returns a vertical space with height set to [kVerticalSpaceSmall]
-  static Widget verticalSpaceSmall() {
-    return SizedBox(
-      height: height(kVerticalSpaceSmall),
-    );
-  }
-
-  /// Returns a vertical space with height set to [kVerticalSpaceMedium]
-  static Widget verticalSpaceMedium() {
-    return SizedBox(
-      height: height(kVerticalSpaceMedium),
-    );
-  }
-
-  /// Returns a vertical space with height set to [kVerticalSpaceLarge]
-  static Widget verticalSpaceLarge() {
-    return SizedBox(
-      height: height(kVerticalSpaceLarge),
-    );
-  }
-
-  /// Returns a vertical space with height set to [kVerticalSpaceXLarge]
-  static Widget verticalSpaceXLarge() {
-    return SizedBox(
-      height: height(kVerticalSpaceXLarge),
-    );
-  }
-
-  /// Returns a horizontal space with height set to [kHorizontalSpaceXSmall]
-  static Widget horizontalSpaceXSmall() {
-    return SizedBox(
-      width: width(kHorizontalSpaceXSmall),
-    );
-  }
-
-  /// Returns a horizontal space with height set to [kHorizontalSpaceSmall]
-  static Widget horizontalSpaceSmall() {
-    return SizedBox(
-      width: width(kHorizontalSpaceSmall),
-    );
-  }
-
-  /// Returns a horizontal space with height set to [kHorizontalSpaceMedium]
-  static Widget horizontalSpaceMedium() {
-    return SizedBox(
-      width: width(kHorizontalSpaceMedium),
-    );
-  }
-
-  /// Returns a horizontal space with height set to [kHorizontalSpaceLarge]
-  static Widget horizontalSpaceLarge() {
-    return SizedBox(
-      width: width(kHorizontalSpaceLarge),
-    );
-  }
-
-  /// Returns a horizontal space with height set to [kHorizontalSpaceXLarge]
-  static Widget horizontalSpaceXLarge() {
-    return SizedBox(
-      width: width(kHorizontalSpaceXLarge),
-    );
-  }
-
-  /// Custom Margins
-  static Widget verticalSpace(double space) => SizedBox(
-        height: height(space),
-      );
-
-  static Widget horizontalSpace(double space) => SizedBox(
-        width: width(space),
-      );
-  //* <---------------------------------------------------------  Border Radius
-  /// Radius Boders
-
-  static BorderRadius radiusBig() {
-    return const BorderRadius.all(Radius.circular(kRadius1));
-  }
-
-  static BorderRadius radiusMedium() {
-    return const BorderRadius.all(Radius.circular(kRadius2));
-  }
-
-  static BorderRadius radiusSmall() {
-    return const BorderRadius.all(Radius.circular(kRadius2));
-  }
-
-  static BorderRadius topRoundedEdgesBig() {
-    return const BorderRadius.only(
-        topLeft: Radius.circular(kRadius1),
-        topRight: Radius.circular(kRadius1));
-  }
-
-  static BorderRadius topRoundedEdgesSmall() {
-    return const BorderRadius.only(
-        topLeft: Radius.circular(kRadius3),
-        topRight: Radius.circular(kRadius3));
-  }
-
-  static BorderRadius rightRoundedEdgesBig() {
-    return const BorderRadius.only(
-        bottomRight: Radius.circular(kRadius1),
-        topRight: Radius.circular(kRadius1));
-  }
-
-  static BorderRadius rightRoundedEdgesSmall() {
-    return const BorderRadius.only(
-        bottomRight: Radius.circular(kRadius3),
-        topRight: Radius.circular(kRadius3));
-  }
-
-  static BorderRadius leftRoundedEdgesBig() {
-    return const BorderRadius.only(
-        bottomLeft: Radius.circular(kRadius1),
-        topLeft: Radius.circular(kRadius1));
-  }
-
-  static BorderRadius leftRoundedEdgesSmall() {
-    return const BorderRadius.only(
-        bottomLeft: Radius.circular(kRadius3),
-        topLeft: Radius.circular(kRadius3));
-  }
-
-  static BorderRadius bottomRoundedEdges({double radius = kRadius1}) {
-    return BorderRadius.only(
-        bottomLeft: Radius.circular(radius),
-        bottomRight: Radius.circular(radius));
-  }
-
-  // Custom Methods
-  static BorderRadius allRoundedEdges(double radius) {
-    return BorderRadius.all(Radius.circular(radius));
-  }
-
-  static BorderRadius topRoundedEdges(double radius) {
-    return BorderRadius.only(
-        topLeft: Radius.circular(radius), topRight: Radius.circular(radius));
-  }
-
-  static BorderRadius rightRoundedEdges(double radius) {
-    return BorderRadius.only(
-        bottomRight: Radius.circular(radius),
-        topRight: Radius.circular(radius));
-  }
-
-  static BorderRadius leftRoundedEdges(double radius) {
-    return BorderRadius.only(
-        topLeft: Radius.circular(radius), bottomLeft: Radius.circular(radius));
-  }
-
-  //* <------------------------------------------------  Text Fieald Decoration
-  /// Outline Border
-  static InputBorder get noBorder => const OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.transparent),
-      );
-
-  //* <------------------------------------------------ Notification & Messages
+//* <------------------------------------------------ Notification & Messages
 
 // Show Notification
   static void showNotification(String message,
-      {NotificationPosition? position, bool isError = true}) {
+      {NotificationPosition position = NotificationPosition.top,
+      int durationInSeconds = 3,
+      bool isError = true}) {
     if (_notificationMessage != message) {
       _notificationMessage = message;
       showOverlayNotification(
@@ -209,8 +25,8 @@ class UiHelper {
           elevation: 3,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           color: isError
-              ? Theme.of(context).accentColor
-              : Theme.of(context).primaryColor,
+              ? context.theme.colorScheme.secondary
+              : context.theme.colorScheme.primary,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
             child: Text(
@@ -220,8 +36,8 @@ class UiHelper {
             ),
           ),
         ),
-        duration: const Duration(seconds: 3),
-        position: position!,
+        duration: Duration(seconds: durationInSeconds),
+        position: position,
       ).dismissed.then((value) {
         _notificationMessage = '';
       });
@@ -231,31 +47,31 @@ class UiHelper {
   // Show Alert Dialog
   static void showSimpleAlertDialog(
       {required BuildContext context,
-      VoidCallback? action,
-      String? message,
-      String? okButtonText,
-      String? cancelButtonText}) {
+      required VoidCallback action,
+      required String message,
+      required String okButtonText,
+      required String cancelButtonText}) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         content: Text(
-          message!,
+          message,
           style: Theme.of(context).textTheme.subtitle2,
         ),
         actions: <Widget>[
-          MaterialButton(
+          TextButton(
             onPressed: () {
               Navigator.of(context).pop(false);
             },
             child: Text(
-              cancelButtonText!,
+              cancelButtonText,
               style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
-          MaterialButton(
+          TextButton(
             onPressed: action,
-            child: Text(okButtonText!,
+            child: Text(okButtonText,
                 style: Theme.of(context).textTheme.subtitle2),
           ),
         ],
@@ -263,39 +79,10 @@ class UiHelper {
     );
   }
 
-  //* <----------------------------------------- Functions & Extensions
-  // Post Frame Callbacks
+  //* <------------------------------------------ Post Frame Callback
   static void postBuildCallback(void Function(Duration) callback) {
-    WidgetsBinding.instance!.addPostFrameCallback(callback);
+    WidgetsBinding.instance?.addPostFrameCallback(callback);
   }
+} // Class UiHelpers
 
-  static void navigatorPostBuildCallback(
-      {required BuildContext context, required String destination}) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
-      Navigator.pushReplacementNamed(context, destination);
-    });
-  }
-} // Class UiHelper
 
-/// *** Extensions on BuildContext class *** ----------------------------------
-extension SugarExt on BuildContext {
-  //* Dimensions Extensions
-  double get height => MediaQuery.of(this).size.height;
-  double get width => MediaQuery.of(this).size.width;
-
-  double heightR(double value) => MediaQuery.of(this).size.height * value;
-  double widthR(double value) => MediaQuery.of(this).size.width * value;
-
-  //* Locale Extensions
-  bool get isRTL =>
-      intl.Bidi.isRtlLanguage(Localizations.localeOf(this).languageCode);
-
-  //* Theme Extensions
-  TextTheme get textTheme => Theme.of(this).textTheme;
-  ThemeData get theme => Theme.of(this);
-
-  //* Close Keyboard
-  void closeKeyboard() {
-    FocusScope.of(this).requestFocus(FocusNode());
-  }
-}

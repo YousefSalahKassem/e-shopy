@@ -12,7 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 ///           child: ProviderListener<ErrorHandler>(
 ///               provider: errorHandlerProvider,
 ///               onChange: (_, value) =>
-///                   UiHelper.showNotification(tr(value.errorMessage)),
+///                   UiHelpers.showNotification(tr(value.errorMessage)),
 ///               child: App()),
 ///         ),
 ///
