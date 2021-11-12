@@ -34,13 +34,15 @@ class DioClient {
     this._tokenRepository,
     this._errorHandler,
   ) {
-    _dio.interceptors.add(InterceptorsWrapper(
+    _dio.interceptors.add(
+      InterceptorsWrapper(
         //* Apply an interceptor on API requests , to inject anything on the fly
         onRequest: (options, handler) {},
         //* Apply an interceptor on API requests error(s)
         onError: (error, handler) async {
           debugPrint(
-              'Intercepted an error on\n# Api request : ${error.requestOptions.path}\n# Error message: ${error.message}');
+            'Intercepted an error on\n# Api request : ${error.requestOptions.path}\n# Error message: ${error.message}',
+          );
           _errorHandler.dispatchDioError(error);
 
           if (error.type == DioErrorType.connectTimeout) {
@@ -51,7 +53,9 @@ class DioClient {
             }
           }
           return handler.next(error);
-        }));
+        },
+      ),
+    );
   }
 
   // Get:-----------------------------------------------------------------------
@@ -193,10 +197,12 @@ class DioClient {
       method: requestOptions.method,
       headers: requestOptions.headers,
     );
-    return _dio.request<dynamic>(requestOptions.path,
-        data: requestOptions.data,
-        queryParameters: requestOptions.queryParameters,
-        options: options);
+    return _dio.request<dynamic>(
+      requestOptions.path,
+      data: requestOptions.data,
+      queryParameters: requestOptions.queryParameters,
+      options: options,
+    );
   }
 
   // API Headers _____________________________________________________________

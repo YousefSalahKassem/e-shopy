@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
+import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:upgrader/upgrader.dart';
 
@@ -11,7 +11,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            tr(LocaleKeys.greeting)), //* <-- Generated LocaleKeys usage example
+          tr(LocaleKeys.greeting),
+        ), //* <-- Generated LocaleKeys usage example
         centerTitle: true,
       ),
       body: UpgradeAlert(
@@ -33,10 +34,11 @@ class HomeScreen extends StatelessWidget {
                       : context.setLocale(const Locale('en'));
                 },
                 child: Text(
-                    tr(
-                      LocaleKeys.home_screen_toggle_language,
-                    ),
-                    style: const TextStyle(color: Colors.white)),
+                  tr(
+                    LocaleKeys.home_screen_toggle_language,
+                  ),
+                  style: const TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),

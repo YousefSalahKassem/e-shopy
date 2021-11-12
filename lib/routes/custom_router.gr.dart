@@ -23,15 +23,21 @@ class AppRouter extends _i4.RootStackRouter {
   final Map<String, _i4.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
       return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i1.SplashScreen());
+        routeData: routeData,
+        child: _i1.SplashScreen(),
+      );
     },
     HomeRoute.name: (routeData) {
       return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i2.HomeScreen());
+        routeData: routeData,
+        child: _i2.HomeScreen(),
+      );
     },
     LanguageSelectionRoute.name: (routeData) {
       return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i3.LanguageSelectionScreen());
+        routeData: routeData,
+        child: _i3.LanguageSelectionScreen(),
+      );
     }
   };
 
@@ -39,8 +45,10 @@ class AppRouter extends _i4.RootStackRouter {
   List<_i4.RouteConfig> get routes => [
         _i4.RouteConfig(SplashRoute.name, path: '/'),
         _i4.RouteConfig(HomeRoute.name, path: '/home-screen'),
-        _i4.RouteConfig(LanguageSelectionRoute.name,
-            path: '/language-selection-screen')
+        _i4.RouteConfig(
+          LanguageSelectionRoute.name,
+          path: '/language-selection-screen',
+        )
       ];
 }
 

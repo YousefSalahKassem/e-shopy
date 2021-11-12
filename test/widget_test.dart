@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/themes/app_theme.dart';
 import 'package:flutter_boilerplate/ui/screens/language_selection_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:overlay_support/overlay_support.dart';
-import 'package:easy_logger/easy_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
@@ -58,19 +58,21 @@ class MakeTestAbleWidget extends StatelessWidget {
         supportedLocales: const [Locale('en'), Locale('ar')],
         path: 'assets/translations',
         startLocale: const Locale('en'),
-        child: Builder(builder: (ctx) {
-          return OverlaySupport(
-            child: MaterialApp(
-              localizationsDelegates: ctx.localizationDelegates,
-              supportedLocales: ctx.supportedLocales,
-              locale: ctx.locale,
-              builder: (context, navigator) {
-                return AppTheme(navigator: navigator);
-              },
-              home: child,
-            ),
-          );
-        }),
+        child: Builder(
+          builder: (ctx) {
+            return OverlaySupport(
+              child: MaterialApp(
+                localizationsDelegates: ctx.localizationDelegates,
+                supportedLocales: ctx.supportedLocales,
+                locale: ctx.locale,
+                builder: (context, navigator) {
+                  return AppTheme(navigator: navigator);
+                },
+                home: child,
+              ),
+            );
+          },
+        ),
       ),
     );
   }

@@ -38,6 +38,10 @@ dependencies:
   #packageInfo
   package_info: ^2.0.2
 
+  # depend reference
+  intl: ^0.17.0
+  easy_logger: ^0.0.2
+
 
 
 
