@@ -21,15 +21,29 @@ const double kSpaceXXLarge = 32.0;
 
 //* <------------------  Radius border values
 
-/// 4.0
-const double kRadiusSmall = 4;
+const double kRadiusXSmall = 4;
 
-/// 8.0
-const double kRadiusMedium = 8;
+const double kRadiusSmall = 8;
 
-/// 16.0
-const double kRadiusLarge = 16;
+const double kRadiusMedium = 12;
 
-/// 32.0
-const double kRadiusXLarge = 32.0;
+const double kRadiusLarge = 18;
+
+const double kRadiusXLarge = 28.0;
 const double kDefaultRadius = kRadiusXLarge;
+
+//* <---------------------  Sizes
+
+const double kSizeXXSmall = 8.0;
+
+const double kSizeXSmall = 16.0;
+
+const double kSizeSmall = 20.0;
+
+const double kSizeMedium = 28.0;
+
+const double kSizeLarge = 40.0;
+
+const double kSizeXLarge = 48.0;
+
+const double kSizeXXLarge = 60.0;
