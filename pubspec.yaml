@@ -20,7 +20,7 @@ dependencies:
   # State Management
   flutter_riverpod: ^0.13.1+1
   # Local Storage
-  flutter_secure_storage: ^4.2.1
+  flutter_secure_storage: ^5.0.0
   # App Updates
   in_app_update: ^2.0.0
   # API
