@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:overlay_support/overlay_support.dart';
 import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
+import 'package:overlay_support/overlay_support.dart';
 
 // ignore_for_file: avoid_classes_with_only_static_members
 ///
@@ -13,10 +13,12 @@ class UiHelpers {
 //* <------------------------------------------------ Notification & Messages
 
 // Show Notification
-  static void showNotification(String message,
-      {NotificationPosition position = NotificationPosition.top,
-      int durationInSeconds = 3,
-      bool isError = true}) {
+  static void showNotification(
+    String message, {
+    NotificationPosition position = NotificationPosition.top,
+    int durationInSeconds = 3,
+    bool isError = true,
+  }) {
     if (_notificationMessage != message) {
       _notificationMessage = message;
       showOverlayNotification(
@@ -45,12 +47,13 @@ class UiHelpers {
   }
 
   // Show Alert Dialog
-  static void showSimpleAlertDialog(
-      {required BuildContext context,
-      required VoidCallback action,
-      required String message,
-      required String okButtonText,
-      required String cancelButtonText}) {
+  static void showSimpleAlertDialog({
+    required BuildContext context,
+    required VoidCallback action,
+    required String message,
+    required String okButtonText,
+    required String cancelButtonText,
+  }) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -71,8 +74,10 @@ class UiHelpers {
           ),
           TextButton(
             onPressed: action,
-            child: Text(okButtonText,
-                style: Theme.of(context).textTheme.subtitle2),
+            child: Text(
+              okButtonText,
+              style: Theme.of(context).textTheme.subtitle2,
+            ),
           ),
         ],
       ),
@@ -83,6 +88,4 @@ class UiHelpers {
   static void postBuildCallback(void Function(Duration) callback) {
     WidgetsBinding.instance?.addPostFrameCallback(callback);
   }
-} // Class UiHelpers
-
-
+}

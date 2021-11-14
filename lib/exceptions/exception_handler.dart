@@ -3,7 +3,7 @@ import 'package:flutter_boilerplate/exceptions/fetch_exception.dart';
 import 'package:flutter_boilerplate/exceptions/input_exception.dart';
 import 'package:flutter_boilerplate/exceptions/validation_exception.dart';
 
-class ErrorHandler {
+mixin ErrorHandler {
   //go through all custom errors and return the corresponding error message
   static String errorMessage(Error? error) {
     if (error == null) {

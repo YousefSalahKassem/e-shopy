@@ -1,13 +1,15 @@
 import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-import 'package:logging/logging.dart' as log;
-import 'package:flutter_boilerplate/ui/app.dart';
-import 'package:in_app_update/in_app_update.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:easy_localization/easy_localization.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/device/package_info/app_info_helper.dart';
 import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
+import 'package:flutter_boilerplate/ui/app.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:in_app_update/in_app_update.dart';
+import 'package:logging/logging.dart' as log;
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +31,9 @@ Future<void> main() async {
 
 //* EasyLocalization Initialize :---------------
   await EasyLocalization.ensureInitialized();
+
+  // app info init
+  await AppInfoHelper.getAppInfo();
 
   runApp(
     ProviderScope(

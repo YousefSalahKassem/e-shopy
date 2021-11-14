@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_boilerplate/helpers/ui/enums.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_boilerplate/helpers/ui/enums.dart';
 import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final appThemeProvider = ChangeNotifierProvider(
-    (ref) => AppThemeProvider(ref.watch(sharedPrefsProvider)));
+  (ref) => AppThemeProvider(ref.watch(sharedPrefsProvider)),
+);
 
 class AppThemeProvider extends ChangeNotifier {
   //* Dependency

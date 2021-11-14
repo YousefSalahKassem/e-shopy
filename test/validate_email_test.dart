@@ -1,5 +1,5 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_boilerplate/helpers/fields_validator.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('email_validation', () {

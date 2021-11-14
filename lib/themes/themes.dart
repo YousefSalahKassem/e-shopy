@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/helpers/ui/enums.dart';
-import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:flutter_boilerplate/themes/colors.dart' as colors;
+import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:flutter_boilerplate/themes/text_styles.dart' as text_styles;
 
 // TODO: Refactor this function to handle more than two Theme Flavors
@@ -17,8 +17,8 @@ ThemeData getThemeData(ThemeFlavor themeFlavor) {
     fontFamily: 'Tajawal',
 
     // <------------------------------------------------ Colors Theme
-    accentColor: colors.kPrimaryColor,
-    primaryColor: colors.kAccentColor,
+    errorColor: colors.kPrimaryColor,
+    primaryColor: colors.kPrimaryColor,
     primaryColorLight: Colors.cyan[300],
     secondaryHeaderColor: Colors.black54,
     backgroundColor: Colors.white,
@@ -56,7 +56,9 @@ ThemeData getThemeData(ThemeFlavor themeFlavor) {
     // <------------------------------------------------ Input Decoration Theme
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: const EdgeInsets.symmetric(
-          vertical: kSpaceLarge, horizontal: kSpaceSmall),
+        vertical: kSpaceLarge,
+        horizontal: kSpaceSmall,
+      ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.zero,
         gapPadding: 0,

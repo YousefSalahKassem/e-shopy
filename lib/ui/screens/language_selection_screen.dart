@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/helpers/storage_keys.dart';
+import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
-import 'package:flutter_boilerplate/helpers/storage_keys.dart';
 import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 
 class LanguageSelectionScreen extends StatelessWidget {
   @override
@@ -61,8 +61,10 @@ class LanguageSelectionScreen extends StatelessWidget {
                   // Navigate to Home
                   AutoRouter.of(context).replace(const HomeRoute());
                 },
-                child: Text(tr('start'),
-                    style: const TextStyle(color: Colors.white)),
+                child: Text(
+                  tr('start'),
+                  style: const TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),
