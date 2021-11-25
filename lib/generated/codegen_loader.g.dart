@@ -24,6 +24,11 @@ class CodegenLoader extends AssetLoader{
   "ar": "العربية",
   "en": "English",
   "start": "Start",
+  "alerts": {
+    "success_login": "welcome back",
+    "success_register": "your account has been created successfully",
+    "success_logout": "you are logged out"
+  },
   "dio_error": {
     "cancel": "Request cancelled",
     "timeout": "Request took too much time, please try again",
@@ -47,6 +52,11 @@ static const Map<String,dynamic> ar = {
   "ar": "العربية",
   "en": "English",
   "start": "ابدأ",
+  "alerts": {
+    "success_login": "مرحبا بك مرى اخري",
+    "success_register": "تم انشاء الحساب بنجاح",
+    "success_logout": "تم تسجيل الخروج"
+  },
   "dio_error": {
     "cancel": "لقد تم إلغاء طلبك",
     "timeout": "العملية تطلبتالكثير من الوقت، برجاء المحاولة مرة أخرى",

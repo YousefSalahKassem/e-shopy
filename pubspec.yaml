@@ -18,7 +18,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   # State Management
-  flutter_riverpod: ^0.13.1+1
+  flutter_riverpod: ^0.14.0+3
+  event_bus: ^2.0.0
+
   # Local Storage
   flutter_secure_storage: ^5.0.0
   # App Updates
