@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/blocs/events/ui/ui_event_singleton.dart';
 import 'package:flutter_boilerplate/blocs/events/ui/ui_events_bus.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final uiEventBusProviderRef = Provider<EventBus>((ref) => EventBus());
 
 class UiEventBusOverlay extends StatefulWidget {
   final Widget child;
@@ -23,9 +26,9 @@ class _UiEventBusOverlayState extends State<UiEventBusOverlay>
   late StreamSubscription _subscription;
 
   void _initEventBus() {
-    UIEventSingleton.init();
+    final eventBus = context.read(uiEventBusProviderRef);
 
-    _subscription = UIEventSingleton.eventBus.on<UiEventBus>().listen((event) {
+    _subscription = eventBus.on<UiEventBus>().listen((event) {
       widget.onListen(event);
     });
   }

@@ -17,19 +17,22 @@ final dioProvider = Provider<Dio>((ref) {
 final dioClientProvider = Provider<DioClient>((ref) {
   final dio = ref.watch(dioProvider);
   final tokenRepo = ref.watch(tokenRepositoryProvider);
+  final dioErrorHandler = ref.read(dioErrorHandlerProviderRef);
 
-  return DioClient(dio, tokenRepo);
+  return DioClient(dio, tokenRepo, dioErrorHandler);
 });
 
 class DioClient {
   //* Dependencies
   final Dio _dio;
   final TokenRepository _tokenRepository;
+  final DioErrorHandler _dioErrorHandler;
 
   //* Constructor
   DioClient(
     this._dio,
     this._tokenRepository,
+    this._dioErrorHandler,
   ) {
     _dio.interceptors.add(
       InterceptorsWrapper(
@@ -42,7 +45,7 @@ class DioClient {
           );
 
           // dio error handle to ui event bus fire messages
-          DioErrorHandler.handle(error);
+          _dioErrorHandler.handle(error);
 
           if (error.type == DioErrorType.connectTimeout) {
             try {
