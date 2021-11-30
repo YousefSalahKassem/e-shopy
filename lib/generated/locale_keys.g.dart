@@ -1,4 +1,3 @@
-// ignore_for_file: constant_identifier_names
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
 abstract class  LocaleKeys {
@@ -10,6 +9,10 @@ abstract class  LocaleKeys {
   static const ar = 'ar';
   static const en = 'en';
   static const start = 'start';
+  static const alerts_success_login = 'alerts.success_login';
+  static const alerts_success_register = 'alerts.success_register';
+  static const alerts_success_logout = 'alerts.success_logout';
+  static const alerts = 'alerts';
   static const dio_error_cancel = 'dio_error.cancel';
   static const dio_error_timeout = 'dio_error.timeout';
   static const dio_error_default = 'dio_error.default';

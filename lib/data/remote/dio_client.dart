@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/repositories/token_repository.dart';
-import 'package:flutter_boilerplate/exceptions/error_handler.dart';
+import 'package:flutter_boilerplate/exceptions/dio_error_handler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// The [Provider] for [Dio] instance throughout the app
@@ -17,22 +17,22 @@ final dioProvider = Provider<Dio>((ref) {
 final dioClientProvider = Provider<DioClient>((ref) {
   final dio = ref.watch(dioProvider);
   final tokenRepo = ref.watch(tokenRepositoryProvider);
-  final errorHandler = ref.watch(errorHandlerProvider);
+  final dioErrorHandler = ref.read(dioErrorHandlerProviderRef);
 
-  return DioClient(dio, tokenRepo, errorHandler);
+  return DioClient(dio, tokenRepo, dioErrorHandler);
 });
 
 class DioClient {
   //* Dependencies
   final Dio _dio;
   final TokenRepository _tokenRepository;
-  final ErrorHandler _errorHandler;
+  final DioErrorHandler _dioErrorHandler;
 
   //* Constructor
   DioClient(
     this._dio,
     this._tokenRepository,
-    this._errorHandler,
+    this._dioErrorHandler,
   ) {
     _dio.interceptors.add(
       InterceptorsWrapper(
@@ -43,7 +43,9 @@ class DioClient {
           debugPrint(
             'Intercepted an error on\n# Api request : ${error.requestOptions.path}\n# Error message: ${error.message}',
           );
-          _errorHandler.dispatchDioError(error);
+
+          // dio error handle to ui event bus fire messages
+          _dioErrorHandler.handle(error);
 
           if (error.type == DioErrorType.connectTimeout) {
             try {

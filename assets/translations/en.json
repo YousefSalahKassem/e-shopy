@@ -10,6 +10,12 @@
     "ar" : "العربية",
     "en": "English",
     "start": "Start" ,
+
+    "alerts": {
+        "success_login": "welcome back",
+        "success_register": "your account has been created successfully",
+        "success_logout": "you are logged out"
+    },
     "dio_error": {
         "cancel": "Request cancelled",
         "timeout": "Request took too much time, please try again",
