@@ -5,7 +5,7 @@ import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dar
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final appThemeProvider = ChangeNotifierProvider(
+final appThemeProvider = ChangeNotifierProvider<AppThemeProvider>(
   (ref) => AppThemeProvider(ref.watch(sharedPrefsProvider)),
 );
 

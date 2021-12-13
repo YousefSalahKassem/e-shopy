@@ -9,18 +9,18 @@ import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends ConsumerStatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
     super.initState();
     SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
       Timer(const Duration(seconds: 3), () async {
-        if (context
+        if (ref
                 .read(sharedPrefsProvider)!
                 .getBool(kShowLanguageSelectionScreen) !=
             null) {
