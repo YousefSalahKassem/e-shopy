@@ -8,9 +8,9 @@ import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dar
 import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LanguageSelectionScreen extends StatelessWidget {
+class LanguageSelectionScreen extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       extendBody: true,
       backgroundColor: Colors.white,
@@ -55,8 +55,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(primary: Colors.cyan),
                 onPressed: () {
                   // Ensure not to show this screen again
-                  context
-                      .read(sharedPrefsProvider)!
+                  ref.read(sharedPrefsProvider)!
                       .setBool(kShowLanguageSelectionScreen, false);
                   // Navigate to Home
                   AutoRouter.of(context).replace(const HomeRoute());

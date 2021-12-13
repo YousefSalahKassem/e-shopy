@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 final tokenRepositoryProvider =
-    ChangeNotifierProvider((ref) => TokenRepository());
+    ChangeNotifierProvider<TokenRepository>((ref) => TokenRepository());
 
 /// A repository used to handle authentication token `CRUD` operations.
 ///
@@ -47,6 +47,6 @@ class TokenRepository with ChangeNotifier {
   }
 
   /// Read token from local storage.
-  Future<String?> readToken() async =>
+  Future<String?> readToken(WidgetRef ref) async =>
       _authToken = await _secureStorage.read(key: kAuthToken);
 }

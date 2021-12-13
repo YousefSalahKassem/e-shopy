@@ -10,8 +10,8 @@ class AppTheme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer(
-      builder: (_, watch, __) {
-        final currentThemeFlavor = watch(appThemeProvider).themeFlavor;
+      builder: (_, ref, __) {
+        final currentThemeFlavor = ref.watch(appThemeProvider).themeFlavor;
         return Theme(
           data: getThemeData(currentThemeFlavor!), //     <-----     Theme
           child: navigator!,

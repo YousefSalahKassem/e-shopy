@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final uiEventBusProviderRef = Provider<EventBus>((ref) => EventBus());
 
-class UiEventBusOverlay extends StatefulWidget {
+class UiEventBusOverlay extends ConsumerStatefulWidget {
   final Widget child;
   final Function(UiEventBus) onListen;
   const UiEventBusOverlay({
@@ -21,12 +21,12 @@ class UiEventBusOverlay extends StatefulWidget {
   _UiEventBusOverlayState createState() => _UiEventBusOverlayState();
 }
 
-class _UiEventBusOverlayState extends State<UiEventBusOverlay>
+class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
     with WidgetsBindingObserver {
   late StreamSubscription _subscription;
 
-  void _initEventBus() {
-    final eventBus = context.read(uiEventBusProviderRef);
+  void _initEventBus(WidgetRef ref) {
+    final eventBus = ref.read(uiEventBusProviderRef);
 
     _subscription = eventBus.on<UiEventBus>().listen((event) {
       widget.onListen(event);
@@ -37,7 +37,7 @@ class _UiEventBusOverlayState extends State<UiEventBusOverlay>
   void initState() {
     log('initState UiEventBusOverlay');
 
-    _initEventBus();
+    _initEventBus(ref);
 
     super.initState();
     WidgetsBinding.instance!.addObserver(this);
