@@ -21,12 +21,12 @@ dependencies:
     sdk: flutter
 
   # State Management
-  flutter_riverpod: ^1.0.1
+  flutter_riverpod: ^1.0.3
   event_bus: ^2.0.0
 
   # Local Storage
   flutter_secure_storage: ^5.0.2
-  shared_preferences: ^2.0.9
+  shared_preferences: ^2.0.11
 
   # App Updates
   in_app_update: ^2.0.0
