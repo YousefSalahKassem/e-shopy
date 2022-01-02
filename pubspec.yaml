@@ -11,18 +11,23 @@ dependencies:
   auto_route: ^3.1.3
   #API
   dio: ^4.0.4
+  connectivity_plus: ^2.1.0
+
   # Localization
   easy_localization: ^3.0.0
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+
   # State Management
   flutter_riverpod: ^1.0.1
   event_bus: ^2.0.0
 
   # Local Storage
   flutter_secure_storage: ^5.0.2
+  shared_preferences: ^2.0.9
+
   # App Updates
   in_app_update: ^2.0.0
   # API
@@ -31,14 +36,13 @@ dependencies:
   logging: ^1.0.2
   #UI
   overlay_support: ^1.2.1
-  # Local Storage
-  shared_preferences: ^2.0.9
+
   # App Updates
   upgrader: ^3.10.0
   # Share
   share_plus: ^3.0.4
   #packageInfo
-  package_info: ^2.0.2
+  package_info_plus: ^1.3.0
 
   # depend reference
   intl: ^0.17.0
