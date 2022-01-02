@@ -7,7 +7,8 @@ import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_boilerplate/themes/app_theme.dart';
-import 'package:overlay_support/overlay_support.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:overlay_support/overlay_support.dart' hide Toast;
 
 class App extends StatefulWidget {
   @override
@@ -32,6 +33,13 @@ class _AppState extends State<App> {
               UiHelpers.showNotification(event.message);
             } else if (event is UserLoggedEvent) {
               UiHelpers.showNotification(LocaleKeys.alerts_success_login.tr());
+            } else if (event is InternetConnectionFailedEvent) {
+              Fluttertoast.showToast(
+                msg: LocaleKeys.alerts_internet_connection_failed.tr(),
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                fontSize: 16.0,
+              );
             }
           },
           child: Builder(

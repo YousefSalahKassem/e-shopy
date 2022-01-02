@@ -27,7 +27,8 @@ class CodegenLoader extends AssetLoader{
   "alerts": {
     "success_login": "welcome back",
     "success_register": "your account has been created successfully",
-    "success_logout": "you are logged out"
+    "success_logout": "you are logged out",
+    "internet_connection_failed": "Internet Connection Failed"
   },
   "dio_error": {
     "cancel": "Request cancelled",
@@ -55,7 +56,8 @@ static const Map<String,dynamic> ar = {
   "alerts": {
     "success_login": "مرحبا بك مرى اخري",
     "success_register": "تم انشاء الحساب بنجاح",
-    "success_logout": "تم تسجيل الخروج"
+    "success_logout": "تم تسجيل الخروج",
+    "internet_connection_failed": "فشل الاتصال بالانترنت"
   },
   "dio_error": {
     "cancel": "لقد تم إلغاء طلبك",

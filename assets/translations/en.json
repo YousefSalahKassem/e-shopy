@@ -14,7 +14,8 @@
     "alerts": {
         "success_login": "welcome back",
         "success_register": "your account has been created successfully",
-        "success_logout": "you are logged out"
+        "success_logout": "you are logged out",
+        "internet_connection_failed": "Internet Connection Failed"
     },
     "dio_error": {
         "cancel": "Request cancelled",

@@ -1,7 +1,9 @@
+/// ui EventBus response about showing any ui changes
 abstract class UiEventBus {
   const UiEventBus();
 }
 
+//
 class DioErrorEvent extends UiEventBus {
   final String message;
 
@@ -18,4 +20,8 @@ class UserLoggedEvent extends UiEventBus {
 
 class UserLoggedOutEvent extends UiEventBus {
   const UserLoggedOutEvent();
+}
+
+class InternetConnectionFailedEvent extends UiEventBus {
+  const InternetConnectionFailedEvent();
 }

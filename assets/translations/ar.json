@@ -12,7 +12,8 @@
     "alerts": {
         "success_login": "مرحبا بك مرى اخري",
         "success_register": "تم انشاء الحساب بنجاح",
-        "success_logout": "تم تسجيل الخروج"
+        "success_logout": "تم تسجيل الخروج",
+        "internet_connection_failed": "فشل الاتصال بالانترنت"
     },
 
     "dio_error": {
