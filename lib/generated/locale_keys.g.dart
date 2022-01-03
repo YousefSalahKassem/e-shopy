@@ -12,6 +12,7 @@ abstract class  LocaleKeys {
   static const alerts_success_login = 'alerts.success_login';
   static const alerts_success_register = 'alerts.success_register';
   static const alerts_success_logout = 'alerts.success_logout';
+  static const alerts_internet_connection_failed = 'alerts.internet_connection_failed';
   static const alerts = 'alerts';
   static const dio_error_cancel = 'dio_error.cancel';
   static const dio_error_timeout = 'dio_error.timeout';

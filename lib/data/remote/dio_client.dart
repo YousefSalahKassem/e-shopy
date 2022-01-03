@@ -36,16 +36,11 @@ class DioClient {
   ) {
     _dio.interceptors.add(
       InterceptorsWrapper(
-        //* Apply an interceptor on API requests , to inject anything on the fly
-        onRequest: (options, handler) {},
         //* Apply an interceptor on API requests error(s)
         onError: (error, handler) async {
           debugPrint(
             'Intercepted an error on\n# Api request : ${error.requestOptions.path}\n# Error message: ${error.message}',
           );
-
-          // dio error handle to ui event bus fire messages
-          _dioErrorHandler.handle(error);
 
           if (error.type == DioErrorType.connectTimeout) {
             try {
@@ -53,6 +48,9 @@ class DioClient {
             } catch (e) {
               debugPrint(e.toString());
             }
+          } else {
+            // dio error handle to ui event bus fire messages
+            _dioErrorHandler.handle(error);
           }
           return handler.next(error);
         },

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_boilerplate/device/package_info/share_endpoints.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:share_plus/share_plus.dart';
 
 class AppInfoHelper {
