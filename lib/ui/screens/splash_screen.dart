@@ -21,7 +21,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
       Timer(const Duration(seconds: 3), () async {
         if (ref
-                .read(sharedPrefsProvider)!
+                .read(sharedPrefsProvider)
                 .getBool(kShowLanguageSelectionScreen) !=
             null) {
           AutoRouter.of(context).replace(const HomeRoute());

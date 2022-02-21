@@ -38,7 +38,7 @@ Future<void> main() async {
   runApp(
     ProviderScope(
       overrides: [sharedPrefsProvider.overrideWithValue(sharedPreferences)],
-      child: App(),
+      child: const App(),
     ),
   );
 }
