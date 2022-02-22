@@ -42,9 +42,12 @@ class DioClient {
             'Intercepted an error on\n# Api request : ${error.requestOptions.path}\n# Error message: ${error.message}',
           );
 
-          if (error.type == DioErrorType.connectTimeout) {
+          final isRetry = error.requestOptions.extra['IS_RETRY'];
+
+          if (isRetry != null && error.type == DioErrorType.connectTimeout) {
             try {
-              await _retry(error.requestOptions);
+              final response = await _retry(error.requestOptions);
+              return handler.resolve(response);
             } catch (e) {
               debugPrint(e.toString());
             }
@@ -193,15 +196,10 @@ class DioClient {
 
 // <---------------------------------------------- Retry Request Implementation
   Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
-    final options = Options(
-      method: requestOptions.method,
-      headers: requestOptions.headers,
-    );
-    return _dio.request<dynamic>(
-      requestOptions.path,
-      data: requestOptions.data,
-      queryParameters: requestOptions.queryParameters,
-      options: options,
+    return _dio.fetch<dynamic>(
+      requestOptions.copyWith(
+        extra: {'IS_RETRY': 1},
+      ),
     );
   }
 
