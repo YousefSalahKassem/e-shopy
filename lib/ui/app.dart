@@ -11,6 +11,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:overlay_support/overlay_support.dart' hide Toast;
 
 class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
   @override
   _AppState createState() => _AppState();
 }

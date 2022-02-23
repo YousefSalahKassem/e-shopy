@@ -55,7 +55,8 @@ class LanguageSelectionScreen extends ConsumerWidget {
                 style: ElevatedButton.styleFrom(primary: Colors.cyan),
                 onPressed: () {
                   // Ensure not to show this screen again
-                  ref.read(sharedPrefsProvider)!
+                  ref
+                      .read(sharedPrefsProvider)
                       .setBool(kShowLanguageSelectionScreen, false);
                   // Navigate to Home
                   AutoRouter.of(context).replace(const HomeRoute());

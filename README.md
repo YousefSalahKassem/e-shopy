@@ -250,7 +250,7 @@ follows the publish/subscribe pattern
 > add a kind of event bus in dir blocs/events
 - create event bus
 > - use provider to create reference of event bus 
-> - use custom StreamSubscription to track event bus and don`t forget to close or pause stream depend on app life ciycle  
+> - use custom StreamSubscription to track event bus and don`t forget to close or pause stream depending on app life ciycle  
 > - inject event bus reference inside any place you want to fire data 
 - EXAMPLE with [UiEventBus](https://github.com/kortobaa/Flutter-boilerplate/tree/master/lib/blocs/events/ui/ui_event_bus_ovelay.dart)
 > - [ui event bus ] responsible about show ui event like 'dialogs','notification overlay ' when need it 

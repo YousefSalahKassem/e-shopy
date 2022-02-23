@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/themes/dimensions.dart';
+import 'package:flutter_boilerplate/ui/widgets/custom_appbar.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
+      appBar: const CustomAppBar(
+        title: 'Login',
       ),
       body: SingleChildScrollView(
         child: Column(

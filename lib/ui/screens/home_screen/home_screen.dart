@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 import 'package:flutter_boilerplate/themes/dimensions.dart';
+import 'package:flutter_boilerplate/ui/widgets/custom_appbar.dart';
 import 'package:upgrader/upgrader.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          tr(LocaleKeys.greeting),
-        ), //* <-- Generated LocaleKeys usage example
+      appBar: CustomAppBar(
+        title: LocaleKeys.greeting.tr(),
         centerTitle: true,
       ),
       body: UpgradeAlert(
