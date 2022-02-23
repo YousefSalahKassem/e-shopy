@@ -3,12 +3,22 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/repositories/token_repository.dart';
+import 'package:flutter_boilerplate/data/remote/constants/endpoints.dart';
+import 'package:flutter_boilerplate/data/remote/dio_configs.dart';
 import 'package:flutter_boilerplate/exceptions/dio_error_handler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// The [Provider] for [Dio] instance throughout the app
 final dioProvider = Provider<Dio>((ref) {
-  return Dio();
+  final configs = ref.read(dioConfigsProvider);
+  return Dio(BaseOptions(
+    connectTimeout: configs.connectionTimeout,
+    receiveTimeout: configs.receiveTimeout,
+    extra: {
+      retryFlag: 1,
+      numberOfRetriesFlag: configs.numberOfRetries,
+    },
+  ));
 });
 
 /// A [Provider] for [DioClient] to handle REST API requests
@@ -42,9 +52,12 @@ class DioClient {
             'Intercepted an error on\n# Api request : ${error.requestOptions.path}\n# Error message: ${error.message}',
           );
 
-          final isRetry = error.requestOptions.extra['IS_RETRY'];
+          final retries = error.requestOptions.extra[retryFlag] as num? ?? 1;
+          final maxRetries =
+              error.requestOptions.extra[numberOfRetriesFlag] as num? ?? 1;
 
-          if (isRetry != null && error.type == DioErrorType.connectTimeout) {
+          if (retries < maxRetries &&
+              error.type == DioErrorType.connectTimeout) {
             try {
               final response = await _retry(error.requestOptions);
               return handler.resolve(response);
@@ -196,9 +209,11 @@ class DioClient {
 
 // <---------------------------------------------- Retry Request Implementation
   Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
+    final extra = Map.of(requestOptions.extra);
+    extra[retryFlag] = (extra[retryFlag] as num? ?? 1) + 1;
     return _dio.fetch<dynamic>(
       requestOptions.copyWith(
-        extra: {'IS_RETRY': 1},
+        extra: extra,
       ),
     );
   }
