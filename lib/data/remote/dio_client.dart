@@ -15,8 +15,8 @@ final dioProvider = Provider<Dio>((ref) {
     connectTimeout: configs.connectionTimeout,
     receiveTimeout: configs.receiveTimeout,
     extra: {
-      retryFlag: 1,
-      numberOfRetriesFlag: configs.numberOfRetries,
+      retriesFlag: 1,
+      maxRetriesFlag: configs.numberOfRetries,
     },
   ));
 });
@@ -52,9 +52,9 @@ class DioClient {
             'Intercepted an error on\n# Api request : ${error.requestOptions.path}\n# Error message: ${error.message}',
           );
 
-          final retries = error.requestOptions.extra[retryFlag] as num? ?? 1;
-          final maxRetries =
-              error.requestOptions.extra[numberOfRetriesFlag] as num? ?? 1;
+          final extras = error.requestOptions.extra;
+          final retries = extras[retriesFlag] as num? ?? 1;
+          final maxRetries = extras[maxRetriesFlag] as num? ?? 1;
 
           if (retries < maxRetries &&
               error.type == DioErrorType.connectTimeout) {
@@ -210,7 +210,7 @@ class DioClient {
 // <---------------------------------------------- Retry Request Implementation
   Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
     final extra = Map.of(requestOptions.extra);
-    extra[retryFlag] = (extra[retryFlag] as num? ?? 1) + 1;
+    extra[retriesFlag] = (extra[retriesFlag] as num? ?? 1) + 1;
     return _dio.fetch<dynamic>(
       requestOptions.copyWith(
         extra: extra,
