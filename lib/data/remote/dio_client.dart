@@ -3,12 +3,22 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/repositories/token_repository.dart';
+import 'package:flutter_boilerplate/data/remote/constants/endpoints.dart';
+import 'package:flutter_boilerplate/data/remote/dio_configs.dart';
 import 'package:flutter_boilerplate/exceptions/dio_error_handler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// The [Provider] for [Dio] instance throughout the app
 final dioProvider = Provider<Dio>((ref) {
-  return Dio();
+  final configs = ref.read(dioConfigsProvider);
+  return Dio(BaseOptions(
+    connectTimeout: configs.connectionTimeout,
+    receiveTimeout: configs.receiveTimeout,
+    extra: {
+      retriesFlag: 1,
+      maxRetriesFlag: configs.numberOfRetries,
+    },
+  ));
 });
 
 /// A [Provider] for [DioClient] to handle REST API requests
@@ -42,9 +52,15 @@ class DioClient {
             'Intercepted an error on\n# Api request : ${error.requestOptions.path}\n# Error message: ${error.message}',
           );
 
-          if (error.type == DioErrorType.connectTimeout) {
+          final extras = error.requestOptions.extra;
+          final retries = extras[retriesFlag] as num? ?? 1;
+          final maxRetries = extras[maxRetriesFlag] as num? ?? 1;
+
+          if (retries < maxRetries &&
+              error.type == DioErrorType.connectTimeout) {
             try {
-              await _retry(error.requestOptions);
+              final response = await _retry(error.requestOptions);
+              return handler.resolve(response);
             } catch (e) {
               debugPrint(e.toString());
             }
@@ -193,15 +209,12 @@ class DioClient {
 
 // <---------------------------------------------- Retry Request Implementation
   Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
-    final options = Options(
-      method: requestOptions.method,
-      headers: requestOptions.headers,
-    );
-    return _dio.request<dynamic>(
-      requestOptions.path,
-      data: requestOptions.data,
-      queryParameters: requestOptions.queryParameters,
-      options: options,
+    final extra = Map.of(requestOptions.extra);
+    extra[retriesFlag] = (extra[retriesFlag] as num? ?? 1) + 1;
+    return _dio.fetch<dynamic>(
+      requestOptions.copyWith(
+        extra: extra,
+      ),
     );
   }
 
