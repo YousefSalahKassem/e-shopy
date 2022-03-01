@@ -30,7 +30,6 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
   final Queue<UiEventBus> _priorityQueue = ListQueue();
   int _topCount = 0;
   int _handlesCount = 0;
-  UiEventBus? _currentEvent;
   late StreamSubscription _subscription;
 
   void _initEventBus(WidgetRef ref) {
