@@ -27,6 +27,9 @@ class UiEventBusOverlay extends ConsumerStatefulWidget {
 class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
     with WidgetsBindingObserver {
   final Queue<UiEventBus> _eventQueue = ListQueue();
+  final Queue<UiEventBus> _priorityQueue = ListQueue();
+  int _topCount = 0;
+  int _handlesCount = 0;
   UiEventBus? _currentEvent;
   late StreamSubscription _subscription;
 
@@ -34,22 +37,46 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
     final eventBus = ref.read(uiEventBusProviderRef);
 
     _subscription = eventBus.on<UiEventBus>().listen((event) {
-      _eventQueue.add(event);
-      _handleEvents(event);
+      if (event.isUrgent) {
+        _priorityQueue.add(event);
+      } else {
+        _eventQueue.add(event);
+      }
+      _handleEvents();
     });
   }
 
-  Future<void> _handleEvents([UiEventBus? newEvent]) async {
-    if (_eventQueue.isEmpty) return;
-    final canBeHandled = _currentEvent == null ||
-        (newEvent?.isUrgent == true && _currentEvent?.isAlwaysTop == false);
-    if (!canBeHandled) return;
-    final event = newEvent ?? _eventQueue.first;
-    _currentEvent = event;
-    await widget.onListen(event);
-    _eventQueue.remove(event);
-    _currentEvent = null;
-    return _handleEvents();
+  Future<void> _handleEvents() async {
+    if (_eventQueue.isEmpty && _priorityQueue.isEmpty) return;
+    if (_topCount > 0) return;
+
+    final priorityEvent = _priorityQueue.isEmpty ? null : _priorityQueue.first;
+    if (priorityEvent != null) {
+      _priorityQueue.remove(priorityEvent);
+      _execute(priorityEvent);
+      return;
+    } else if (_handlesCount > 0) {
+      return;
+    }
+
+    final normalEvent = _eventQueue.isEmpty ? null : _eventQueue.first;
+    if (normalEvent != null) {
+      _eventQueue.remove(normalEvent);
+      _execute(normalEvent);
+    }
+  }
+
+  Future<void> _execute(UiEventBus normalEvent) async {
+    _handlesCount += 1;
+    if (normalEvent.isAlwaysTop) {
+      _topCount += 1;
+    }
+    await widget.onListen(normalEvent);
+    _handlesCount -= 1;
+    if (normalEvent.isAlwaysTop) {
+      _topCount -= 1;
+    }
+    _handleEvents();
   }
 
   @override
