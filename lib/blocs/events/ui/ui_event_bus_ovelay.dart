@@ -65,14 +65,14 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
     }
   }
 
-  Future<void> _execute(UiEventBus normalEvent) async {
+  Future<void> _execute(UiEventBus event) async {
     _handlesCount += 1;
-    if (normalEvent.isAlwaysTop) {
+    if (event.isAlwaysTop) {
       _topCount += 1;
     }
-    await widget.onListen(normalEvent);
+    await widget.onListen(event);
     _handlesCount -= 1;
-    if (normalEvent.isAlwaysTop) {
+    if (event.isAlwaysTop) {
       _topCount -= 1;
     }
     _handleEvents();
