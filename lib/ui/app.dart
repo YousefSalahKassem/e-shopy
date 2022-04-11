@@ -23,35 +23,34 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     // App Localization
     return OverlaySupport(
-      child: EasyLocalization(
-        supportedLocales: const [Locale('en'), Locale('ar')],
-        path: 'assets/translations',
-        fallbackLocale: const Locale('en'),
-        child: UiEventBusOverlay(
-          onListen: (UiEventBus event) {
-            // set action based on what is event .. you can add more events in ui_event_bus.dart file
-            if (event is DioErrorEvent) {
-              UiHelpers.showNotification(event.message);
-            } else if (event is UserLoggedEvent) {
-              UiHelpers.showNotification(LocaleKeys.alerts_success_login.tr());
-            } else if (event is InternetConnectionFailedEvent) {
-              Fluttertoast.showToast(
-                msg: LocaleKeys.alerts_internet_connection_failed.tr(),
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-                fontSize: 16.0,
-              );
-            }
+      child: UiEventBusOverlay(
+        onListen: (UiEventBus event) {
+          // set action based on what is event .. you can add more events in ui_event_bus.dart file
+          if (event is DioErrorEvent) {
+            UiHelpers.showNotification(event.message);
+          } else if (event is UserLoggedEvent) {
+            UiHelpers.showNotification(LocaleKeys.alerts_success_login.tr());
+          } else if (event is InternetConnectionFailedEvent) {
+            Fluttertoast.showToast(
+              msg: LocaleKeys.alerts_internet_connection_failed.tr(),
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              fontSize: 16.0,
+            );
+          }
+        },
+        child: MaterialApp.router(
+          onGenerateTitle: (context) {
+            return LocaleKeys.appName.tr();
           },
-          child: Builder(
-            builder: (context) => MaterialApp.router(
-              title: "Kortobaa 's Boilerplate",
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
-              routerDelegate: AutoRouterDelegate(_appRouter),
-              routeInformationParser: _appRouter.defaultRouteParser(),
-              builder: (context, child) => AppTheme(navigator: child),
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          routerDelegate: AutoRouterDelegate(_appRouter),
+          routeInformationParser: _appRouter.defaultRouteParser(),
+          builder: (context, child) => AppTheme(
+            child: SizedBox(
+              child: child,
             ),
           ),
         ),
