@@ -1,6 +1,8 @@
 /// ui EventBus response about showing any ui changes
 abstract class UiEventBus {
   const UiEventBus();
+  bool get isUrgent => false; // must be shown immediately
+  bool get isAlwaysTop => false; // can't be under any ui
 }
 
 //

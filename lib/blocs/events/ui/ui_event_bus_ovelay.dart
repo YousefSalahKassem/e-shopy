@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:collection';
 import 'dart:developer';
 
 import 'package:event_bus/event_bus.dart';
@@ -8,9 +9,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final uiEventBusProviderRef = Provider<EventBus>((ref) => EventBus());
 
+typedef UIEventHandler = FutureOr<void> Function(UiEventBus);
+
 class UiEventBusOverlay extends ConsumerStatefulWidget {
   final Widget child;
-  final Function(UiEventBus) onListen;
+  final UIEventHandler onListen;
   const UiEventBusOverlay({
     Key? key,
     required this.child,
@@ -23,14 +26,56 @@ class UiEventBusOverlay extends ConsumerStatefulWidget {
 
 class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
     with WidgetsBindingObserver {
+  final Queue<UiEventBus> _eventQueue = ListQueue();
+  final Queue<UiEventBus> _priorityQueue = ListQueue();
+  int _topCount = 0;
+  int _handlesCount = 0;
   late StreamSubscription _subscription;
 
   void _initEventBus(WidgetRef ref) {
     final eventBus = ref.read(uiEventBusProviderRef);
 
     _subscription = eventBus.on<UiEventBus>().listen((event) {
-      widget.onListen(event);
+      if (event.isUrgent) {
+        _priorityQueue.add(event);
+      } else {
+        _eventQueue.add(event);
+      }
+      _handleEvents();
     });
+  }
+
+  Future<void> _handleEvents() async {
+    if (_eventQueue.isEmpty && _priorityQueue.isEmpty) return;
+    if (_topCount > 0) return;
+
+    final priorityEvent = _priorityQueue.isEmpty ? null : _priorityQueue.first;
+    if (priorityEvent != null) {
+      _priorityQueue.remove(priorityEvent);
+      _execute(priorityEvent);
+      return;
+    } else if (_handlesCount > 0) {
+      return;
+    }
+
+    final normalEvent = _eventQueue.isEmpty ? null : _eventQueue.first;
+    if (normalEvent != null) {
+      _eventQueue.remove(normalEvent);
+      _execute(normalEvent);
+    }
+  }
+
+  Future<void> _execute(UiEventBus event) async {
+    _handlesCount += 1;
+    if (event.isAlwaysTop) {
+      _topCount += 1;
+    }
+    await widget.onListen(event);
+    _handlesCount -= 1;
+    if (event.isAlwaysTop) {
+      _topCount -= 1;
+    }
+    _handleEvents();
   }
 
   @override
@@ -59,7 +104,7 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
   @override
   void dispose() {
     log('dispose UiEventBusOverlay');
-
+    _eventQueue.clear();
     _subscription.cancel();
 
     WidgetsBinding.instance!.removeObserver(this);
