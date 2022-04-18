@@ -4,6 +4,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/device/package_info/app_info_helper.dart';
+import 'package:flutter_boilerplate/generated/codegen_loader.g.dart';
+import 'package:flutter_boilerplate/helpers/locale.dart';
 import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
 import 'package:flutter_boilerplate/ui/app.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -38,7 +40,14 @@ Future<void> main() async {
   runApp(
     ProviderScope(
       overrides: [sharedPrefsProvider.overrideWithValue(sharedPreferences)],
-      child: const App(),
+      child: EasyLocalization(
+        supportedLocales: const [AppLocale.arabic, AppLocale.english],
+        path: 'assets/translations',
+        assetLoader: const CodegenLoader(),
+        fallbackLocale: AppLocale.english,
+        useOnlyLangCode: true,
+        child: const App(),
+      ),
     ),
   );
 }

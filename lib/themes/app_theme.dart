@@ -4,9 +4,9 @@ import 'package:flutter_boilerplate/themes/themes.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AppTheme extends StatelessWidget {
-  final Widget? navigator;
+  final Widget child;
 
-  const AppTheme({Key? key, required this.navigator}) : super(key: key);
+  const AppTheme({Key? key, required this.child}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Consumer(
@@ -14,7 +14,7 @@ class AppTheme extends StatelessWidget {
         final currentThemeFlavor = ref.watch(appThemeProvider).themeFlavor;
         return Theme(
           data: getThemeData(currentThemeFlavor!), //     <-----     Theme
-          child: navigator!,
+          child: child,
         );
       },
     );
