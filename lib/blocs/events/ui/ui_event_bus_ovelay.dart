@@ -85,7 +85,7 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
     _initEventBus(ref);
 
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
@@ -107,7 +107,7 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
     _eventQueue.clear();
     _subscription.cancel();
 
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
