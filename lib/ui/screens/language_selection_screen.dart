@@ -35,16 +35,14 @@ class LanguageSelectionScreen extends ConsumerWidget {
                 child: Directionality(
                   textDirection: TextDirection.rtl,
                   child: Row(
-                    children: <Widget>[
+                    children: const <Widget>[
                       LanguageButton(
-                        key: const Key('changeAr'),
-                        locale: context.locale.languageCode,
-                        value: 'ar',
+                        key: Key('changeAr'),
+                        locale: Locale('ar', 'EG'),
                       ),
-                      const SizedBox(width: kSpaceLarge),
+                      SizedBox(width: kSpaceLarge),
                       LanguageButton(
-                        locale: context.locale.languageCode,
-                        value: 'en',
+                        locale: Locale('en', 'US'),
                       ),
                     ],
                   ),
@@ -78,10 +76,9 @@ class LanguageButton extends StatelessWidget {
   const LanguageButton({
     Key? key,
     required this.locale,
-    required this.value,
   }) : super(key: key);
-  final String locale;
-  final String value;
+  final Locale locale;
+
 
   @override
   Widget build(BuildContext context) {
@@ -91,13 +88,13 @@ class LanguageButton extends StatelessWidget {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(primary: Colors.white),
           onPressed: () {
-            context.setLocale(Locale(value));
+            context.setLocale(locale);
           },
           child: Text(
-            tr(value),
+            tr(locale.languageCode),
             style: TextStyle(
               color:
-                  locale == value ? context.theme.primaryColor : Colors.black45,
+                  locale == context.locale ? context.theme.primaryColor : Colors.black45,
             ),
           ),
         ),
