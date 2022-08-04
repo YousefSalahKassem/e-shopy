@@ -29,8 +29,8 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {
                   final currentLangCode = context.locale.languageCode;
                   currentLangCode == 'en'
-                      ? context.setLocale(const Locale('ar'))
-                      : context.setLocale(const Locale('en'));
+                      ? context.setLocale(const Locale('ar', 'EG'))
+                      : context.setLocale(const Locale('en', 'US'));
                 },
                 child: Text(
                   tr(
