@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter_boilerplate/blocs/events/ui/ui_event_bus_ovelay.dart';
-import 'package:flutter_boilerplate/blocs/events/ui/ui_events_bus.dart';
+import 'package:flutter_boilerplate/blocs/events/ui/ui_events.dart';
 import 'package:flutter_boilerplate/exceptions/custom_dio_exception.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -4,12 +4,12 @@ import 'dart:developer';
 
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/blocs/events/ui/ui_events_bus.dart';
+import 'package:flutter_boilerplate/blocs/events/ui/ui_events.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final uiEventBusProviderRef = Provider<EventBus>((ref) => EventBus());
 
-typedef UIEventHandler = FutureOr<void> Function(UiEventBus);
+typedef UIEventHandler = FutureOr<void> Function(UiEvent);
 
 class UiEventBusOverlay extends ConsumerStatefulWidget {
   final Widget child;
@@ -26,8 +26,8 @@ class UiEventBusOverlay extends ConsumerStatefulWidget {
 
 class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
     with WidgetsBindingObserver {
-  final Queue<UiEventBus> _eventQueue = ListQueue();
-  final Queue<UiEventBus> _priorityQueue = ListQueue();
+  final Queue<UiEvent> _eventQueue = ListQueue();
+  final Queue<UiEvent> _priorityQueue = ListQueue();
   int _topCount = 0;
   int _handlesCount = 0;
   late StreamSubscription _subscription;
@@ -35,7 +35,7 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
   void _initEventBus(WidgetRef ref) {
     final eventBus = ref.read(uiEventBusProviderRef);
 
-    _subscription = eventBus.on<UiEventBus>().listen((event) {
+    _subscription = eventBus.on<UiEvent>().listen((event) {
       if (event.isUrgent) {
         _priorityQueue.add(event);
       } else {
@@ -65,7 +65,7 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
     }
   }
 
-  Future<void> _execute(UiEventBus event) async {
+  Future<void> _execute(UiEvent event) async {
     _handlesCount += 1;
     if (event.isAlwaysTop) {
       _topCount += 1;
