@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/events/ui/ui_event_bus_ovelay.dart';
-import 'package:flutter_boilerplate/blocs/events/ui/ui_events_bus.dart';
+import 'package:flutter_boilerplate/blocs/events/ui/ui_events.dart';
 import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
@@ -24,7 +24,7 @@ class _AppState extends State<App> {
     // App Localization
     return OverlaySupport(
       child: UiEventBusOverlay(
-        onListen: (UiEventBus event) {
+        onListen: (UiEvent event) {
           // set action based on what is event .. you can add more events in ui_event_bus.dart file
           if (event is DioErrorEvent) {
             UiHelpers.showNotification(event.message);

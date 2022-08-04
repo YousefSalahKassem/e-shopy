@@ -4,13 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 final tokenRepositoryProvider =
-    ChangeNotifierProvider<TokenRepository>((ref) => TokenRepository());
+    Provider<TokenRepository>((ref) => TokenRepository());
 
 /// A repository used to handle authentication token `CRUD` operations.
 ///
 /// i.e:`read , presist , delete` using [FlutterSecureStorage].
 /// Also expose and modify token state whether it is expired or not.
-class TokenRepository with ChangeNotifier {
+class TokenRepository  {
   //* Dependency
   final FlutterSecureStorage _secureStorage;
 
@@ -31,7 +31,6 @@ class TokenRepository with ChangeNotifier {
   /// Updates token expiry state and [notifyListeners()]
   void updateTokenState({required bool isExpired}) {
     _isTokenExpired = isExpired;
-    notifyListeners();
   }
 
   /// Deletes token from local storage.

@@ -18,7 +18,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       Timer(const Duration(seconds: 3), () async {
         if (ref
                 .read(sharedPrefsProvider)

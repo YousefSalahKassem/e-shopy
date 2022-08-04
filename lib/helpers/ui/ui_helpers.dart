@@ -86,6 +86,6 @@ class UiHelpers {
 
   //* <------------------------------------------ Post Frame Callback
   static void postBuildCallback(void Function(Duration) callback) {
-    WidgetsBinding.instance?.addPostFrameCallback(callback);
+    WidgetsBinding.instance.addPostFrameCallback(callback);
   }
 }
