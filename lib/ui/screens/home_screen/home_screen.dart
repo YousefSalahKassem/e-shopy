@@ -6,6 +6,8 @@ import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:flutter_boilerplate/ui/widgets/custom_appbar.dart';
 import 'package:upgrader/upgrader.dart';
 
+import '../../../helpers/locale.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -29,8 +31,8 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {
                   final currentLangCode = context.locale.languageCode;
                   currentLangCode == 'en'
-                      ? context.setLocale(const Locale('ar', 'EG'))
-                      : context.setLocale(const Locale('en', 'US'));
+                      ? context.setLocale(AppLocale.arabic)
+                      : context.setLocale(AppLocale.english);
                 },
                 child: Text(
                   tr(

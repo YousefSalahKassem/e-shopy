@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/helpers/locale.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
 import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class LanguageSelectionScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    AppLocale.arabic;
     return Scaffold(
       extendBody: true,
       backgroundColor: Colors.white,
@@ -38,11 +40,11 @@ class LanguageSelectionScreen extends ConsumerWidget {
                     children: const <Widget>[
                       LanguageButton(
                         key: Key('changeAr'),
-                        locale: Locale('ar', 'EG'),
+                        locale: AppLocale.arabic,
                       ),
                       SizedBox(width: kSpaceLarge),
                       LanguageButton(
-                        locale: Locale('en', 'US'),
+                        locale:AppLocale.english,
                       ),
                     ],
                   ),
