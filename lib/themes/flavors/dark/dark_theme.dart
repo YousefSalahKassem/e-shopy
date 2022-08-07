@@ -44,6 +44,7 @@ class DarkTheme implements AppThemeFlavor {
 // <------------------------------------------------ App Bar Theme Theme
     appBarTheme: const AppBarTheme(
       elevation: 0,
+      color: Colors.black87
     ),
 
 // <------------------------------------------------ Input Decoration Theme

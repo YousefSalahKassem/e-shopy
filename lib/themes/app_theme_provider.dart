@@ -37,11 +37,11 @@ class AppTheme extends ChangeNotifier {
     final String? savedFlavor =
         _sharedPreferences.getString(kSavedThemeStringKey);
     if (savedFlavor != null) {
-      setThemeFlavor(flavorFromString(savedFlavor));
+      setThemeFlavor(_flavorFromString(savedFlavor));
     }
   }
 
-  ThemeFlavor flavorFromString(String flavorString) {
+  ThemeFlavor _flavorFromString(String flavorString) {
     return ThemeFlavor.values.firstWhere(
       (flavor) => flavor.name == flavorString,
       //default value
