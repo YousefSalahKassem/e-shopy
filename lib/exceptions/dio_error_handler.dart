@@ -12,7 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 ///
 /// It responsible for fire a message
 class DioErrorHandler {
-  static late final provider = Provider<DioErrorHandler>(
+  static final provider = Provider<DioErrorHandler>(
     (ref) => DioErrorHandler._(ref.read(uiEventBusProviderRef)),
   );
 

@@ -18,14 +18,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
       retriesFlag: 1,
       maxRetriesFlag: configs.numberOfRetries,
     },
-  ));
+  ),);
 });
 
 class DioClient {
   /// A [Provider] for [DioClient] to handle REST API requests
   ///
   /// It also adds an interceptor for showing a notification on errors
-  static late final provider = Provider<DioClient>((ref) {
+  static final provider = Provider<DioClient>((ref) {
     final dio = ref.watch(dioProvider);
     final tokenRepo = ref.read(TokenRepository.provider);
     final dioErrorHandler = ref.read(DioErrorHandler.provider);

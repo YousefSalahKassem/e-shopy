@@ -15,7 +15,7 @@ class AppInfoHelper {
 
   AppInfoHelper._();
 
-  static late final provider = Provider((ref) => AppInfoHelper._());
+  static final provider = Provider((ref) => AppInfoHelper._());
 
   static Future<void> ensureInitialized() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/themes/app_theme_provider.dart';
-import 'package:flutter_boilerplate/themes/themes.dart';
+import 'package:flutter_boilerplate/themes/flavors/app_theme_flavor.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AppThemeWidget extends StatelessWidget {
@@ -14,7 +14,8 @@ class AppThemeWidget extends StatelessWidget {
       builder: (_, ref, __) {
         final currentThemeFlavor = ref.watch(AppTheme.provider).themeFlavor;
         return Theme(
-          data: getThemeData(currentThemeFlavor), //     <-----     Theme
+          data: AppThemeFlavor.fromFlavor(currentThemeFlavor)
+              .theme, //     <-----     Theme
           child: child,
         );
       },

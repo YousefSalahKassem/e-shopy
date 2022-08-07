@@ -8,66 +8,66 @@
 // AutoRouteGenerator
 // **************************************************************************
 
-import 'package:auto_route/auto_route.dart' as _i4;
-import 'package:flutter/material.dart' as _i5;
+import 'package:auto_route/auto_route.dart' as i4;
+import 'package:flutter/material.dart' as i5;
 
-import '../ui/screens/home_screen/home_screen.dart' as _i2;
-import '../ui/screens/language_selection_screen.dart' as _i3;
-import '../ui/screens/splash_screen.dart' as _i1;
+import 'package:flutter_boilerplate/ui/screens/home_screen/home_screen.dart' as i2;
+import 'package:flutter_boilerplate/ui/screens/language_selection_screen.dart' as i3;
+import 'package:flutter_boilerplate/ui/screens/splash_screen.dart' as i1;
 
-class AppRouter extends _i4.RootStackRouter {
-  AppRouter([_i5.GlobalKey<_i5.NavigatorState>? navigatorKey])
+class AppRouter extends i4.RootStackRouter {
+  AppRouter([i5.GlobalKey<i5.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i4.PageFactory> pagesMap = {
+  final Map<String, i4.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
+      return i4.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i1.SplashScreen(),
+        child: i1.SplashScreen(),
       );
     },
     HomeRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
+      return i4.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i2.HomeScreen(),
+        child: i2.HomeScreen(),
       );
     },
     LanguageSelectionRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
+      return i4.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i3.LanguageSelectionScreen(),
+        child: i3.LanguageSelectionScreen(),
       );
     }
   };
 
   @override
-  List<_i4.RouteConfig> get routes => [
-        _i4.RouteConfig(SplashRoute.name, path: '/'),
-        _i4.RouteConfig(HomeRoute.name, path: '/home-screen'),
-        _i4.RouteConfig(
+  List<i4.RouteConfig> get routes => [
+        i4.RouteConfig(SplashRoute.name, path: '/'),
+        i4.RouteConfig(HomeRoute.name, path: '/home-screen'),
+        i4.RouteConfig(
           LanguageSelectionRoute.name,
           path: '/language-selection-screen',
         )
       ];
 }
 
-/// generated route for [_i1.SplashScreen]
-class SplashRoute extends _i4.PageRouteInfo<void> {
+/// generated route for [i1.SplashScreen]
+class SplashRoute extends i4.PageRouteInfo<void> {
   const SplashRoute() : super(name, path: '/');
 
   static const String name = 'SplashRoute';
 }
 
-/// generated route for [_i2.HomeScreen]
-class HomeRoute extends _i4.PageRouteInfo<void> {
+/// generated route for [i2.HomeScreen]
+class HomeRoute extends i4.PageRouteInfo<void> {
   const HomeRoute() : super(name, path: '/home-screen');
 
   static const String name = 'HomeRoute';
 }
 
-/// generated route for [_i3.LanguageSelectionScreen]
-class LanguageSelectionRoute extends _i4.PageRouteInfo<void> {
+/// generated route for [i3.LanguageSelectionScreen]
+class LanguageSelectionRoute extends i4.PageRouteInfo<void> {
   const LanguageSelectionRoute()
       : super(name, path: '/language-selection-screen');
 

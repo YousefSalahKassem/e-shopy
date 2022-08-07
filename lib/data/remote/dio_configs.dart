@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DioConfigs {
   /// The [Provider] for [DioConfigs] instance used by [Dio]
-  static late final provider = Provider<DioConfigs>((ref) {
+  static final provider = Provider<DioConfigs>((ref) {
     return const DioConfigs._(
       option.receiveTimeout,
       option.connectionTimeout,

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -8,7 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 /// i.e:`read , presist , delete` using [FlutterSecureStorage].
 /// Also expose and modify token state whether it is expired or not.
 class TokenRepository {
-  static late final provider =
+  static final provider =
       Provider<TokenRepository>((ref) => TokenRepository._());
 
   //* Dependency
