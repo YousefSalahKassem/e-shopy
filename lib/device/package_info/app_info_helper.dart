@@ -1,37 +1,40 @@
 import 'dart:io';
 
 import 'package:flutter_boilerplate/device/package_info/share_endpoints.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:share_plus/share_plus.dart';
 
 class AppInfoHelper {
-  static String version = '';
-  static String packageName = '';
+  static String _version = '';
+  static String _packageName = '';
 
-  factory AppInfoHelper() {
-    return _inst;
-  }
+  String get version => _version;
 
-  static final AppInfoHelper _inst = AppInfoHelper._internal();
+  String get packageName => _packageName;
 
-  AppInfoHelper._internal();
+  AppInfoHelper._();
 
-  static Future<void> getAppInfo() async {
+  static late final provider = Provider((ref) => AppInfoHelper._());
+
+  static Future<void> ensureInitialized() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    packageName = packageInfo.packageName;
-    version = packageInfo.version;
+    _packageName = packageInfo.packageName;
+    _version = packageInfo.version;
   }
 
-  static void share() {
+  /// Share the app url on GooglePlay/AppStore
+  void share() {
     if (Platform.isAndroid) {
+      // share app for android
       Share.share(
-        kGooglePlayShareUrl(packageName),
+        kGooglePlayShareUrl(_packageName),
       );
     } else if (Platform.isIOS) {
-      /// share app for ios
+      // share app for ios
       Share.share(
         kAppleShareUrl(
-          packageName,
+          _packageName,
         ),
       );
     }

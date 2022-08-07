@@ -8,18 +8,17 @@ import 'package:flutter_boilerplate/blocs/events/ui/ui_events.dart';
 import 'package:flutter_boilerplate/exceptions/custom_dio_exception.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// A [mixin] for to handle REST API error
+/// Handle REST API error
 ///
 /// It responsible for fire a message
-
-final dioErrorHandlerProviderRef = Provider<DioErrorHandler>(
-  (ref) => DioErrorHandler(ref.read(uiEventBusProviderRef)),
-);
-
 class DioErrorHandler {
+  static late final provider = Provider<DioErrorHandler>(
+    (ref) => DioErrorHandler._(ref.read(uiEventBusProviderRef)),
+  );
+
   final EventBus _uiEventBus;
 
-  const DioErrorHandler(this._uiEventBus);
+  const DioErrorHandler._(this._uiEventBus);
 
   void handle(DioError error) {
     if (error.type == DioErrorType.other) {

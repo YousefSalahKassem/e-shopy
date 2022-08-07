@@ -66,7 +66,7 @@ class MakeTestAbleWidget extends StatelessWidget {
                 supportedLocales: ctx.supportedLocales,
                 locale: ctx.locale,
                 builder: (context, navigator) {
-                  return AppTheme(
+                  return AppThemeWidget(
                     child: SizedBox(
                       child: navigator,
                     ),

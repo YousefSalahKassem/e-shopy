@@ -29,17 +29,16 @@ Future<void> main() async {
   });
 
   //* Shared Preferences Initialize :---------------
-  final sharedPreferences = await SharedPreferences.getInstance();
+  await AppSharedPreferences.ensureInitialized();
 
-//* EasyLocalization Initialize :---------------
+  //* EasyLocalization Initialize :---------------
   await EasyLocalization.ensureInitialized();
 
   // app info init
-  await AppInfoHelper.getAppInfo();
+  await AppInfoHelper.ensureInitialized();
 
   runApp(
     ProviderScope(
-      overrides: [sharedPrefsProvider.overrideWithValue(sharedPreferences)],
       child: EasyLocalization(
         supportedLocales: const [AppLocale.arabic, AppLocale.english],
         path: 'assets/translations',

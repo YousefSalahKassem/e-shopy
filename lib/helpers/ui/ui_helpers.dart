@@ -7,6 +7,8 @@ import 'package:overlay_support/overlay_support.dart';
 /// Contains useful functions to reduce boilerplate code in ui
 ///
 class UiHelpers {
+  UiHelpers._();
+
   //* <--------------------- Notifications State
   static String _notificationMessage = '';
 

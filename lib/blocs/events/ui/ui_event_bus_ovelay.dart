@@ -14,6 +14,7 @@ typedef UIEventHandler = FutureOr<void> Function(UiEvent);
 class UiEventBusOverlay extends ConsumerStatefulWidget {
   final Widget child;
   final UIEventHandler onListen;
+
   const UiEventBusOverlay({
     Key? key,
     required this.child,
@@ -32,7 +33,7 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
   int _handlesCount = 0;
   late StreamSubscription _subscription;
 
-  void _initEventBus(WidgetRef ref) {
+  void _initEventBus() {
     final eventBus = ref.read(uiEventBusProviderRef);
 
     _subscription = eventBus.on<UiEvent>().listen((event) {
@@ -82,7 +83,7 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
   void initState() {
     log('initState UiEventBusOverlay');
 
-    _initEventBus(ref);
+    _initEventBus();
 
     super.initState();
     WidgetsBinding.instance.addObserver(this);

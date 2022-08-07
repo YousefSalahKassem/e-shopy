@@ -1,1 +1,2 @@
 enum ThemeFlavor { light, dark }
+
