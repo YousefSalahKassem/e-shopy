@@ -1,0 +1,3 @@
+[submodule "deps/kortobaa_core_package_mobile"]
+	path = deps/kortobaa_core_package_mobile
+	url = git@github.com:kortobaa/kortobaa_core_package_mobile.git
