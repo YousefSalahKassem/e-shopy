@@ -50,7 +50,9 @@ dependencies:
   easy_logger: ^0.0.2
 
   kortobaa_core_package:
-    git: git@github.com:kortobaa/kortobaa_core_package_mobile.git
+    git:
+      url: git@github.com:kortobaa/kortobaa_core_package_mobile.git
+      ref: main
 
 
 
