@@ -48,7 +48,7 @@ class _AppState extends State<App> {
           locale: context.locale,
           routerDelegate: AutoRouterDelegate(_appRouter),
           routeInformationParser: _appRouter.defaultRouteParser(),
-          builder: (context, child) => AppTheme(
+          builder: (context, child) => AppThemeWidget(
             child: SizedBox(
               child: child,
             ),

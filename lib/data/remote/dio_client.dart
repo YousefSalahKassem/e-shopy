@@ -9,8 +9,8 @@ import 'package:flutter_boilerplate/exceptions/dio_error_handler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// The [Provider] for [Dio] instance throughout the app
-final dioProvider = Provider<Dio>((ref) {
-  final configs = ref.read(dioConfigsProvider);
+ final dioProvider = Provider<Dio>((ref) {
+  final configs = ref.read(DioConfigs.provider);
   return Dio(BaseOptions(
     connectTimeout: configs.connectionTimeout,
     receiveTimeout: configs.receiveTimeout,
@@ -18,28 +18,28 @@ final dioProvider = Provider<Dio>((ref) {
       retriesFlag: 1,
       maxRetriesFlag: configs.numberOfRetries,
     },
-  ));
-});
-
-/// A [Provider] for [DioClient] to handle REST API requests
-///
-/// It also adds an interceptor for showing a notification on errors
-final dioClientProvider = Provider<DioClient>((ref) {
-  final dio = ref.watch(dioProvider);
-  final tokenRepo = ref.watch(tokenRepositoryProvider);
-  final dioErrorHandler = ref.read(dioErrorHandlerProviderRef);
-
-  return DioClient(dio, tokenRepo, dioErrorHandler);
+  ),);
 });
 
 class DioClient {
+  /// A [Provider] for [DioClient] to handle REST API requests
+  ///
+  /// It also adds an interceptor for showing a notification on errors
+  static final provider = Provider<DioClient>((ref) {
+    final dio = ref.watch(dioProvider);
+    final tokenRepo = ref.read(TokenRepository.provider);
+    final dioErrorHandler = ref.read(DioErrorHandler.provider);
+
+    return DioClient._(dio, tokenRepo, dioErrorHandler);
+  });
+
   //* Dependencies
   final Dio _dio;
   final TokenRepository _tokenRepository;
   final DioErrorHandler _dioErrorHandler;
 
   //* Constructor
-  DioClient(
+  DioClient._(
     this._dio,
     this._tokenRepository,
     this._dioErrorHandler,

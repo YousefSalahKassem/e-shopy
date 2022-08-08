@@ -3,60 +3,60 @@ import 'package:flutter_boilerplate/themes/dimensions.dart';
 
 // vertical boxes
 
-const kVerticalSizedBoxXXSmall = SizedBox(
-  height: kSizeXXSmall,
+const verticalSizedBoxXXSmall = SizedBox(
+  height: sizeXXSmall,
 );
 
-const kVerticalSizedBoxXSmall = SizedBox(
-  height: kSizeXSmall,
+const verticalSizedBoxXSmall = SizedBox(
+  height: sizeXSmall,
 );
 
-const kVerticalSizedBoxSmall = SizedBox(
-  height: kSizeSmall,
+const verticalSizedBoxSmall = SizedBox(
+  height: sizeSmall,
 );
 
-const kVerticalSizedBoxMedium = SizedBox(
-  height: kSizeMedium,
+const verticalSizedBoxMedium = SizedBox(
+  height: sizeMedium,
 );
 
-const kVerticalSizedBoxLarge = SizedBox(
-  height: kSizeLarge,
+const verticalSizedBoxLarge = SizedBox(
+  height: sizeLarge,
 );
 
-const kVerticalSizedBoxXLarge = SizedBox(
-  height: kSizeXLarge,
+const verticalSizedBoxXLarge = SizedBox(
+  height: sizeXLarge,
 );
 
-const kVerticalSizedBoxXXLarge = SizedBox(
-  height: kSizeXXLarge,
+const verticalSizedBoxXXLarge = SizedBox(
+  height: sizeXXLarge,
 );
 
 // horizontal boxes
 
-const kHorizontalSizedBoxXXSmall = SizedBox(
-  width: kSizeXXSmall,
+const horizontalSizedBoxXXSmall = SizedBox(
+  width: sizeXXSmall,
 );
 
-const kHorizontalSizedBoxXSmall = SizedBox(
-  width: kSizeXSmall,
+const horizontalSizedBoxXSmall = SizedBox(
+  width: sizeXSmall,
 );
 
-const kHorizontalSizedBoxSmall = SizedBox(
-  width: kSizeSmall,
+const horizontalSizedBoxSmall = SizedBox(
+  width: sizeSmall,
 );
 
-const kHorizontalSizedBoxMedium = SizedBox(
-  width: kSizeMedium,
+const horizontalSizedBoxMedium = SizedBox(
+  width: sizeMedium,
 );
 
-const kHorizontalSizedBoxLarge = SizedBox(
-  width: kSizeLarge,
+const horizontalSizedBoxLarge = SizedBox(
+  width: sizeLarge,
 );
 
-const kHorizontalSizedBoxXLarge = SizedBox(
-  width: kSizeXLarge,
+const horizontalSizedBoxXLarge = SizedBox(
+  width: sizeXLarge,
 );
 
-const kHorizontalSizedBoxXXLarge = SizedBox(
-  width: kSizeXXLarge,
+const horizontalSizedBoxXXLarge = SizedBox(
+  width: sizeXXLarge,
 );

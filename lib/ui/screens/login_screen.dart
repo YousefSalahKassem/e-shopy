@@ -18,11 +18,11 @@ class LoginScreen extends StatelessWidget {
               semanticLabel: "login_icon",
             ),
             const SizedBox(
-              height: kSpaceLarge,
+              height: spaceLarge,
             ),
             TextFormField(),
             const SizedBox(
-              height: kSpaceSmall,
+              height: spaceSmall,
             ),
             TextFormField(),
           ],

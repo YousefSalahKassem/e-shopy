@@ -31,7 +31,7 @@ class LanguageSelectionScreen extends ConsumerWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: kSpaceXXLarge),
+              const SizedBox(height: spaceXXLarge),
               SizedBox(
                 width: context.widthR(0.8),
                 child: Directionality(
@@ -42,7 +42,7 @@ class LanguageSelectionScreen extends ConsumerWidget {
                         key: Key('changeAr'),
                         locale: AppLocale.arabic,
                       ),
-                      SizedBox(width: kSpaceLarge),
+                      SizedBox(width: spaceLarge),
                       LanguageButton(
                         locale:AppLocale.english,
                       ),
@@ -50,13 +50,13 @@ class LanguageSelectionScreen extends ConsumerWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: kSpaceXXLarge),
+              const SizedBox(height: spaceXXLarge),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(primary: Colors.cyan),
                 onPressed: () {
                   // Ensure not to show this screen again
                   ref
-                      .read(sharedPrefsProvider)
+                      .read(AppSharedPreferences.provider)
                       .setBool(kShowLanguageSelectionScreen, false);
                   // Navigate to Home
                   AutoRouter.of(context).replace(const HomeRoute());

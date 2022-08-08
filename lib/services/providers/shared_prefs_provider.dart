@@ -1,7 +1,12 @@
-import 'package:flutter_boilerplate/exceptions/initialization_exception.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final sharedPrefsProvider = Provider<SharedPreferences>(
-  (ref) => throw const UninitializedException("sharedPrefsProvider", SharedPreferences),
-);
+mixin AppSharedPreferences {
+  static late final SharedPreferences _shearedPreferences;
+  static final provider =
+      Provider<SharedPreferences>((ref) => _shearedPreferences);
+
+  static Future<void> ensureInitialized() async {
+    _shearedPreferences = await SharedPreferences.getInstance();
+  }
+}
