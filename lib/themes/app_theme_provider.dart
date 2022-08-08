@@ -38,13 +38,15 @@ class AppTheme extends ChangeNotifier {
   }
   /// ### change current flavor.
   ///
+  /// save the new flavor in [SharedPreferences].
+  ///
   /// use notifyListeners to update any widget watch [AppTheme] provider.
   Future<void> setThemeFlavor(ThemeFlavor flavor) async {
     _themeFlavor = flavor;
     await _sharedPreferences.setString(kSavedThemeStringKey, flavor.name);
     notifyListeners();
   }
-
+  ///get saved flavor and apply it.
   void ensureInitialized() {
     final String? savedFlavor =
         _sharedPreferences.getString(kSavedThemeStringKey);
@@ -53,6 +55,10 @@ class AppTheme extends ChangeNotifier {
     }
   }
 
+  /// ### convert string to [ThemeFlavor].
+  ///
+  /// if the string not mach any flavor name in [ThemeFlavor]
+  /// will return the first flavor in [ThemeFlavor].
   ThemeFlavor _flavorFromString(String flavorString) {
     return ThemeFlavor.values.firstWhere(
       (flavor) => flavor.name == flavorString,
