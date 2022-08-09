@@ -133,7 +133,10 @@ we not use this way and consider to not use it in your code,and make static vari
 class ThemeRepo{
   //private constructor, used to restricting object creation
   AuthRepo._();
+  
   // static variable to use in riverpod to watch/read this class
+  // use late for Lazy initialization
+  // see https://dart.dev/null-safety/understanding-null-safety#lazy-initialization
   static late final provider = Provider((ref)=>ThemeRepo._());
   
   // the ThemeRepo code
