@@ -34,17 +34,17 @@ class TokenRepository {
 
   /// Deletes token from local storage.
   Future<void> deleteToken() async {
-    await _secureStorage.delete(key: kAuthToken);
+    await _secureStorage.delete(key: authTokenKey);
     _authToken = null;
   }
 
   /// Saves or Updates token in local storage with the given [newToken].
   Future<void> presistToken(String newToken) async {
     _authToken = newToken;
-    await _secureStorage.write(key: kAuthToken, value: newToken);
+    await _secureStorage.write(key: authTokenKey, value: newToken);
   }
 
   /// Read token from local storage.
   Future<String?> readToken(WidgetRef ref) async =>
-      _authToken = await _secureStorage.read(key: kAuthToken);
+      _authToken = await _secureStorage.read(key: authTokenKey);
 }
