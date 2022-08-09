@@ -13,7 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// change the flavor by call [setThemeFlavor].
 ///
 /// [AppTheme] use [SharedPreferences] to cache the current theme flavor,
-/// [kSavedThemeStringKey] is key used to save the flavor,
+/// [savedThemeStringKey] is key used to save the flavor,
 /// saved value is the flavor name.
 class AppTheme extends ChangeNotifier {
   static final provider = ChangeNotifierProvider<AppTheme>(
@@ -43,13 +43,13 @@ class AppTheme extends ChangeNotifier {
   /// use notifyListeners to update any widget watch [AppTheme] provider.
   Future<void> setThemeFlavor(ThemeFlavor flavor) async {
     _themeFlavor = flavor;
-    await _sharedPreferences.setString(kSavedThemeStringKey, flavor.name);
+    await _sharedPreferences.setString(savedThemeStringKey, flavor.name);
     notifyListeners();
   }
   ///get saved flavor and apply it.
   void ensureInitialized() {
     final String? savedFlavor =
-        _sharedPreferences.getString(kSavedThemeStringKey);
+        _sharedPreferences.getString(savedThemeStringKey);
     if (savedFlavor != null) {
       setThemeFlavor(_flavorFromString(savedFlavor));
     }

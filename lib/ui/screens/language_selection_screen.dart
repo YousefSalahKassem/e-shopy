@@ -57,7 +57,7 @@ class LanguageSelectionScreen extends ConsumerWidget {
                   // Ensure not to show this screen again
                   ref
                       .read(AppSharedPreferences.provider)
-                      .setBool(kShowLanguageSelectionScreen, false);
+                      .setBool(showLanguageSelectionScreen, false);
                   // Navigate to Home
                   AutoRouter.of(context).replace(const HomeRoute());
                 },

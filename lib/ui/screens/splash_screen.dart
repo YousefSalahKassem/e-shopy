@@ -22,7 +22,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       Timer(const Duration(seconds: 3), () async {
         if (ref
                 .read(AppSharedPreferences.provider)
-                .getBool(kShowLanguageSelectionScreen) !=
+                .getBool(showLanguageSelectionScreen) !=
             null) {
           AutoRouter.of(context).replace(const HomeRoute());
         } else {
