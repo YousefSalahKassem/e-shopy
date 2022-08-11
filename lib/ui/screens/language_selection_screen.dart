@@ -3,16 +3,15 @@ import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/helpers/locale.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
-import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
 import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 
 class LanguageSelectionScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AppLocale.arabic;
     return Scaffold(
       extendBody: true,
       backgroundColor: Colors.white,
@@ -56,8 +55,9 @@ class LanguageSelectionScreen extends ConsumerWidget {
                 onPressed: () {
                   // Ensure not to show this screen again
                   ref
-                      .read(AppSharedPreferences.provider)
-                      .setBool(showLanguageSelectionScreen, false);
+                      .read(LocalUserData.provider)
+                  //TODO add bool
+                      .write(showLanguageSelectionScreen, 'false');
                   // Navigate to Home
                   AutoRouter.of(context).replace(const HomeRoute());
                 },

@@ -52,7 +52,7 @@ dependencies:
   kortobaa_core_package:
     git:
       url: git@github.com:kortobaa/kortobaa_core_package_mobile.git
-      ref: main
+      ref: edit_chached_future
 
 
 

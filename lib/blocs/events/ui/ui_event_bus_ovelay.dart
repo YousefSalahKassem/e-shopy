@@ -6,29 +6,30 @@ import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/events/ui/ui_events.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 
 final uiEventBusProviderRef = Provider<EventBus>((ref) => EventBus());
 
-typedef UIEventHandler = FutureOr<void> Function(UiEvent);
+typedef UIEventHandler = FutureOr<void> Function(UIEvent);
 
-class UiEventBusOverlay extends ConsumerStatefulWidget {
+class UIEventBusOverlay extends ConsumerStatefulWidget {
   final Widget child;
   final UIEventHandler onListen;
 
-  const UiEventBusOverlay({
+  const UIEventBusOverlay({
     Key? key,
     required this.child,
     required this.onListen,
   }) : super(key: key);
 
   @override
-  _UiEventBusOverlayState createState() => _UiEventBusOverlayState();
+  _UIEventBusOverlayState createState() => _UIEventBusOverlayState();
 }
 
-class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
+class _UIEventBusOverlayState extends ConsumerState<UIEventBusOverlay>
     with WidgetsBindingObserver {
-  final Queue<UiEvent> _eventQueue = ListQueue();
-  final Queue<UiEvent> _priorityQueue = ListQueue();
+  final Queue<UIEvent> _eventQueue = ListQueue();
+  final Queue<UIEvent> _priorityQueue = ListQueue();
   int _topCount = 0;
   int _handlesCount = 0;
   late StreamSubscription _subscription;
@@ -36,7 +37,7 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
   void _initEventBus() {
     final eventBus = ref.read(uiEventBusProviderRef);
 
-    _subscription = eventBus.on<UiEvent>().listen((event) {
+    _subscription = eventBus.on<UIEvent>().listen((event) {
       if (event.isUrgent) {
         _priorityQueue.add(event);
       } else {
@@ -66,7 +67,7 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
     }
   }
 
-  Future<void> _execute(UiEvent event) async {
+  Future<void> _execute(UIEvent event) async {
     _handlesCount += 1;
     if (event.isAlwaysTop) {
       _topCount += 1;
@@ -81,7 +82,7 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
 
   @override
   void initState() {
-    log('initState UiEventBusOverlay');
+    log('initState UIEventBusOverlay');
 
     _initEventBus();
 
@@ -91,7 +92,7 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    log("$state in UiEventBusOverlay");
+    log("$state in UIEventBusOverlay");
     if (state == AppLifecycleState.resumed) {
       _subscription.resume();
     } else {
@@ -104,7 +105,7 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
 
   @override
   void dispose() {
-    log('dispose UiEventBusOverlay');
+    log('dispose UIEventBusOverlay');
     _eventQueue.clear();
     _subscription.cancel();
 
@@ -114,7 +115,7 @@ class _UiEventBusOverlayState extends ConsumerState<UiEventBusOverlay>
 
   @override
   Widget build(BuildContext context) {
-    log('build UiEventBusOverlay');
+    log('build UIEventBusOverlay');
     return widget.child;
   }
 }

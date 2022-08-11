@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 import 'package:flutter_boilerplate/helpers/locale.dart';
 import 'package:flutter_boilerplate/helpers/ui/enums.dart';
-import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 import 'package:flutter_boilerplate/themes/app_theme_provider.dart';
 import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:flutter_boilerplate/ui/widgets/custom_appbar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 import 'package:upgrader/upgrader.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(primary: Colors.cyan),
                 onPressed: () {
                   final currentLangCode = context.locale.languageCode;
-                  currentLangCode == 'en'
+                  currentLangCode == AppLocale.english.languageCode
                       ? context.setLocale(AppLocale.arabic)
                       : context.setLocale(AppLocale.english);
                 },
