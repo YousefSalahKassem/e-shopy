@@ -3,6 +3,7 @@ import 'package:flutter_boilerplate/helpers/storage_keys.dart';
 import 'package:flutter_boilerplate/helpers/ui/enums.dart';
 import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// ### [AppTheme] provider hold the current theme flavor
@@ -17,11 +18,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// saved value is the flavor name.
 class AppTheme extends ChangeNotifier {
   static final provider = ChangeNotifierProvider<AppTheme>(
-    (ref) => AppTheme(ref.watch(AppSharedPreferences.provider)),
+    (ref) => AppTheme(ref.watch(LocalUserData.provider)),
   );
 
   //* Dependency
-  late final SharedPreferences _sharedPreferences;
+  late final LocalUserData _localUserData;
 
   //* State
   ThemeFlavor _themeFlavor = ThemeFlavor.values.first;
@@ -32,10 +33,11 @@ class AppTheme extends ChangeNotifier {
   //* Constructor and Methods
 
   // this test
-  AppTheme(this._sharedPreferences) {
+  AppTheme(this._localUserData) {
     // Load Theme as soon as the provider is created
     ensureInitialized();
   }
+
   /// ### change current flavor.
   ///
   /// save the new flavor in [SharedPreferences].
@@ -43,13 +45,13 @@ class AppTheme extends ChangeNotifier {
   /// use notifyListeners to update any widget watch [AppTheme] provider.
   Future<void> setThemeFlavor(ThemeFlavor flavor) async {
     _themeFlavor = flavor;
-    await _sharedPreferences.setString(savedThemeStringKey, flavor.name);
+    await _localUserData.write(const StorageKey(savedThemeStringKey),CodableValue. flavor.name);
     notifyListeners();
   }
+
   ///get saved flavor and apply it.
-  void ensureInitialized() {
-    final String? savedFlavor =
-        _sharedPreferences.getString(savedThemeStringKey);
+  Future<void> ensureInitialized() async {
+    final String? savedFlavor = await _localUserData.read(savedThemeStringKey);
     if (savedFlavor != null) {
       setThemeFlavor(_flavorFromString(savedFlavor));
     }

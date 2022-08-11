@@ -8,6 +8,7 @@ import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   @override
@@ -20,10 +21,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       Timer(const Duration(seconds: 3), () async {
-        if (ref
-                .read(AppSharedPreferences.provider)
-                .getBool(showLanguageSelectionScreen) !=
-            null) {
+        if (await ref
+            .read(LocalUserData.provider)
+            .exists(showLanguageSelectionScreen)) {
           AutoRouter.of(context).replace(const HomeRoute());
         } else {
           AutoRouter.of(context).replace(const LanguageSelectionRoute());

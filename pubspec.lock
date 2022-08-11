@@ -494,8 +494,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: main
-      resolved-ref: bfd5d5ac23ec8e6e4acd00b11c46db4ca50b3b93
+      ref: edit_chached_future
+      resolved-ref: "4be91ac1c36f7fb03f8d311f10312421b67b72ac"
       url: "git@github.com:kortobaa/kortobaa_core_package_mobile.git"
     source: git
     version: "0.0.1"
@@ -673,14 +673,14 @@ packages:
       name: phone_number_metadata
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.3"
+    version: "5.0.4"
   phone_numbers_parser:
     dependency: transitive
     description:
       name: phone_numbers_parser
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.5"
+    version: "6.0.1"
   platform:
     dependency: transitive
     description:

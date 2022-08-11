@@ -8,6 +8,7 @@ import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_boilerplate/themes/app_theme.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 import 'package:overlay_support/overlay_support.dart' hide Toast;
 
 class App extends StatefulWidget {
@@ -23,8 +24,8 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     // App Localization
     return OverlaySupport(
-      child: UiEventBusOverlay(
-        onListen: (UiEvent event) {
+      child: AppEventListener(
+        onListen: (AppEvent event) {
           // set action based on what is event .. you can add more events in ui_event_bus.dart file
           if (event is DioErrorEvent) {
             UiHelpers.showNotification(event.message);

@@ -7,6 +7,7 @@ import 'package:flutter_boilerplate/blocs/events/ui/ui_event_bus_ovelay.dart';
 import 'package:flutter_boilerplate/blocs/events/ui/ui_events.dart';
 import 'package:flutter_boilerplate/exceptions/custom_dio_exception.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 
 /// Handle REST API error
 ///
