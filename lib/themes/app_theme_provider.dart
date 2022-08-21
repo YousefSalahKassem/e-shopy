@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
 import 'package:flutter_boilerplate/helpers/ui/enums.dart';
-import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,11 +17,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// saved value is the flavor name.
 class AppTheme extends ChangeNotifier {
   static final provider = ChangeNotifierProvider<AppTheme>(
-    (ref) => AppTheme(ref.watch(LocalUserData.provider)),
+    (ref) => AppTheme(ref.watch(SimpleLocalData.provider)),
   );
 
   //* Dependency
-  late final LocalUserData _localUserData;
+  late final SimpleLocalData _localUserData;
 
   //* State
   ThemeFlavor _themeFlavor = ThemeFlavor.values.first;
@@ -45,13 +44,14 @@ class AppTheme extends ChangeNotifier {
   /// use notifyListeners to update any widget watch [AppTheme] provider.
   Future<void> setThemeFlavor(ThemeFlavor flavor) async {
     _themeFlavor = flavor;
-    await _localUserData.write(const StorageKey(savedThemeStringKey),CodableValue. flavor.name);
+    await _localUserData.writeString(savedThemeStringKey, flavor.name);
     notifyListeners();
   }
 
   ///get saved flavor and apply it.
   Future<void> ensureInitialized() async {
-    final String? savedFlavor = await _localUserData.read(savedThemeStringKey);
+    final String? savedFlavor =
+        await _localUserData.readString(savedThemeStringKey);
     if (savedFlavor != null) {
       setThemeFlavor(_flavorFromString(savedFlavor));
     }

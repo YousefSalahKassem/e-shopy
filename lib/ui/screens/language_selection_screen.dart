@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/helpers/locale.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
-import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
 import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart';
@@ -43,7 +42,7 @@ class LanguageSelectionScreen extends ConsumerWidget {
                       ),
                       SizedBox(width: spaceLarge),
                       LanguageButton(
-                        locale:AppLocale.english,
+                        locale: AppLocale.english,
                       ),
                     ],
                   ),
@@ -55,9 +54,9 @@ class LanguageSelectionScreen extends ConsumerWidget {
                 onPressed: () {
                   // Ensure not to show this screen again
                   ref
-                      .read(LocalUserData.provider)
-                  //TODO add bool
-                      .write(showLanguageSelectionScreen, 'false');
+                      .read(SimpleLocalData.provider)
+                      //TODO add bool
+                      .writeBool(showLanguageSelectionScreen, false);
                   // Navigate to Home
                   AutoRouter.of(context).replace(const HomeRoute());
                 },
@@ -81,7 +80,6 @@ class LanguageButton extends StatelessWidget {
   }) : super(key: key);
   final Locale locale;
 
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -95,8 +93,9 @@ class LanguageButton extends StatelessWidget {
           child: Text(
             tr(locale.languageCode),
             style: TextStyle(
-              color:
-                  locale == context.locale ? context.theme.primaryColor : Colors.black45,
+              color: locale == context.locale
+                  ? context.theme.primaryColor
+                  : Colors.black45,
             ),
           ),
         ),

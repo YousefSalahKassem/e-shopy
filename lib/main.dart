@@ -10,7 +10,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_update/in_app_update.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 import 'package:logging/logging.dart' as log;
-import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,12 +28,11 @@ Future<void> main() async {
 
   //* Shared Preferences Initialize :---------------
   // await AppSharedPreferences.ensureInitialized();
-LocalUserData.sharedPreferencesFutureProvider;
   //* EasyLocalization Initialize :---------------
   await EasyLocalization.ensureInitialized();
 
   // app info init
-  await AppInfoHelper.provider;
+  await AppInfoHelper.initialize();
 
   runApp(
     ProviderScope(

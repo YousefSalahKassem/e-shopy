@@ -4,9 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_boilerplate/helpers/storage_keys.dart';
-import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
-import 'package:flutter_boilerplate/services/providers/shared_prefs_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 
@@ -22,8 +20,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       Timer(const Duration(seconds: 3), () async {
         if (await ref
-            .read(LocalUserData.provider)
-            .exists(showLanguageSelectionScreen)) {
+                .read(SimpleLocalData.provider)
+                .readString(showLanguageSelectionScreen) ==
+            null) {
           AutoRouter.of(context).replace(const HomeRoute());
         } else {
           AutoRouter.of(context).replace(const LanguageSelectionRoute());
