@@ -15,6 +15,7 @@ dependencies:
 
   # Localization
   easy_localization: ^3.0.1
+
   flutter:
     sdk: flutter
   flutter_localizations:
@@ -79,19 +80,19 @@ flutter:
   uses-material-design: true
 
   assets:
-   - assets/translations/
-   - assets/fonts/
-   - assets/images/
-   - assets/animations/
+    - assets/translations/
+    - assets/fonts/
+    - assets/images/
+    - assets/icons/
 
   fonts:
-    - family: Tajawal
+    - family: Muli
       fonts:
-        - asset: assets/fonts/Tajawal-Regular.ttf
-        - asset: assets/fonts/Tajawal-Bold.ttf
-    
-  
+        - asset: assets/fonts/muli/Muli.ttf
+        - asset: assets/fonts/muli/Muli-Bold.ttf
+        - asset: assets/fonts/muli/Muli-BoldItalic.ttf
+
+
 
 flutter_native_splash:
-  image: assets/images/kortobaa.png
-  color: "ffffff"
+  color: "FF7643"

@@ -1,4 +1,3 @@
-import 'package:flutter_boilerplate/themes/flavors/app_theme_flavor.dart';
 
 ///### [ThemeFlavor] enum to hold the flavors names
 ///

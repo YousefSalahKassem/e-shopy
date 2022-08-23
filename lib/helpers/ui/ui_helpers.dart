@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/helpers/ui/extensions.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 import 'package:overlay_support/overlay_support.dart';
 
@@ -17,15 +16,15 @@ class UiHelpers {
 
 // Show Notification
   static void showNotification(
-    String message, {
-    NotificationPosition position = NotificationPosition.top,
-    int durationInSeconds = 3,
-    bool isError = true,
-  }) {
+      String message, {
+        NotificationPosition position = NotificationPosition.top,
+        int durationInSeconds = 3,
+        bool isError = true,
+      }) {
     if (_notificationMessage != message) {
       _notificationMessage = message;
       showOverlayNotification(
-        (context) => Card(
+            (context) => Card(
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 64),
           elevation: 3,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -57,33 +56,40 @@ class UiHelpers {
     required String okButtonText,
     required String cancelButtonText,
   }) {
-    showDialog(
+    showGeneralDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        content: Text(
-          message,
-          style: Theme.of(context).textTheme.subtitle2,
+      transitionDuration: const Duration(milliseconds: 200),
+      barrierDismissible: true,
+      barrierLabel: '',
+      transitionBuilder: (context, animation1, animation2, widget) => Transform.scale(
+        scale: animation1.value,
+        child: AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          content: Text(
+            message,
+            style: Theme.of(context).textTheme.subtitle2,
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: Text(
+                cancelButtonText,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+            ),
+            TextButton(
+              onPressed: action,
+              child: Text(
+                okButtonText,
+                style: Theme.of(context).textTheme.subtitle2,
+              ),
+            ),
+          ],
         ),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop(false);
-            },
-            child: Text(
-              cancelButtonText,
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
-          ),
-          TextButton(
-            onPressed: action,
-            child: Text(
-              okButtonText,
-              style: Theme.of(context).textTheme.subtitle2,
-            ),
-          ),
-        ],
       ),
+      pageBuilder: (context,animation1,animation2) => const SizedBox(),
     );
   }
 

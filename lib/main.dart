@@ -1,49 +1,30 @@
-import 'dart:io';
-
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/foundation.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/generated/codegen_loader.g.dart';
-import 'package:flutter_boilerplate/helpers/locale.dart';
-import 'package:flutter_boilerplate/ui/app.dart';
+import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
+import 'package:flutter_boilerplate/themes/app_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:in_app_update/in_app_update.dart';
-import 'package:kortobaa_core_package/kortobaa_core_package.dart';
-import 'package:logging/logging.dart' as log;
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
+  runApp(const ProviderScope(child: MyApp()));
+}
 
-  if (Platform.isAndroid && kReleaseMode) {
-    final AppUpdateInfo info = await InAppUpdate.checkForUpdate();
-    if (info.flexibleUpdateAllowed) {
-      await InAppUpdate.performImmediateUpdate();
-    }
-  }
-  // Log everything in debug builds.  Log warnings (and up) in release builds.
-  log.Logger.root.level = kDebugMode ? log.Level.ALL : log.Level.WARNING;
-  log.Logger.root.onRecord.listen((log.LogRecord rec) {
-    debugPrint('${rec.level.name}: ${rec.time}: ${rec.message}');
-  });
+class MyApp extends StatelessWidget {
+  static final appRoute = AppRouter();
 
-  //* Shared Preferences Initialize :---------------
-  // await AppSharedPreferences.ensureInitialized();
-  //* EasyLocalization Initialize :---------------
-  await EasyLocalization.ensureInitialized();
+  const MyApp({Key? key}) : super(key: key);
 
-  // app info init
-  await AppInfoHelper.initialize();
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
 
-  runApp(
-    ProviderScope(
-      child: EasyLocalization(
-        supportedLocales: const [AppLocale.arabic, AppLocale.english],
-        path: 'assets/translations',
-        assetLoader: const CodegenLoader(),
-        fallbackLocale: AppLocale.english,
-        useOnlyLangCode: true,
-        child: const App(),
+    return MaterialApp.router(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      routerDelegate: AutoRouterDelegate(appRoute),
+      routeInformationParser: appRoute.defaultRouteParser(),
+      builder: (context,child)=>AppThemeWidget(
+        child: SizedBox(child: child,),
       ),
-    ),
-  );
+    );
+  }
 }

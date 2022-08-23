@@ -1,83 +1,30 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:easy_logger/easy_logger.dart';
+// This is a basic Flutter widget test.
+//
+// To perform an interaction with a widget in your test, use the WidgetTester
+// utility in the flutter_test package. For example, you can send tap and scroll
+// gestures. You can also use WidgetTester to find child widgets in the widget
+// tree, read text, and verify that the values of widget properties are correct.
+
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/themes/app_theme.dart';
-import 'package:flutter_boilerplate/ui/screens/language_selection_screen.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_boilerplate/main.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:overlay_support/overlay_support.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-Future<void> main() async {
-  SharedPreferences.setMockInitialValues({});
-  EasyLocalization.logger.enableLevels = <LevelMessages>[
-    LevelMessages.error,
-    LevelMessages.warning,
-  ];
-  await EasyLocalization.ensureInitialized();
-  testWidgets(
-    'Test localization language selection screen',
-    (WidgetTester tester) async {
-      final screen = MakeTestAbleWidget(
-        child: LanguageSelectionScreen(),
-      );
-      await tester.runAsync(() async {
-        await tester.pumpWidget(screen);
 
-        await tester.pumpAndSettle(
-          const Duration(seconds: 10),
-        );
+void main() {
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const MyApp());
 
-        expect(find.byType(Column), findsOneWidget);
-        expect(find.text('العربية'), findsOneWidget);
-        expect(find.text('English'), findsOneWidget);
-        expect(find.text('Start'), findsOneWidget);
-        expect(find.byKey(const Key('changeAr')), findsOneWidget);
+    // Verify that our counter starts at 0.
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('1'), findsNothing);
 
-        await tester.tap(find.byKey(const Key('changeAr')));
-        await tester.pumpAndSettle();
+    // Tap the '+' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pump();
 
-        // check text in screen after change language into arabic
-        expect(find.text('ابدأ'), findsOneWidget);
-
-        // expect is true after tap change language to arabic
-        expect(tr('start'), 'ابدأ');
-      });
-    },
-  );
-}
-
-class MakeTestAbleWidget extends StatelessWidget {
-  final Widget? child;
-
-  const MakeTestAbleWidget({Key? key, this.child}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return ProviderScope(
-      child: EasyLocalization(
-        supportedLocales: const [Locale('en'), Locale('ar')],
-        path: 'assets/translations',
-        startLocale: const Locale('en'),
-        child: Builder(
-          builder: (ctx) {
-            return OverlaySupport(
-              child: MaterialApp(
-                localizationsDelegates: ctx.localizationDelegates,
-                supportedLocales: ctx.supportedLocales,
-                locale: ctx.locale,
-                builder: (context, navigator) {
-                  return AppThemeWidget(
-                    child: SizedBox(
-                      child: navigator,
-                    ),
-                  );
-                },
-                home: child,
-              ),
-            );
-          },
-        ),
-      ),
-    );
-  }
+    // Verify that our counter has incremented.
+    expect(find.text('0'), findsNothing);
+    expect(find.text('1'), findsOneWidget);
+  });
 }

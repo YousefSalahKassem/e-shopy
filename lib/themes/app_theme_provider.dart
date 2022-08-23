@@ -17,7 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// saved value is the flavor name.
 class AppTheme extends ChangeNotifier {
   static final provider = ChangeNotifierProvider<AppTheme>(
-    (ref) => AppTheme(ref.watch(SimpleLocalData.provider)),
+        (ref) => AppTheme(ref.watch(SimpleLocalData.provider)),
   );
 
   //* Dependency
@@ -51,7 +51,7 @@ class AppTheme extends ChangeNotifier {
   ///get saved flavor and apply it.
   Future<void> ensureInitialized() async {
     final String? savedFlavor =
-        await _localUserData.readString(savedThemeStringKey);
+    await _localUserData.readString(savedThemeStringKey);
     if (savedFlavor != null) {
       setThemeFlavor(_flavorFromString(savedFlavor));
     }
@@ -63,7 +63,7 @@ class AppTheme extends ChangeNotifier {
   /// will return the first flavor in [ThemeFlavor].
   ThemeFlavor _flavorFromString(String flavorString) {
     return ThemeFlavor.values.firstWhere(
-      (flavor) => flavor.name == flavorString,
+          (flavor) => flavor.name == flavorString,
       //default value
       orElse: () => ThemeFlavor.values.first,
     );
