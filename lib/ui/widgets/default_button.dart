@@ -5,11 +5,11 @@ import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 class DefaultButton extends StatelessWidget {
   const DefaultButton({
     Key? key,
-    this.text,
-    this.press,
+    required this.text,
+    required this.press,
   }) : super(key: key);
-  final String? text;
-  final Function? press;
+  final String text;
+  final Function press;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +25,11 @@ class DefaultButton extends StatelessWidget {
         ),
         onPressed: press as void Function()?,
         child: Text(
-          text!,
+          text,
           style: const TextStyle(
             color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
           ),
         ),
       ),

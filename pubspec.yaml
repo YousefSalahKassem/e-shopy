@@ -4,7 +4,7 @@ description: Flutter boilerplate for apps with riverpod and clean architecture
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.17.0 <3.0.0'
 
 dependencies:
   # Routing
@@ -49,6 +49,10 @@ dependencies:
   # depend reference
   intl: ^0.17.0
   easy_logger: ^0.0.2
+
+  # Svg
+  flutter_svg: ^1.1.1+1
+
 
   kortobaa_core_package:
     git:

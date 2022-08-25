@@ -1,11 +1,21 @@
 import 'package:auto_route/auto_route.dart';
 
+import 'package:flutter_boilerplate/ui/screens/Authentication/boarding_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Authentication/forgot_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Authentication/login_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Authentication/register_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Authentication/splash_screen.dart';
 
-import '../ui/screens/home_screen/boarding_screen.dart';
-import '../ui/screens/home_screen/forgot_screen.dart';
-import '../ui/screens/home_screen/login_screen.dart';
-import '../ui/screens/home_screen/register_screen.dart';
-import '../ui/screens/home_screen/splash_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Landing/cart_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Landing/favourite_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Landing/home_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Landing/landing_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Landing/profile_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Settings/edit_profile_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Settings/help_center.dart';
+
+
+
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Screen,Route',
@@ -14,7 +24,14 @@ import '../ui/screens/home_screen/splash_screen.dart';
     AutoRoute(page: BoardingScreen),
     AutoRoute(page: LoginScreen),
     AutoRoute(page: RegisterScreen),
-    AutoRoute(page: ForgotScreen)
+    AutoRoute(page: ForgotScreen),
+    AutoRoute(page: HomeScreen),
+    AutoRoute(page: FavouriteScreen),
+    AutoRoute(page: ProfileScreen),
+    AutoRoute(page: LandingScreen),
+    AutoRoute(page: CartScreen),
+    AutoRoute(page: EditProfileScreen),
+    AutoRoute(page: HelpCenter),
   ],
 )
 class $AppRouter {}

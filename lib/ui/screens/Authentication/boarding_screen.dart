@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/blocs/ui/boarding_controller.dart';
-import 'package:flutter_boilerplate/blocs/model/boarding_model.dart';
+import 'package:flutter_boilerplate/blocs/events/ui/boarding_controller.dart';
+import 'package:flutter_boilerplate/blocs/model/local/boarding_model.dart';
 import 'package:flutter_boilerplate/ui/widgets/default_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart';
@@ -58,7 +58,7 @@ class BoardingScreen extends ConsumerWidget {
               ),
             )
           ],
-        )
+        ),
       ),
     );
   }
@@ -68,12 +68,9 @@ Widget _splashContent(BuildContext context, Boarding boarding) {
   return Column(
     children: <Widget>[
       const Spacer(),
-      const Text(
+      Text(
         "Shopify",
-        style: TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-        ),
+        style: Theme.of(context).textTheme.headline5,
       ),
       SizedBox(height: context.height * 0.01),
       Text(

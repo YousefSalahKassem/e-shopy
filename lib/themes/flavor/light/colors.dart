@@ -6,7 +6,7 @@ const defaultWidgetColor = Colors.deepOrange;
 const darkModeColor = Color(0xFF121212);
 
 
-
+const Color inActiveIconColor = Color(0xFFB6B6B6);
 const kPrimaryColor = Color(0xFFFF7643);
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kPrimaryGradientColor = LinearGradient(

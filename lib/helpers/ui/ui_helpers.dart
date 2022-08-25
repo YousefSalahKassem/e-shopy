@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/themes/flavor/light/colors.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 import 'package:overlay_support/overlay_support.dart';
 
@@ -16,21 +17,21 @@ class UiHelpers {
 
 // Show Notification
   static void showNotification(
-      String message, {
-        NotificationPosition position = NotificationPosition.top,
-        int durationInSeconds = 3,
-        bool isError = true,
-      }) {
+    String message, {
+    NotificationPosition position = NotificationPosition.bottom,
+    int durationInSeconds = 3,
+    bool isError = true,
+  }) {
     if (_notificationMessage != message) {
       _notificationMessage = message;
       showOverlayNotification(
-            (context) => Card(
+        (context) => Card(
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 64),
           elevation: 3,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           color: isError
-              ? context.theme.colorScheme.secondary
-              : context.theme.colorScheme.primary,
+              ? Theme.of(context).errorColor
+              : kPrimaryColor,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
             child: Text(
@@ -61,7 +62,8 @@ class UiHelpers {
       transitionDuration: const Duration(milliseconds: 200),
       barrierDismissible: true,
       barrierLabel: '',
-      transitionBuilder: (context, animation1, animation2, widget) => Transform.scale(
+      transitionBuilder: (context, animation1, animation2, widget) =>
+          Transform.scale(
         scale: animation1.value,
         child: AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -89,7 +91,7 @@ class UiHelpers {
           ],
         ),
       ),
-      pageBuilder: (context,animation1,animation2) => const SizedBox(),
+      pageBuilder: (context, animation1, animation2) => const SizedBox(),
     );
   }
 

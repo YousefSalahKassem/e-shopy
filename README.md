@@ -48,8 +48,8 @@ App
 ├── lib
 │   ├── ui
 │   │   └── screens
-│   │   │   └── home_screen
-│   │   │   │  └── home_screen.dart
+│   │   │   └── Authentication
+│   │   │   │  └── Authentication.dart
 │   │   │   └── another_screen.dart
 │   │   └── widgets
 │   │       └── custom_appbar.dart

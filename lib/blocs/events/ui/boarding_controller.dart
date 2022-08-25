@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/blocs/model/boarding_model.dart';
+import 'package:flutter_boilerplate/blocs/model/local/boarding_model.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

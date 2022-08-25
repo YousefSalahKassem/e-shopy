@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ForgotScreen extends StatelessWidget {
-  const ForgotScreen({Key? key}) : super(key: key);
+class CartScreen extends StatelessWidget {
+   const CartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
