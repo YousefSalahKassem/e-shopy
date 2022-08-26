@@ -50,7 +50,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
           ProfileMenu(
             text: "Addresses",
             icon: "assets/icons/Location point.svg",
-            press: () {},
+            press: () => AutoRouter.of(context).push(const AddressRoute()),
           ),
           ProfileMenu(
             text: "Settings",

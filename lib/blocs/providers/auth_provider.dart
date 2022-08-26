@@ -1,15 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/interface/i_auth_provider.dart';
-
 import 'package:flutter_boilerplate/blocs/interface/i_auth_state.dart';
 import 'package:flutter_boilerplate/blocs/model/login_model.dart';
 import 'package:flutter_boilerplate/blocs/model/register_model.dart';
 import 'package:flutter_boilerplate/blocs/model/user.dart';
-import 'package:flutter_boilerplate/helpers/remote_util.dart';
 import 'package:flutter_boilerplate/data/remote/apis/auth_api.dart';
 import 'package:flutter_boilerplate/data/remote/interface/i_authentication.dart';
+import 'package:flutter_boilerplate/helpers/remote_util.dart';
 import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -4,9 +4,9 @@ import 'package:flutter_boilerplate/blocs/interface/i_auth_state.dart';
 import 'package:flutter_boilerplate/blocs/interface/i_edit_provider.dart';
 import 'package:flutter_boilerplate/blocs/model/forgot_model.dart';
 import 'package:flutter_boilerplate/blocs/model/user.dart';
-import 'package:flutter_boilerplate/helpers/remote_util.dart';
 import 'package:flutter_boilerplate/data/remote/apis/auth_api.dart';
 import 'package:flutter_boilerplate/data/remote/interface/i_authentication.dart';
+import 'package:flutter_boilerplate/helpers/remote_util.dart';
 import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -47,7 +47,6 @@ class EditProvider extends StateNotifier<IAuthState> implements IEditProvider {
         userData.name = _remoteUtil.nameController.text;
         _simpleLocalData.writeJsonMap('userData', userData.toJson());
         state = AuthProviderLoaded(userData);
-        print(AuthProviderLoaded(userData).user.name);
         AutoRouter.of(context).replace(const LandingRoute());
       });
     }

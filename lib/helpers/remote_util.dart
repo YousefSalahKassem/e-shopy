@@ -10,11 +10,16 @@ class RemoteUtil {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _countryController = TextEditingController();
+  final TextEditingController _cityController = TextEditingController();
+  final TextEditingController _streetController = TextEditingController();
+  final TextEditingController _postalCodeController = TextEditingController();
 
   final GlobalKey<FormState> _loginKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _registerKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _updateUserKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _resetPasswordKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _addressKey = GlobalKey<FormState>();
 
   GlobalKey<FormState> get loginKey => _loginKey;
 
@@ -24,6 +29,8 @@ class RemoteUtil {
 
   GlobalKey<FormState> get resetPasswordKey => _resetPasswordKey;
 
+  GlobalKey<FormState> get addressKey => _addressKey;
+
   TextEditingController get emailController => _emailController;
 
   TextEditingController get passwordController => _passwordController;
@@ -32,4 +39,11 @@ class RemoteUtil {
 
   TextEditingController get confirmPasswordController => _confirmPasswordController;
 
+  TextEditingController get countryController => _countryController;
+
+  TextEditingController get cityController => _cityController;
+
+  TextEditingController get streetController => _streetController;
+
+  TextEditingController get postalCodeController => _postalCodeController;
 }

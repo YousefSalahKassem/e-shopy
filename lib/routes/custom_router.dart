@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_boilerplate/ui/screens/Address/add_address_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Address/address_screen.dart';
 
 import 'package:flutter_boilerplate/ui/screens/Authentication/boarding_screen.dart';
 import 'package:flutter_boilerplate/ui/screens/Authentication/forgot_screen.dart';
@@ -32,6 +34,8 @@ import 'package:flutter_boilerplate/ui/screens/Settings/help_center.dart';
     AutoRoute(page: CartScreen),
     AutoRoute(page: EditProfileScreen),
     AutoRoute(page: HelpCenter),
+    AutoRoute(page: AddressScreen),
+    AutoRoute(page: AddAddressScreen),
   ],
 )
 class $AppRouter {}

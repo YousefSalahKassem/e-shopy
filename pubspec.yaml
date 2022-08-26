@@ -53,6 +53,15 @@ dependencies:
   # Svg
   flutter_svg: ^1.1.1+1
 
+  # Local Database
+  sqflite: ^2.0.3
+  path_provider: ^2.0.11
+  path: ^1.8.1
+
+  # GPS
+  geolocator: ^9.0.1
+  geocoding: ^2.0.4
+  google_maps_flutter: ^2.1.1
 
   kortobaa_core_package:
     git:
