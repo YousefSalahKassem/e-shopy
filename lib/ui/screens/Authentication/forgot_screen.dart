@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/providers/edit_provider.dart';
+import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 import 'package:flutter_boilerplate/helpers/remote_util.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_boilerplate/ui/widgets/default_button.dart';
@@ -22,15 +24,14 @@ class ForgotScreen extends ConsumerWidget {
           children: [
             SizedBox(height: context.heightR(0.2)),
             Text(
-              "Forgot Password",
+              LocaleKeys.forgotPassword.tr(),
               style: TextStyle(
                 fontSize: context.heightR(0.03),
-                color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Text(
-              "Please enter your email and we will send \nyou a link to return to your account",
+            Text(
+              LocaleKeys.forgotPasswordDescription.tr(),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: context.heightR(0.1)),
@@ -50,9 +51,9 @@ Widget _forgotForm(BuildContext context, WidgetRef ref) {
     child: Column(
       children: [
         TextFieldApp(
-            label: 'Email',
-            hint: 'Enter your email',
-            valid: 'email is required',
+            label: LocaleKeys.email.tr(),
+            hint: LocaleKeys.enterEmail.tr(),
+            valid: LocaleKeys.emailRequired.tr(),
             controller: reader.emailController,
             icon: Icons.email_outlined,
             type: TextInputType.emailAddress,
@@ -60,7 +61,7 @@ Widget _forgotForm(BuildContext context, WidgetRef ref) {
         SizedBox(height: context.heightR(0.03)),
         SizedBox(height: context.heightR(0.1)),
         DefaultButton(
-          text: "Reset Password",
+          text: LocaleKeys.resetPassword.tr(),
           press: () {
             if (reader.registerKey.currentState!.validate()) {
               notifier.resetPassword(context);

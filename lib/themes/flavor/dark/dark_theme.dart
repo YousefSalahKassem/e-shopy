@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/themes/dimensions.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_boilerplate/themes/flavor/app_theme_flavor.dart';
 import 'package:flutter_boilerplate/themes/flavor/dark/colors.dart';
+import 'package:flutter_boilerplate/themes/flavor/light/colors.dart';
 import 'package:flutter_boilerplate/themes/text_styles.dart' as text_styles;
-
 
 
 class DarkTheme implements AppThemeFlavor {
@@ -13,70 +13,77 @@ class DarkTheme implements AppThemeFlavor {
 
 // <------------------------------------------------ Colors Theme
     errorColor: primaryColor,
-    primaryColor: primaryColor,
-    primaryColorLight: Colors.cyan[300],
-    secondaryHeaderColor: Colors.black54,
-    backgroundColor: Colors.white,
-    cardColor: Colors.white,
-    bottomAppBarColor: Colors.white,
-    dividerColor: Colors.black.withOpacity(0.10),
-    hintColor: primaryColor,
-    disabledColor: Colors.grey,
-    scaffoldBackgroundColor: Colors.white,
-
-// <------------------------------------------------ Primary Icon Theme
-    primaryIconTheme: const IconThemeData(color: Colors.black54),
-
-// <------------------------------------------------ Icon Theme
-    iconTheme: IconThemeData(color: textColor.withOpacity(0.45)),
-
-// <------------------------------------------------ Tab Bar Theme
-    tabBarTheme: TabBarTheme(
-      labelColor: textColor,
-//labelStyle: ,
-      unselectedLabelColor: textColor,
-      indicator: BoxDecoration(
-        color: textColor.withOpacity(0.1),
-      ),
-    ),
-
-// <------------------------------------------------ FAB Theme
-    floatingActionButtonTheme: const FloatingActionButtonThemeData(),
-
-// <------------------------------------------------ App Bar Theme Theme
-    appBarTheme: const AppBarTheme(
-        elevation: 0,
-        color: Colors.black87,
-    ),
-
-// <------------------------------------------------ Input Decoration Theme
-    inputDecorationTheme: InputDecorationTheme(
-      contentPadding: const EdgeInsets.symmetric(
-        vertical: spaceLarge,
-        horizontal: spaceSmall,
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.zero,
-        gapPadding: 0,
-        borderSide: BorderSide(color: textColor.withOpacity(0.5)),
-      ),
-      border: const OutlineInputBorder(
-        borderRadius: BorderRadius.zero,
-        gapPadding: 0,
-      ),
-      labelStyle: TextStyle(
-        fontSize: spaceMedium,
-        color: textColor.withOpacity(0.7),
-      ),
-    ),
-
-// <------------------------------------------------ Text Theme
-    textTheme: const TextTheme(
-      subtitle1: text_styles.subHeaderStyle,
-      headline5: text_styles.headerStyle,
-    ),
+    primaryColor: kPrimaryColor,
+    scaffoldBackgroundColor: darkModeColor,
+    appBarTheme: _appBarTheme(),
+    textTheme: _textTheme(),
+    inputDecorationTheme: _inputDecorationTheme(),
+    visualDensity: VisualDensity.adaptivePlatformDensity,
+    bottomNavigationBarTheme: _bottomNavigationBarTheme(),
+    iconTheme: _iconThemeData(),
+    cardColor: Colors.black,
   );
 
   @override
+  // TODO: implement theme
   ThemeData get theme => _themeData;
+}
+
+InputDecorationTheme _inputDecorationTheme() {
+  final OutlineInputBorder outlineInputBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(28),
+    borderSide: const BorderSide(color: kTextColor),
+    gapPadding: 10,
+  );
+  return InputDecorationTheme(
+    floatingLabelBehavior: FloatingLabelBehavior.always,
+    contentPadding: const EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+    enabledBorder: outlineInputBorder,
+    focusedBorder: outlineInputBorder,
+    border: outlineInputBorder,
+  );
+}
+
+TextTheme _textTheme() {
+  return const TextTheme(
+    bodyText1: TextStyle(color: Colors.white),
+    bodyText2: TextStyle(color: Colors.white),
+    subtitle1: text_styles.subHeaderStyle,
+    headline5: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+    headline6: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold),
+  );
+}
+
+AppBarTheme _appBarTheme() {
+  return AppBarTheme(
+    color: const Color(0xFFFFECDF),
+    elevation: 0,
+    iconTheme: const IconThemeData(color: Colors.black),
+    systemOverlayStyle: SystemUiOverlayStyle.dark,
+    toolbarTextStyle: const TextTheme(
+      headline6: TextStyle(color: Color(0XFF8B8B8B), fontSize: 18),
+    ).bodyText2,
+    titleTextStyle: const TextTheme(
+      headline6: TextStyle(color: Color(0XFF8B8B8B), fontSize: 18),
+    ).headline6,
+  );
+
+
+}
+
+BottomNavigationBarThemeData _bottomNavigationBarTheme() {
+  return const BottomNavigationBarThemeData(
+    elevation: 0,
+    selectedItemColor: kPrimaryColor,
+    unselectedItemColor: inActiveIconColor,
+    showUnselectedLabels: true,
+    showSelectedLabels: true,
+  );
+}
+
+IconThemeData _iconThemeData() {
+  return const IconThemeData(
+    color: Colors.white,
+    size: 24,
+  );
 }

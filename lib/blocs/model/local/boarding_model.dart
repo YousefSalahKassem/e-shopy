@@ -1,3 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
+
 class Boarding {
   final String title;
   final String image;
@@ -7,15 +10,15 @@ class Boarding {
 
 List<Boarding> getBoardings= [
   Boarding(
-    title: "Welcome to Shopify, Lets shop!",
+    title: LocaleKeys.firstGreeting.tr(),
     image: "assets/images/splash_1.png",
   ),
   Boarding(
-    title: "We help people to shop easily and fast",
+    title: LocaleKeys.secondGreeting.tr(),
     image: "assets/images/splash_2.png",
   ),
   Boarding(
-    title: "Explore now!",
+    title: LocaleKeys.thirdGreeting.tr(),
     image: "assets/images/splash_3.png",
   ),
 ];

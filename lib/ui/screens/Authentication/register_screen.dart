@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/providers/auth_provider.dart';
+import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 import 'package:flutter_boilerplate/helpers/remote_util.dart';
 import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:flutter_boilerplate/themes/text_styles.dart';
@@ -20,42 +22,19 @@ class RegisterScreen extends ConsumerWidget {
         child: SizedBox(
           width: double.infinity,
           child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: spaceLarge),
+            padding: const EdgeInsets.symmetric(horizontal: spaceLarge),
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   SizedBox(height: context.heightR(.04)), // 4%
-                  const Text("Register Account", style: headingStyle),
-                  const Text(
-                    "Complete your details or continue \nwith social media",
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: context.heightR(0.1)),
-                  _registerForm(context,ref),
-                  SizedBox(height: context.heightR(0.1)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SocialCard(
-                        icon: "assets/icons/google-icon.svg",
-                        press: () {},
-                      ),
-                      SocialCard(
-                        icon: "assets/icons/facebook-2.svg",
-                        press: () {},
-                      ),
-                      SocialCard(
-                        icon: "assets/icons/twitter.svg",
-                        press: () {},
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: context.heightR(0.02)),
+                  Text(LocaleKeys.registerAccount.tr(), style: headingStyle),
                   Text(
-                    'By continuing your confirm that you agree \nwith our Term and Condition',
+                    LocaleKeys.registerDescription.tr(),
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.caption,
-                  )
+                  ),
+                  SizedBox(height: context.heightR(0.1)),
+                  _registerForm(context, ref),
+                  SizedBox(height: context.heightR(0.02)),
                 ],
               ),
             ),
@@ -66,31 +45,62 @@ class RegisterScreen extends ConsumerWidget {
   }
 }
 
-
-Widget _registerForm(BuildContext context, WidgetRef ref){
-  final notifier =ref.watch(AuthProvider.provider.notifier);
+Widget _registerForm(BuildContext context, WidgetRef ref) {
+  final notifier = ref.watch(AuthProvider.provider.notifier);
   final reader = ref.read(RemoteUtil.provider);
   return Form(
-      key: reader.registerKey,
-      child:Column(
-        children: [
-          TextFieldApp(label: 'userName', hint: 'Enter your userName', controller: reader.nameController, icon: Icons.person, type: TextInputType.text, valid: 'UserName is Required',),
-          SizedBox(height: context.heightR(0.03)),
-          TextFieldApp(label: 'email', hint: 'Enter your email', controller: reader.emailController, icon: Icons.email_outlined, type: TextInputType.emailAddress, valid: 'Email is Required',),
-          SizedBox(height: context.heightR(0.03)),
-          TextFieldApp(label: 'password', hint: 'Enter your password', controller: reader.passwordController, icon: Icons.lock_outline, type: TextInputType.text, isPassword: true, valid: 'Password is Required',),
-          SizedBox(height: context.heightR(0.03)),
-          TextFieldApp(label: 'confirm password', hint: 'Enter your password', controller: reader.confirmPasswordController, icon: Icons.lock_outline, type: TextInputType.text, isPassword: true, valid: 'Password is Required',),
-          SizedBox(height: context.heightR(0.04)),
-          DefaultButton(
-            text: "Register",
-            press: () {
-              if (reader.registerKey.currentState!.validate() && reader.passwordController.text == reader.confirmPasswordController.text) {
-                notifier.register(context);
-              }
-            },
-          ),
-        ],
-      ),
+    key: reader.registerKey,
+    child: Column(
+      children: [
+        TextFieldApp(
+          label: LocaleKeys.username.tr(),
+          hint: LocaleKeys.enterUsername.tr(),
+          controller: reader.nameController,
+          icon: Icons.person,
+          type: TextInputType.text,
+          valid: LocaleKeys.nameRequired.tr(),
+        ),
+        SizedBox(height: context.heightR(0.03)),
+        TextFieldApp(
+          label: LocaleKeys.email.tr(),
+          hint: LocaleKeys.enterEmail.tr(),
+          controller: reader.emailController,
+          icon: Icons.email_outlined,
+          type: TextInputType.emailAddress,
+          valid: LocaleKeys.emailRequired.tr(),
+        ),
+        SizedBox(height: context.heightR(0.03)),
+        TextFieldApp(
+          label: LocaleKeys.password.tr(),
+          hint: LocaleKeys.enterPassword.tr(),
+          controller: reader.passwordController,
+          icon: Icons.lock_outline,
+          type: TextInputType.text,
+          isPassword: true,
+          valid: LocaleKeys.passwordRequired.tr(),
+        ),
+        SizedBox(height: context.heightR(0.03)),
+        TextFieldApp(
+          label: LocaleKeys.confirmPassword.tr(),
+          hint: LocaleKeys.enterPassword.tr(),
+          controller: reader.confirmPasswordController,
+          icon: Icons.lock_outline,
+          type: TextInputType.text,
+          isPassword: true,
+          valid: LocaleKeys.confirmPasswordRequired.tr(),
+        ),
+        SizedBox(height: context.heightR(0.04)),
+        DefaultButton(
+          text: LocaleKeys.signup.tr(),
+          press: () {
+            if (reader.registerKey.currentState!.validate() &&
+                reader.passwordController.text ==
+                    reader.confirmPasswordController.text) {
+              notifier.register(context);
+            }
+          },
+        ),
+      ],
+    ),
   );
 }

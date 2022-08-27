@@ -20,7 +20,7 @@ class TextFieldApp extends StatelessWidget {
           controller: controller,
           keyboardType: type,
           obscureText: isPassword,
-          style: Theme.of(context).textTheme.headline5,
+          style: Theme.of(context).textTheme.bodyText1,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return valid;
@@ -28,7 +28,7 @@ class TextFieldApp extends StatelessWidget {
             return null;
           },
           decoration: InputDecoration(
-            suffixIcon: Icon(icon),
+            suffixIcon: Icon(icon, color : Theme.of(context).iconTheme.color),
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: hint,
             labelText: label,

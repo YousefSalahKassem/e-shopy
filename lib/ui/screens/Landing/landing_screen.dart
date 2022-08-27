@@ -24,8 +24,8 @@ Widget _landingBody(WidgetRef ref){
     index: ref.read(LandingController.provider).currentIndex,
     children: const [
       HomeScreen(),
-      CartScreen(),
       FavouriteScreen(),
+      CartScreen(),
       ProfileScreen()
     ],
   );
@@ -34,7 +34,7 @@ Widget _landingBody(WidgetRef ref){
 Widget _customBottomNavigationBar(WidgetRef ref) {
   return DecoratedBox(
     decoration: const BoxDecoration(
-      color: Colors.white,
+      color: Colors.blue,
       borderRadius: BorderRadius.only(
           topRight: Radius.circular(30), topLeft: Radius.circular(30),),
       boxShadow: [
@@ -47,8 +47,7 @@ Widget _customBottomNavigationBar(WidgetRef ref) {
         topRight: Radius.circular(radiusLarge),
       ),
       child: BottomNavigationBar(
-        onTap: (index) =>
-            ref.read(LandingController.provider).setCurrentIndex(index),
+        onTap: (index) => ref.read(LandingController.provider).setCurrentIndex(index),
         currentIndex: ref.watch(LandingController.provider).currentIndex,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

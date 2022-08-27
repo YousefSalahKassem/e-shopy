@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_boilerplate/themes/dimensions.dart';
-
 class QuestionModel {
-  final Icon icon;
+  final IconData icon;
   final String title;
   final String subtitle;
 
@@ -16,42 +14,42 @@ class QuestionModel {
 
 final options = [
   QuestionModel(
-    icon: const Icon(Icons.dashboard, size: sizeLarge),
+    icon: Icons.dashboard,
     title: 'Option One',
     subtitle: 'Lorem ipsum dolor sit amet, consect.',
   ),
   QuestionModel(
-    icon: const Icon(Icons.do_not_disturb, size: sizeLarge),
+    icon: Icons.do_not_disturb,
     title: 'Option Two',
     subtitle: 'Lorem ipsum dolor sit amet, consect.',
   ),
   QuestionModel(
-    icon: const Icon(Icons.account_circle, size: sizeLarge),
+    icon: Icons.account_circle,
     title: 'Option Three',
     subtitle: 'Lorem ipsum dolor sit amet, consect.',
   ),
   QuestionModel(
-    icon: const Icon(Icons.invert_colors, size: sizeLarge),
+    icon: Icons.invert_colors,
     title: 'Option Four',
     subtitle: 'Lorem ipsum dolor sit amet, consect.',
   ),
   QuestionModel(
-    icon: const Icon(Icons.watch_later, size: sizeLarge),
+    icon: Icons.watch_later,
     title: 'Option Five',
     subtitle: 'Lorem ipsum dolor sit amet, consect.',
   ),
   QuestionModel(
-    icon: const Icon(Icons.fastfood, size: sizeLarge),
+    icon: Icons.fastfood,
     title: 'Option Six',
     subtitle: 'Lorem ipsum dolor sit amet, consect.',
   ),
   QuestionModel(
-    icon: const Icon(Icons.local_airport, size: sizeLarge),
+    icon: Icons.local_airport,
     title: 'Option Seven',
     subtitle: 'Lorem ipsum dolor sit amet, consect.',
   ),
   QuestionModel(
-    icon: const Icon(Icons.settings, size: sizeLarge),
+    icon: Icons.settings,
     title: 'Option Eight',
     subtitle: 'Lorem ipsum dolor sit amet, consect.',
   ),

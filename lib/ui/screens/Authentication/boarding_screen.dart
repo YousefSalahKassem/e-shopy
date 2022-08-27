@@ -1,12 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/events/ui/boarding_controller.dart';
 import 'package:flutter_boilerplate/blocs/model/local/boarding_model.dart';
+import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 import 'package:flutter_boilerplate/ui/widgets/default_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 
 class BoardingScreen extends ConsumerWidget {
-  const BoardingScreen({Key? key}) : super(key: key);
+  const BoardingScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -47,7 +49,7 @@ class BoardingScreen extends ConsumerWidget {
                     ),
                     const Spacer(flex: 3),
                     DefaultButton(
-                      text: "Continue",
+                      text: LocaleKeys.next.tr(),
                       press: () {
                         controller.nextPage(context);
                       },

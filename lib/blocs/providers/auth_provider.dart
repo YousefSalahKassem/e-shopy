@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/interface/i_auth_provider.dart';
 import 'package:flutter_boilerplate/blocs/interface/i_auth_state.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_boilerplate/blocs/model/register_model.dart';
 import 'package:flutter_boilerplate/blocs/model/user.dart';
 import 'package:flutter_boilerplate/data/remote/apis/auth_api.dart';
 import 'package:flutter_boilerplate/data/remote/interface/i_authentication.dart';
+import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 import 'package:flutter_boilerplate/helpers/remote_util.dart';
 import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
@@ -87,9 +89,9 @@ class AuthProvider extends StateNotifier<IAuthState> implements IAuthProvider {
           _secureUserData.delete(const StorageKey('token'));
           AutoRouter.of(context).replace(const LoginRoute());
         },
-        message: 'are you sure you want to log out?',
-        okButtonText: 'ok',
-        cancelButtonText: 'cancel',
+        message: LocaleKeys.logoutAlert.tr(),
+        okButtonText: LocaleKeys.confirm.tr(),
+        cancelButtonText: LocaleKeys.cancel.tr(),
     );
   }
 

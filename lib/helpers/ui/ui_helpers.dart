@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/themes/flavor/light/colors.dart';
+import 'package:flutter_boilerplate/ui/widgets/default_button.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 import 'package:overlay_support/overlay_support.dart';
 
@@ -66,10 +67,11 @@ class UiHelpers {
           Transform.scale(
         scale: animation1.value,
         child: AlertDialog(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           content: Text(
             message,
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.headline5,
           ),
           actions: <Widget>[
             TextButton(
@@ -78,20 +80,49 @@ class UiHelpers {
               },
               child: Text(
                 cancelButtonText,
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context).textTheme.headline5,
               ),
             ),
             TextButton(
               onPressed: action,
               child: Text(
                 okButtonText,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.headline6,
               ),
             ),
           ],
         ),
       ),
       pageBuilder: (context, animation1, animation2) => const SizedBox(),
+    );
+  }
+
+  // Show Menu Choices
+  static void showMenuChoices({
+    required BuildContext context,
+    required String firstTitle,
+    required String secondTitle,
+    required VoidCallback firstChoice,
+    required VoidCallback secondChoice,
+  }) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Theme.of(context).cardColor,
+      builder: (context) => AnimatedContainer(
+        color: Theme.of(context).cardColor,
+        margin: const EdgeInsets.all(10),
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
+        height: context.heightR(.1),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Expanded(child: DefaultButton(text: firstTitle, press: firstChoice),),
+            const SizedBox(width: 20),
+            Expanded(child: DefaultButton(text: secondTitle, press: secondChoice),)
+          ],
+        ),
+      ),
     );
   }
 

@@ -20,6 +20,9 @@ class LightTheme implements AppThemeFlavor {
     inputDecorationTheme: _inputDecorationTheme(),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     bottomNavigationBarTheme: _bottomNavigationBarTheme(),
+    iconTheme: _iconThemeData(),
+    cardColor: Colors.white,
+
   );
 
   @override
@@ -47,13 +50,14 @@ TextTheme _textTheme() {
     bodyText1: TextStyle(color: kTextColor),
     bodyText2: TextStyle(color: kTextColor),
     subtitle1: text_styles.subHeaderStyle,
-    headline5: text_styles.headerStyle,
+    headline5: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+    headline6: TextStyle(color: Colors.black, fontSize: 20,fontWeight: FontWeight.bold),
   );
 }
 
 AppBarTheme _appBarTheme() {
   return AppBarTheme(
-    color: Colors.white,
+    color: const Color(0xFFFFECDF),
     elevation: 0,
     iconTheme: const IconThemeData(color: Colors.black),
     systemOverlayStyle: SystemUiOverlayStyle.dark,
@@ -76,5 +80,13 @@ BottomNavigationBarThemeData _bottomNavigationBarTheme() {
     unselectedItemColor: inActiveIconColor,
     showUnselectedLabels: true,
     showSelectedLabels: true,
+  );
+}
+
+
+IconThemeData _iconThemeData() {
+  return const IconThemeData(
+    color: Colors.black,
+    size: 24,
   );
 }

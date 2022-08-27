@@ -22,7 +22,9 @@ class UserProvider extends StateNotifier<IAuthState> implements IUserProvider {
   String? _authToken;
   bool get checkAuthToken => _authToken != null;
 
-  UserProvider(this._simpleLocalData, this._secureUserData, this._api): super(const AuthProviderInitial());
+  UserProvider(this._simpleLocalData, this._secureUserData, this._api): super(const AuthProviderInitial()){
+    getUserData();
+  }
 
   @override
   Future<void> getUserData() async {

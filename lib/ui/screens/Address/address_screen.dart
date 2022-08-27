@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/interface/i_address_state.dart';
 import 'package:flutter_boilerplate/blocs/model/local/address_model.dart';
 import 'package:flutter_boilerplate/blocs/providers/add_address_provider.dart';
+import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_boilerplate/ui/widgets/default_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,17 +19,13 @@ class AddressScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          'Addresses',
-          style: TextStyle(
+        title: Text(
+          LocaleKeys.Addresses.tr(),
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => AutoRouter.of(context).replace(const LandingRoute()),
         ),
         backgroundColor: const Color(0xFFFFECDF),
       ),
@@ -106,7 +104,7 @@ Widget _addressBody(BuildContext context, List<AddressModel> addresses, WidgetRe
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: DefaultButton(
-            text: 'Add Address',
+            text: LocaleKeys.addAddress.tr(),
             press: () => AutoRouter.of(context).push(const AddAddressRoute()),
           ),
         ),
@@ -138,26 +136,26 @@ Widget _addressItem(BuildContext context, AddressModel address){
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Country: ${address.country}',
+              '${LocaleKeys.country.tr()}: ${address.country}',
               style: TextStyle(
-                  fontSize: context.heightR(0.02), fontWeight: FontWeight.bold,),
+                  fontSize: context.heightR(0.02), fontWeight: FontWeight.bold,color: Colors.black),
             ),
             Text(
               address.postcode,
               style: TextStyle(
-                  fontSize: context.heightR(0.02), fontWeight: FontWeight.bold,),
+                  fontSize: context.heightR(0.02), fontWeight: FontWeight.bold,color: Colors.black),
             ),
           ],
         ),
         SizedBox(height: context.heightR(0.01)),
         Text(
-          'City: ${address.city}',
-          style: TextStyle(fontSize: context.heightR(0.02)),
+          '${LocaleKeys.city.tr()}: ${address.city}',
+          style: TextStyle(fontSize: context.heightR(0.02),color: Colors.black),
         ),
         SizedBox(height: context.heightR(0.01)),
         Text(
-          'Street: ${address.street}',
-          style: TextStyle(fontSize: context.heightR(0.02)),
+          '${LocaleKeys.street.tr()}: ${address.street}',
+          style: TextStyle(fontSize: context.heightR(0.02),color: Colors.black),
         ),
       ],
     ),

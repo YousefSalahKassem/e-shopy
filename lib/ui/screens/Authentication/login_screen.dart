@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/providers/auth_provider.dart';
+import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 import 'package:flutter_boilerplate/helpers/remote_util.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_boilerplate/themes/text_styles.dart';
@@ -24,12 +26,12 @@ class LoginScreen extends ConsumerWidget {
             SizedBox(
               height: context.heightR(0.1),
             ),
-            const Text(
-              'Welcome Back',
+            Text(
+              LocaleKeys.welcomeBack.tr(),
               style: headingStyle,
             ),
-            const Text(
-              "Sign in with your email and password  \nor continue with social media",
+            Text(
+              LocaleKeys.loginDescription.tr(),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: context.heightR(0.1)),
@@ -80,22 +82,22 @@ Widget _signForm(BuildContext context, WidgetRef ref) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextFieldApp(
-            label: 'email',
-            hint: 'Enter your email',
+            label: LocaleKeys.email.tr(),
+            hint:  LocaleKeys.enterEmail.tr(),
             controller: reader.emailController,
             icon: Icons.email_outlined,
             type: TextInputType.emailAddress,
-            valid: 'Email is Required',
+            valid: LocaleKeys.emailRequired.tr(),
           ),
           SizedBox(height: context.heightR(0.03)),
           TextFieldApp(
-            label: 'password',
-            hint: 'Enter your password',
+            label: LocaleKeys.password.tr(),
+            hint: LocaleKeys.enterPassword.tr(),
             controller: reader.passwordController,
             icon: Icons.lock_outline,
             type: TextInputType.text,
             isPassword: true,
-            valid: 'Password is Required',
+            valid: LocaleKeys.passwordRequired.tr(),
           ),
           SizedBox(height: context.heightR(0.015)),
           GestureDetector(
@@ -106,15 +108,15 @@ Widget _signForm(BuildContext context, WidgetRef ref) {
               padding: EdgeInsets.symmetric(
                 horizontal: context.heightR(0.01),
               ),
-              child: const Text(
-                "Forgot Password",
-                style: TextStyle(decoration: TextDecoration.underline),
+              child: Text(
+                LocaleKeys.forgotPassword.tr(),
+                style: const TextStyle(decoration: TextDecoration.underline),
               ),
             ),
           ),
           const Spacer(),
           DefaultButton(
-            text: "Login",
+            text: LocaleKeys.login.tr(),
             press: () {
               if (reader.loginKey.currentState!.validate()) {
                 notifier.login(context);

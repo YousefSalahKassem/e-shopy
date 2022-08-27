@@ -1,12 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/providers/edit_provider.dart';
+import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 import 'package:flutter_boilerplate/helpers/remote_util.dart';
+import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:flutter_boilerplate/ui/widgets/default_button.dart';
 import 'package:flutter_boilerplate/ui/widgets/default_text_field.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart';
-
-import '../../../themes/dimensions.dart';
 
 class EditProfileScreen extends ConsumerWidget {
   const EditProfileScreen({super.key});
@@ -16,10 +17,11 @@ class EditProfileScreen extends ConsumerWidget {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text(
-            'Edit Profile',
-            style: TextStyle(
+          title: Text(
+            LocaleKeys.editProfile.tr(),
+            style: const TextStyle(
               fontSize: 20,
+              color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -42,7 +44,7 @@ class EditProfileScreen extends ConsumerWidget {
                 _userForm(context, ref),
                 SizedBox(height: context.heightR(0.1)),
                 DefaultButton(
-                  text: 'Update Profile',
+                  text: LocaleKeys.updateProfile.tr(),
                   press: () {
                     ref.read(EditProvider.provider.notifier).changeName(context);
                   },
@@ -50,7 +52,7 @@ class EditProfileScreen extends ConsumerWidget {
                 SizedBox(height: context.heightR(0.05)),
               ],
             ),
-        )
+        ),
     );
   }
 }
@@ -62,12 +64,12 @@ Widget _userForm(BuildContext context, WidgetRef ref) {
       child: Column(
         children: [
           TextFieldApp(
-            label: 'userName',
-            hint: 'Enter your userName',
+            label: LocaleKeys.username.tr(),
+            hint: LocaleKeys.enterUsername.tr(),
             controller: reader.nameController,
             icon: Icons.person,
             type: TextInputType.text,
-            valid: 'UserName is Required',
+            valid: LocaleKeys.nameRequired.tr(),
           ),
         ],
       ),

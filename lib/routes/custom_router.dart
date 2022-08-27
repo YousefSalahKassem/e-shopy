@@ -15,6 +15,7 @@ import 'package:flutter_boilerplate/ui/screens/Landing/landing_screen.dart';
 import 'package:flutter_boilerplate/ui/screens/Landing/profile_screen.dart';
 import 'package:flutter_boilerplate/ui/screens/Settings/edit_profile_screen.dart';
 import 'package:flutter_boilerplate/ui/screens/Settings/help_center.dart';
+import 'package:flutter_boilerplate/ui/screens/Settings/settings_screen.dart';
 
 
 
@@ -36,6 +37,7 @@ import 'package:flutter_boilerplate/ui/screens/Settings/help_center.dart';
     AutoRoute(page: HelpCenter),
     AutoRoute(page: AddressScreen),
     AutoRoute(page: AddAddressScreen),
+    AutoRoute(page: SettingsScreen),
   ],
 )
 class $AppRouter {}
