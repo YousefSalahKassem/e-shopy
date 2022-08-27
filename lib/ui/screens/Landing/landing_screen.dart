@@ -34,7 +34,6 @@ Widget _landingBody(WidgetRef ref){
 Widget _customBottomNavigationBar(WidgetRef ref) {
   return DecoratedBox(
     decoration: const BoxDecoration(
-      color: Colors.blue,
       borderRadius: BorderRadius.only(
           topRight: Radius.circular(30), topLeft: Radius.circular(30),),
       boxShadow: [
