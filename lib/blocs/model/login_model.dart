@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+/// TODO use json serializable for generate toJson or fromJson map models
 @immutable
 class LoginModel {
   final String email;
@@ -23,5 +24,4 @@ class LoginModel {
       password: password ?? this.password,
     );
   }
-
 }

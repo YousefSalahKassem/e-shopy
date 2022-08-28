@@ -12,6 +12,9 @@ class BoardingScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    /// TODO this watch will rebuild all the screen then no need to use provider here including button
+    /// TODO i think this need more refactor
+    /// TODO i think for your logic here to wrap the consumer watcher only on the indicator because pageView will be rebuild with it is controller
     final controller = ref.watch(BoardingController.boardingProvider);
 
     return Scaffold(
@@ -27,16 +30,20 @@ class BoardingScreen extends ConsumerWidget {
                   ref
                       .watch(BoardingController.boardingProvider)
                       .setCurrentIndex(
-                    currentIndex,
-                  );
+                        currentIndex,
+                      );
                 },
                 itemBuilder: (context, index) =>
                     _splashContent(context, getBoardings[index]),
-              ),),
+              ),
+            ),
             Expanded(
+              /// TODO 1 is the default value for expanded
               flex: 1,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.height * 0.02),
+                /// TODO for use part of screen here just use context.heightR() that is core package
+                padding:
+                    EdgeInsets.symmetric(horizontal: context.height * 0.02),
                 child: Column(
                   children: <Widget>[
                     const Spacer(),
@@ -44,7 +51,7 @@ class BoardingScreen extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(
                         getBoardings.length,
-                            (index) => _buildDots(context,index,controller),
+                        (index) => _buildDots(context, index, controller),
                       ),
                     ),
                     const Spacer(flex: 3),
@@ -66,6 +73,7 @@ class BoardingScreen extends ConsumerWidget {
   }
 }
 
+/// TODO with official flutter team advice to use stateless class instead of using build widget then render will be better and no need to pass the context
 Widget _splashContent(BuildContext context, Boarding boarding) {
   return Column(
     children: <Widget>[
@@ -91,13 +99,18 @@ Widget _splashContent(BuildContext context, Boarding boarding) {
   );
 }
 
-Widget _buildDots(BuildContext context, int index, BoardingController controller) {
+Widget _buildDots(
+    BuildContext context, int index, BoardingController controller) {
   return AnimatedContainer(
     height: 6,
-    width: controller.currentIndex == index ? context.height*.03 : context.height*0.02,
+    width: controller.currentIndex == index
+        ? context.height * .03
+        : context.height * 0.02,
     duration: const Duration(milliseconds: 300),
     decoration: BoxDecoration(
-      color:  controller.currentIndex == index ? Colors.orange : const Color(0xFFD8D8D8),
+      color: controller.currentIndex == index
+          ? Colors.orange
+          : const Color(0xFFD8D8D8),
       borderRadius: BorderRadius.circular(3),
     ),
   );

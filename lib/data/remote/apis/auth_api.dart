@@ -73,6 +73,8 @@ class Authentication implements IAuthentication {
     String userId,
   ) {
     final url = EndPoint.changeNameUrl;
+
+    /// TODO why need to pass map here instead of using token inject in the remote request
     headers.putIfAbsent('Authorization', () => 'Bearer $authToken');
     final bodyObject = <String, String>{};
     bodyObject.putIfAbsent('name', () => userName);

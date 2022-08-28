@@ -12,7 +12,7 @@ class AddAddressProvider extends StateNotifier<IAddressState> {
   });
   final IDatabase _database;
 
-  AddAddressProvider(this._database) : super(const AddressProviderInitial()){
+  AddAddressProvider(this._database) : super(const AddressProviderInitial()) {
     init();
   }
 
@@ -28,11 +28,15 @@ class AddAddressProvider extends StateNotifier<IAddressState> {
 
   Future<void> fetch() async {
     final List data = await _database.fetch();
-    state = AddressProviderLoaded(data.map((e) => AddressModel.fromJson(e as Map<String,dynamic>)).toList());
+    state = AddressProviderLoaded(data
+        .map((e) => AddressModel.fromJson(e as Map<String, dynamic>))
+        .toList());
   }
 
   Future<void> delete(String street) async {
     await _database.removeItem(street);
+
+    /// TODO for more best perform here just remove the item from the list inside the state then no need to call database again
     fetch();
   }
 }

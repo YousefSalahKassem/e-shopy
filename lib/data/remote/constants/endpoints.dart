@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart' as core;
 
+/// TODO rename this file with AppEndpoints
 class EndPoint implements core.EndPoints {
-
-  static final provider = Provider((ref)=>EndPoint());
+  static final provider = Provider((ref) => EndPoint());
 
   @override
   // TODO: implement apiUrl
@@ -13,8 +13,8 @@ class EndPoint implements core.EndPoints {
   // TODO: implement baseUrl
   String get baseUrl => _baseUrl;
 
-  static const String _baseUrl = 'https://nehe-ecommerce-api.herokuapp.com/api/v1';
-
+  static const String _baseUrl =
+      'https://nehe-ecommerce-api.herokuapp.com/api/v1';
 
   //  endpoints
   static String productUrl = '$_baseUrl/products/';
@@ -44,6 +44,4 @@ class EndPoint implements core.EndPoints {
   static String changeMailUrl = '$_baseUrl/users/updatemail/';
 
   static String forgotPasswordUrl = '$_baseUrl/users/forgotpassword';
-
-
 }

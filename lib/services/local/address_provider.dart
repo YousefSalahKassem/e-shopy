@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/widgets.dart';
 import 'package:flutter_boilerplate/helpers/remote_util.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,44 +35,44 @@ class AddressProvider with ChangeNotifier {
   ];
 
   Future<void> getUserCurrentLocation() async {
+    /// TODO no need for then and error here
     await Geolocator.requestPermission()
         .then((value) {})
-        .onError((error, stackTrace) {
-    });
+        .onError((error, stackTrace) {});
 
     await Geolocator.getCurrentPosition().then((value) async {
       markers.add(
-          Marker(
-              markerId: const MarkerId('SomeId'),
-              position: LatLng(value.latitude ,value.longitude),
-              infoWindow:  InfoWindow(
-                  title: address,
-              ),
+        Marker(
+          markerId: const MarkerId('SomeId'),
+          position: LatLng(value.latitude, value.longitude),
+          infoWindow: InfoWindow(
+            title: address,
           ),
+        ),
       );
       final GoogleMapController controller = await addressController.future;
 
-      kGooglePlex =  CameraPosition(
-        target: LatLng(value.latitude ,value.longitude),
+      kGooglePlex = CameraPosition(
+        target: LatLng(value.latitude, value.longitude),
         zoom: 14,
       );
       controller.animateCamera(CameraUpdate.newCameraPosition(kGooglePlex));
 
-      final List<Placemark> placeMarks = await placemarkFromCoordinates(value.latitude ,value.longitude);
-
+      final List<Placemark> placeMarks =
+          await placemarkFromCoordinates(value.latitude, value.longitude);
 
       final add = placeMarks.first;
-      _address = "${add.locality} ${add.administrativeArea} ${add.subAdministrativeArea} ${add.country}";
-      _remoteUtil.countryController.text=add.country!;
-      _remoteUtil.cityController.text=add.subAdministrativeArea!;
-      _remoteUtil.streetController.text=add.locality!;
-      _remoteUtil.postalCodeController.text=add.postalCode!;
+      _address =
+          "${add.locality} ${add.administrativeArea} ${add.subAdministrativeArea} ${add.country}";
+      _remoteUtil.countryController.text = add.country!;
+      _remoteUtil.cityController.text = add.subAdministrativeArea!;
+      _remoteUtil.streetController.text = add.locality!;
+      _remoteUtil.postalCodeController.text = add.postalCode!;
       notifyListeners();
     });
   }
 
-  AddressProvider._(this._remoteUtil){
+  AddressProvider._(this._remoteUtil) {
     markers.addAll(list);
   }
-
 }

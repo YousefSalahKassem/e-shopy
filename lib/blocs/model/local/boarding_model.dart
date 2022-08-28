@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 
+/// TODO your model dir need more separation with  meaningful names like models(api/core - api/request - local - argument )
 class Boarding {
   final String title;
   final String image;
@@ -8,7 +9,7 @@ class Boarding {
   Boarding({required this.title, required this.image});
 }
 
-List<Boarding> getBoardings= [
+List<Boarding> getBoardings = [
   Boarding(
     title: LocaleKeys.firstGreeting.tr(),
     image: "assets/images/splash_1.png",

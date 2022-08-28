@@ -9,10 +9,9 @@ class BoardingController with ChangeNotifier {
       ChangeNotifierProvider<BoardingController>((ref) => BoardingController());
 
   int _currentIndex = 0;
+
+  /// TODO _pageController need to dispose
   final PageController _pageController = PageController();
-
-
-
 
   int get currentIndex => _currentIndex;
   PageController get pageIndex => _pageController;
@@ -22,14 +21,16 @@ class BoardingController with ChangeNotifier {
     notifyListeners();
   }
 
+  /// TODO not save to pass context in controller based on sparate the ui from your logic
   void nextPage(BuildContext context) {
     if (_currentIndex == getBoardings.length - 1) {
       context.replaceRoute(const LoginRoute());
     } else {
       _pageController.nextPage(
-          duration: const Duration(milliseconds: 300), curve: Curves.easeIn,);
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeIn,
+      );
     }
     notifyListeners();
   }
-
 }

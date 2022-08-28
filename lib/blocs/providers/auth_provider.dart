@@ -30,7 +30,12 @@ class AuthProvider extends StateNotifier<IAuthState> implements IAuthProvider {
   final SecureUserData _secureUserData;
   final RemoteUtil _remoteUtil;
 
-  AuthProvider(this._api, this._simpleLocalData, this._secureUserData, this._remoteUtil,) : super(const AuthProviderInitial());
+  AuthProvider(
+    this._api,
+    this._simpleLocalData,
+    this._secureUserData,
+    this._remoteUtil,
+  ) : super(const AuthProviderInitial());
 
   @override
   Future<void> login(BuildContext context) async {
@@ -41,11 +46,10 @@ class AuthProvider extends StateNotifier<IAuthState> implements IAuthProvider {
     );
     state = const AuthProviderLoading();
     await _api.login(loginRequest).then((value) {
-      if (value
-          .toString()
-          .isNotEmpty) {
+      if (value.toString().isNotEmpty) {
         _saveUserData(value);
-        UiHelpers.showNotification('welcome ${value.user.name}',isError: false);
+        UiHelpers.showNotification('welcome ${value.user.name}',
+            isError: false);
         AutoRouter.of(context).replace(const LandingRoute());
       }
     });
@@ -60,11 +64,10 @@ class AuthProvider extends StateNotifier<IAuthState> implements IAuthProvider {
       userName: _remoteUtil.nameController.text,
     );
     await _api.register(registerRequest).then((value) {
-      if (value
-          .toString()
-          .isNotEmpty) {
+      if (value.toString().isNotEmpty) {
         _saveUserData(value);
-        UiHelpers.showNotification('welcome ${value.user.name}',isError: false);
+        UiHelpers.showNotification('welcome ${value.user.name}',
+            isError: false);
         AutoRouter.of(context).replace(const LandingRoute());
       }
     });
@@ -72,6 +75,8 @@ class AuthProvider extends StateNotifier<IAuthState> implements IAuthProvider {
 
   Future<void> _saveUserData(UserResponse user) async {
     _simpleLocalData.writeJsonMap('userData', user.user.toJson());
+
+    /// TODO this check after save user data will casus a problem in the future then
     if (user.token.isNotEmpty) {
       await _secureUserData.write(
         const StorageKey('token'),
@@ -83,15 +88,15 @@ class AuthProvider extends StateNotifier<IAuthState> implements IAuthProvider {
   @override
   void logout(BuildContext context) {
     UiHelpers.showSimpleAlertDialog(
-        context: context,
-        action: () {
-          _simpleLocalData.delete('userData');
-          _secureUserData.delete(const StorageKey('token'));
-          AutoRouter.of(context).replace(const LoginRoute());
-        },
-        message: LocaleKeys.logoutAlert.tr(),
-        okButtonText: LocaleKeys.confirm.tr(),
-        cancelButtonText: LocaleKeys.cancel.tr(),
+      context: context,
+      action: () {
+        _simpleLocalData.delete('userData');
+        _secureUserData.delete(const StorageKey('token'));
+        AutoRouter.of(context).replace(const LoginRoute());
+      },
+      message: LocaleKeys.logoutAlert.tr(),
+      okButtonText: LocaleKeys.confirm.tr(),
+      cancelButtonText: LocaleKeys.cancel.tr(),
     );
   }
 
@@ -103,5 +108,4 @@ class AuthProvider extends StateNotifier<IAuthState> implements IAuthProvider {
     _remoteUtil.confirmPasswordController.clear();
     super.dispose();
   }
-
 }
