@@ -1,0 +1,67 @@
+[
+  {
+    "_id": "5fb385ee50297c27f8afb507",
+    "category": "All",
+    "__v": 0
+  },
+  {
+    "_id": "5fb385fc50297c27f8afb508",
+    "category": "Phones",
+    "__v": 0
+  },
+  {
+    "_id": "5fb3860450297c27f8afb509",
+    "category": "Shoes",
+    "__v": 0
+  },
+  {
+    "_id": "5fb3880e43166e26981b087c",
+    "category": "Clothes",
+    "__v": 0
+  },
+  {
+    "_id": "5fb41aeb7e58fa42d47a3cb1",
+    "category": "Laptops",
+    "__v": 0
+  },
+  {
+    "_id": "5fb41b007e58fa42d47a3cb2",
+    "category": "Cameras",
+    "__v": 0
+  },
+  {
+    "_id": "5fb41b0a7e58fa42d47a3cb3",
+    "category": "Bags",
+    "__v": 0
+  },
+  {
+    "_id": "5fc8ed46bd47b9000422faf6",
+    "category": "Bicylces",
+    "__v": 0
+  },
+  {
+    "_id": "605d9bc57eed110cbc52bdb9",
+    "category": "Watches",
+    "__v": 0
+  },
+  {
+    "_id": "605d9da9a3b188371429bad2",
+    "category": "Toys",
+    "__v": 0
+  },
+  {
+    "_id": "605d9dbba3b188371429bad3",
+    "category": "Books",
+    "__v": 0
+  },
+  {
+    "_id": "605d9e96a3b188371429bad4",
+    "category": "Beds",
+    "__v": 0
+  },
+  {
+    "_id": "605d9ea7a3b188371429bad5",
+    "category": "Chairs",
+    "__v": 0
+  }
+]

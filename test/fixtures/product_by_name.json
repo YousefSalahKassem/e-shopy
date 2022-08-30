@@ -1,0 +1,11 @@
+[
+  {
+    "_id": "605db4d7c186ce3fa086b60f",
+    "name": "Teddy Bear",
+    "price": 15,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616753754/ecommerce_app_images/zuwkkop1jzbizcmsbfz4.jpg",
+    "category": "Toys",
+    "details": "A teddy bear is a stuffed toy in the form of a bear. Developed apparently simultaneously by toymakers Morris Michtom in the U.S. and Richard Steiff in Germany in the early years of the 20th century, and named after President Theodore 'Teddy' Roosevelt, the teddy bear became a popular children's toy, celebrated in story, song, and film.[1] Since the creation of the first teddy bears which sought to imitate the form of real bear cubs, 'teddies' have greatly varied in form, style, color, and material. They have become collector's items, with older and rarer 'teddies' appearing at public auctions.[2] Teddy bears are among the most popular gifts for children and are often given to adults to signify love, affection, congratulations, or sympathy.",
+    "__v": 0
+  }
+]

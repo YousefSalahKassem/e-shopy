@@ -1,0 +1,317 @@
+[
+  {
+    "_id": "5fc7cbe091c73a10a4800e65",
+    "name": "Tie",
+    "price": 50,
+    "imageUrl": "http://res.cloudinary.com/nehe/image/upload/v1606929240/ecommerce_app_images/image_1606929237500_jpydtg.jpg",
+    "category": "Clothes",
+    "details": "A necktie, or simply a tie, is a long piece of cloth, worn, usually by men, for decorative purposes around the neck, resting under the shirt collar and knotted at the throat. Variants include the ascot, bow, bolo, zipper, cravat, and knit. The modern necktie, ascot, and bow tie are descended from the cravat. Neckties are generally unsized, but may be available in a longer size. In some cultures men and boys wear neckties as part of regular office attire or formal wear. Some women wear them as well but usually not as often as men. Neckties can also be worn as part of a uniform (e.g. military, school, waitstaff), whereas some choose to wear them as everyday clothing attire. Neckties are traditionally worn with the top shirt button fastened, and the tie knot resting between the collar points",
+    "__v": 0
+  },
+  {
+    "_id": "5fc7ccdf91c73a10a4800e67",
+    "name": "High heels",
+    "price": 150,
+    "imageUrl": "http://res.cloudinary.com/nehe/image/upload/v1606929567/ecommerce_app_images/image_1606929563624_eb7wpl.jpg",
+    "category": "Shoes",
+    "details": "High heels are a type of shoe in which the heel, compared with the toe, is significantly higher off the ground. They make the wearer appear taller, accentuates the muscle tone in their legs and makes their legs appear visibly longer.[1] There are many types of high heels, which come in different styles, colors and materials, and can be found all over the world. They have significant cultural and fashionable meanings attached to them, which have been largely shaped by historical contexts over the past 1,000 years. Wearing high heels is associated with some health problems.",
+    "__v": 0
+  },
+  {
+    "_id": "605db7abc186ce3fa086b613",
+    "name": "Soap Bubble",
+    "price": 27,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616754573/ecommerce_app_images/g5icmxenzbz64m77vyfs.jpg",
+    "category": "Toys",
+    "details": "A toy is an item that is used in play, especially one designed for such use. It is mainly intended for use by children, though may also be marketed to adults under certain circumstances. Playing with toys can be an enjoyable means of training young children for life in society. Different materials like wood, clay, paper, and plastic are used to make toys. Many items are designed to serve as toys, but goods produced for other purposes can also be used. For instance, a small child may fold an ordinary piece of paper into an airplane shape and 'fly it'. Newer forms of toys include interactive digital entertainment. Some toys are produced primarily as collectors' items and are intended for display only.",
+    "__v": 0
+  },
+  {
+    "_id": "5fc7cb4391c73a10a4800e64",
+    "name": "Laptop",
+    "price": 1300,
+    "imageUrl": "http://res.cloudinary.com/nehe/image/upload/v1606929074/ecommerce_app_images/image_1606929071295_q2ezfk.jpg",
+    "category": "Laptops",
+    "details": "A laptop (also laptop computer), is a small, portable personal computer (PC) with a 'clamshell' form factor, typically having a thin LCD or LED computer screen mounted on the inside of the upper lid of the clamshell and an alphanumeric keyboard on the inside of the lower lid. The clamshell is opened up to use the computer. Laptops are folded shut for transportation, and thus are suitable for mobile use.[1] Its name comes from lap, as it was deemed to be placed on a person's lap when being used. Although originally there was a distinction between laptops and notebooks (the former being bigger and heavier than the latter), as of 2014, there is often no longer any difference.",
+    "__v": 0
+  },
+  {
+    "_id": "605da6bd6e745a2b88b8bc1f",
+    "name": "Dog vest",
+    "price": 40,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616750187/ecommerce_app_images/xr33eh7sb7sa0hpvr6qv.jpg",
+    "category": "Clothes",
+    "details": "The goal of a service dog vest is to let others know that your dog is a working dog, not a pet. Traditionally, vests are either red or blue but service dog vest colors range from raspberry to bright orange to tie-dye, camouflage, and prints",
+    "__v": 0
+  },
+  {
+    "_id": "605da8346e745a2b88b8bc20",
+    "name": "Scarf",
+    "price": 25,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616750566/ecommerce_app_images/z8u9n0xdr5dgpeqo8xgh.jpg",
+    "category": "Clothes",
+    "details": "A broad band of cloth worn about the shoulders, around the neck, or over the head",
+    "__v": 0
+  },
+  {
+    "_id": "605db14e6e745a2b88b8bc2a",
+    "name": "Iphone ",
+    "price": 620,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616752924/ecommerce_app_images/gmvlhuafw2kowc5q1kov.jpg",
+    "category": "Phones",
+    "details": "The iPhone is a line of smartphones designed and marketed by Apple Inc. that use Apple's iOS mobile operating system. The first-generation iPhone was announced by former Apple CEO Steve Jobs on January 9, 2007. Since then Apple has annually released new iPhone models and iOS updates. As of November 1, 2018, more than 2.2 billion iPhones had been sold.",
+    "__v": 0
+  },
+  {
+    "_id": "605dacc86e745a2b88b8bc24",
+    "name": "Market Bike",
+    "price": 100,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616751676/ecommerce_app_images/ovyelkogm7twkkortgcq.png",
+    "category": "Bicylces",
+    "details": "A bicycle, also called a bike or cycle, is a human-powered or motor-powered, pedal-driven, single-track vehicle, having two wheels attached to a frame, one behind the other. A bicycle rider is called a cyclist, or bicyclist.",
+    "__v": 0
+  },
+  {
+    "_id": "605daab96e745a2b88b8bc22",
+    "name": "Dell",
+    "price": 500,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616751180/ecommerce_app_images/vdb1kuyppegaalr47eye.jpg",
+    "category": "Laptops",
+    "details": "A computer that is portable and suitable for use while travelling.",
+    "__v": 0
+  },
+  {
+    "_id": "605db722c186ce3fa086b611",
+    "name": "Paper boat",
+    "price": 15,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616754396/ecommerce_app_images/xzqce1jdzpv4jlbsyo0w.jpg",
+    "category": "Toys",
+    "details": "A toy is an item that is used in play, especially one designed for such use. It is mainly intended for use by children, though may also be marketed to adults under certain circumstances. Playing with toys can be an enjoyable means of training young children for life in society. Different materials like wood, clay, paper, and plastic are used to make toys. Many items are designed to serve as toys, but goods produced for other purposes can also be used. For instance, a small child may fold an ordinary piece of paper into an airplane shape and 'fly it'. Newer forms of toys include interactive digital entertainment. Some toys are produced primarily as collectors' items and are intended for display only.",
+    "__v": 0
+  },
+  {
+    "_id": "605db772c186ce3fa086b612",
+    "name": "Music Kid",
+    "price": 25,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616754501/ecommerce_app_images/xlcysk4btynb7asxsm87.jpg",
+    "category": "Toys",
+    "details": "A toy is an item that is used in play, especially one designed for such use. It is mainly intended for use by children, though may also be marketed to adults under certain circumstances. Playing with toys can be an enjoyable means of training young children for life in society. Different materials like wood, clay, paper, and plastic are used to make toys. Many items are designed to serve as toys, but goods produced for other purposes can also be used. For instance, a small child may fold an ordinary piece of paper into an airplane shape and 'fly it'. Newer forms of toys include interactive digital entertainment. Some toys are produced primarily as collectors' items and are intended for display only.",
+    "__v": 0
+  },
+  {
+    "_id": "605db887c186ce3fa086b615",
+    "name": "Tricycle",
+    "price": 150,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616754734/ecommerce_app_images/yjvxnowu34iwibd4ancc.jpg",
+    "category": "Toys",
+    "details": "A tricycle, often abbreviated to trike, is a human-powered (or gravity-powered) three-wheeled vehicle.Some tricycles, such as cycle rickshaws (for passenger transport) and freight trikes, are used for commercial purposes, especially in the developing world, particularly Africa and Asia.",
+    "__v": 0
+  },
+  {
+    "_id": "605db41bc186ce3fa086b60e",
+    "name": "Marbles",
+    "price": 30,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616753620/ecommerce_app_images/ec9otibvdg5jkqnvlmjs.jpg",
+    "category": "Toys",
+    "details": "Marble is a metamorphic rock composed of recrystallized carbonate minerals, most commonly calcite or dolomite. Marble is typically not foliated, although there are exceptions. In geology, the term marble refers to metamorphosed limestone, but its use in stonemasonry more broadly encompasses unmetamorphosed limestone.[1] Marble is commonly used for sculpture and as a building material.",
+    "__v": 0
+  },
+  {
+    "_id": "5fc7ca9991c73a10a4800e63",
+    "name": "Sneakers",
+    "price": 230,
+    "imageUrl": "http://res.cloudinary.com/nehe/image/upload/v1606929004/ecommerce_app_images/image_1606929000309_cejnmp.png",
+    "category": "Shoes",
+    "details": "Sneakers (also called trainers, athletic shoes, tennis shoes, gym shoes, kicks, sport shoes, flats, running shoes, or runners) are shoes primarily designed for sports or other forms of physical exercise but that are now also widely used for everyday casual wear.",
+    "__v": 0
+  },
+  {
+    "_id": "5fc7ce0891c73a10a4800e69",
+    "name": "Hiking Shoes",
+    "price": 230,
+    "imageUrl": "http://res.cloudinary.com/nehe/image/upload/v1606929836/ecommerce_app_images/image_1606929833394_gylwjc.jpg",
+    "category": "Shoes",
+    "details": "Hiking boots are usually much sturdier and more durable than walking shoes. These boots are often reinforced with extra padding and may even have metal bars in the soles. ... Although hiking boots are a more obvious, often more comfortable choice when climbing a steep slope, some hikers still prefer to wear walking shoes.",
+    "__v": 0
+  },
+  {
+    "_id": "605dab9f6e745a2b88b8bc23",
+    "name": "Webcam",
+    "price": 120,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616751435/ecommerce_app_images/qcvmpe53va0dmu1upax8.jpg",
+    "category": "Cameras",
+    "details": "A video camera connected to a computer, allowing its images to be seen by internet users.",
+    "__v": 0
+  },
+  {
+    "_id": "605da61a6e745a2b88b8bc1e",
+    "name": "Factory wear",
+    "price": 100,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616749979/ecommerce_app_images/oimos8ypuetabis7zeu7.jpg",
+    "category": "Clothes",
+    "details": "You can use it to work very safely in the industry of factory yet 99% productive",
+    "__v": 0
+  },
+  {
+    "_id": "605dadd66e745a2b88b8bc27",
+    "name": "Couples Bike",
+    "price": 130,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616752057/ecommerce_app_images/jbdxowihe69rsnhqxzoc.jpg",
+    "category": "Bicylces",
+    "details": "A bicycle, also called a bike or cycle, is a human-powered or motor-powered, pedal-driven, single-track vehicle, having two wheels attached to a frame, one behind the other. A bicycle rider is called a cyclist, or bicyclist.",
+    "__v": 0
+  },
+  {
+    "_id": "605daf846e745a2b88b8bc28",
+    "name": "Iphone",
+    "price": 600,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616752429/ecommerce_app_images/kqozqd2e0rlawyehiuvx.jpg",
+    "category": "Phones",
+    "details": "The iPhone is a line of smartphones designed and marketed by Apple Inc. that use Apple's iOS mobile operating system. The first-generation iPhone was announced by former Apple CEO Steve Jobs on January 9, 2007. Since then Apple has annually released new iPhone models and iOS updates. As of November 1, 2018, more than 2.2 billion iPhones had been sold.",
+    "__v": 0
+  },
+  {
+    "_id": "605dad916e745a2b88b8bc26",
+    "name": "Kids Bike",
+    "price": 90,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616751985/ecommerce_app_images/dpdq0zyd1blqtozft8vq.jpg",
+    "category": "Bicylces",
+    "details": "A bicycle, also called a bike or cycle, is a human-powered or motor-powered, pedal-driven, single-track vehicle, having two wheels attached to a frame, one behind the other. A bicycle rider is called a cyclist, or bicyclist.",
+    "__v": 0
+  },
+  {
+    "_id": "605db80cc186ce3fa086b614",
+    "name": "Child Tower",
+    "price": 10,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616754647/ecommerce_app_images/qwfewcjibyjglcrvtqjc.jpg",
+    "category": "Toys",
+    "details": "A toy is an item that is used in play, especially one designed for such use. It is mainly intended for use by children, though may also be marketed to adults under certain circumstances. Playing with toys can be an enjoyable means of training young children for life in society. Different materials like wood, clay, paper, and plastic are used to make toys. Many items are designed to serve as toys, but goods produced for other purposes can also be used. For instance, a small child may fold an ordinary piece of paper into an airplane shape and 'fly it'. Newer forms of toys include interactive digital entertainment. Some toys are produced primarily as collectors' items and are intended for display only.",
+    "__v": 0
+  },
+  {
+    "_id": "5fc8ecf1bd47b9000422faf5",
+    "name": "Bicylce",
+    "price": 300,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1607003116/ecommerce_app_images/oshizq4ovmfp1knunjtp.jpg",
+    "category": "Bicylces",
+    "details": "A bicycle, also called a bike or cycle, is a human-powered or motor-powered, pedal-driven, single-track vehicle, having two wheels attached to a frame, one behind the other. A bicycle rider is called a cyclist, or bicyclist.Bicycles were introduced in the 19th century in Europe, and by the early 21st century, more than 1 billion were in existence at a given time.[1][2][3] These numbers far exceed the number of cars, both in total and ranked by the number of individual models produced.[4][5][6] They are the principal means of transportation in many regions. They also provide a popular form of recreation, and have been adapted for use as children's toys, general fitness, military and police applications, courier services, bicycle racing, and bicycle stunts.",
+    "__v": 0
+  },
+  {
+    "_id": "5fc7ce7591c73a10a4800e6a",
+    "name": "Leather bag",
+    "price": 300,
+    "imageUrl": "http://res.cloudinary.com/nehe/image/upload/v1606929946/ecommerce_app_images/image_1606929942956_zyz5ue.jpg",
+    "category": "Bags",
+    "details": "As long as leather has been used, it has been a vehicle for transporting objects. Originally, there were just simple leather bags. Today there is an infinite number of bag types from the leather handbag, which is the most widely used, to leather backpacks.",
+    "__v": 0
+  },
+  {
+    "_id": "605dad336e745a2b88b8bc25",
+    "name": "Sports Bike",
+    "price": 110,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616751889/ecommerce_app_images/vbi2odgq5kidzzpig9uf.jpg",
+    "category": "Bicylces",
+    "details": "A bicycle, also called a bike or cycle, is a human-powered or motor-powered, pedal-driven, single-track vehicle, having two wheels attached to a frame, one behind the other. A bicycle rider is called a cyclist, or bicyclist.",
+    "__v": 0
+  },
+  {
+    "_id": "5fc7cc5191c73a10a4800e66",
+    "name": "Camera",
+    "price": 550,
+    "imageUrl": "http://res.cloudinary.com/nehe/image/upload/v1606929400/ecommerce_app_images/image_1606929398099_t3s2y6.webp",
+    "category": "Cameras",
+    "details": "A camera is an optical instrument used to capture an image. At their most basic, cameras are sealed boxes (the camera body) with a small hole (the aperture) that allow light in to capture an image on a light-sensitive surface (usually photographic film or a digital sensor). Cameras have various mechanisms to control how the light falls onto the light-sensitive surface. Lenses focus the light entering the camera, the size of the aperture can be widened or narrowed to let more or less light into the camera, and a shutter mechanism determines the amount of time the photo-sensitive surface is exposed to the light.",
+    "__v": 0
+  },
+  {
+    "_id": "605da3476e745a2b88b8bc1b",
+    "name": "T-shirt",
+    "price": 30,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616749148/ecommerce_app_images/ee9ucx4n0vswo5tillxa.jpg",
+    "category": "Clothes",
+    "details": "A T-shirt, or tee shirt, is a style of fabric shirt named after the T shape of its body and sleeves. Traditionally, it has short sleeves and a round neckline, known as a crew neck, which lacks a collar.",
+    "__v": 0
+  },
+  {
+    "_id": "605db4d7c186ce3fa086b60f",
+    "name": "Teddy Bear",
+    "price": 15,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616753754/ecommerce_app_images/zuwkkop1jzbizcmsbfz4.jpg",
+    "category": "Toys",
+    "details": "A teddy bear is a stuffed toy in the form of a bear. Developed apparently simultaneously by toymakers Morris Michtom in the U.S. and Richard Steiff in Germany in the early years of the 20th century, and named after President Theodore 'Teddy' Roosevelt, the teddy bear became a popular children's toy, celebrated in story, song, and film.[1] Since the creation of the first teddy bears which sought to imitate the form of real bear cubs, 'teddies' have greatly varied in form, style, color, and material. They have become collector's items, with older and rarer 'teddies' appearing at public auctions.[2] Teddy bears are among the most popular gifts for children and are often given to adults to signify love, affection, congratulations, or sympathy.",
+    "__v": 0
+  },
+  {
+    "_id": "605db2206e745a2b88b8bc2b",
+    "name": "Samsung ",
+    "price": 590,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616753104/ecommerce_app_images/x48gbackgp5ncxnbfftw.jpg",
+    "category": "Phones",
+    "details": "Samsung Galaxy (stylised as SΛMSUNG Galaxy since 2015,[2] previously stylised as Samsung GALAXY; abbreviated as SG) is a series of computing and mobile computing devices that are designed, manufactured and marketed by Samsung Electronics. The product line includes the Samsung Galaxy S series of high-end smartphones, the Samsung Galaxy Tab series of tablets, the Samsung Galaxy Note series of tablets and phablets with the added functionality of a stylus, the foldable Samsung Galaxy Z series, and smartwatches including the first version of the Samsung Galaxy Gear, with later versions dropping the Galaxy branding, until the release of the Samsung Galaxy Watch in 2018.",
+    "__v": 0
+  },
+  {
+    "_id": "605db2c56e745a2b88b8bc2c",
+    "name": "Boots",
+    "price": 85,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616753298/ecommerce_app_images/rgk3xjuxwno0f78umitq.jpg",
+    "category": "Shoes",
+    "details": "A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time and from culture to culture, with appearance originally being tied to function. Though the human foot is adapted to varied terrain and climate conditions, it is still vulnerable to environmental hazards such as sharp rocks and temperature extremes, which shoes protect against. Some shoes are worn as safety equipment, such as steel-soled boots which are required on construction sites.",
+    "__v": 0
+  },
+  {
+    "_id": "605da5436e745a2b88b8bc1d",
+    "name": "Vest Waistcoat",
+    "price": 36.99,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616749799/ecommerce_app_images/zhvjiqmi4bsdqadicfvt.jpg",
+    "category": "Clothes",
+    "details": "Here are the facts: a waistcoat is a garment that covers a man's upper body and is sleeveless, while a vest is also a garment that covers a man's upper body and is sleeveless. So, there really is no difference between a vest and a waistcoat",
+    "__v": 0
+  },
+  {
+    "_id": "605db0646e745a2b88b8bc29",
+    "name": "Samsung",
+    "price": 590,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616752680/ecommerce_app_images/joijkk2fqsry4zs04eqo.jpg",
+    "category": "Phones",
+    "details": "Samsung Galaxy (stylised as SΛMSUNG Galaxy since 2015,[2] previously stylised as Samsung GALAXY; abbreviated as SG) is a series of computing and mobile computing devices that are designed, manufactured and marketed by Samsung Electronics. The product line includes the Samsung Galaxy S series of high-end smartphones, the Samsung Galaxy Tab series of tablets, the Samsung Galaxy Note series of tablets and phablets with the added functionality of a stylus, the foldable Samsung Galaxy Z series, and smartwatches including the first version of the Samsung Galaxy Gear, with later versions dropping the Galaxy branding, until the release of the Samsung Galaxy Watch in 2018.",
+    "__v": 0
+  },
+  {
+    "_id": "605db6bbc186ce3fa086b610",
+    "name": "Play stome",
+    "price": 15,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616754259/ecommerce_app_images/y0sb2bcmffwjawjvpfhy.jpg",
+    "category": "Toys",
+    "details": "A toy is an item that is used in play, especially one designed for such use. It is mainly intended for use by children, though may also be marketed to adults under certain circumstances. Playing with toys can be an enjoyable means of training young children for life in society. Different materials like wood, clay, paper, and plastic are used to make toys. Many items are designed to serve as toys, but goods produced for other purposes can also be used. For instance, a small child may fold an ordinary piece of paper into an airplane shape and 'fly it'. Newer forms of toys include interactive digital entertainment. Some toys are produced primarily as collectors' items and are intended for display only.",
+    "__v": 0
+  },
+  {
+    "_id": "605da8c96e745a2b88b8bc21",
+    "name": "Fitness Suit",
+    "price": 25,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616750708/ecommerce_app_images/g5pniqyfyyx6bm4cwk6n.jpg",
+    "category": "Clothes",
+    "details": "Promotes perspiration during your workout or training ✓ Is made of washable material, so you quickly get a clean sweat suit after your training.",
+    "__v": 0
+  },
+  {
+    "_id": "605da4416e745a2b88b8bc1c",
+    "name": "Shirt",
+    "price": 35,
+    "imageUrl": "https://res.cloudinary.com/nehe/image/upload/v1616749533/ecommerce_app_images/wazjy5bflddfaxuv8eha.jpg",
+    "category": "Clothes",
+    "details": "A garment for the upper part of the body: such as. a : a cloth garment usually having a collar, sleeves, a front opening, and a tail long enough to be tucked inside trousers or a skirt. b : undershirt.",
+    "__v": 0
+  },
+  {
+    "_id": "5fc7cd9291c73a10a4800e68",
+    "name": "Book bag",
+    "price": 45,
+    "imageUrl": "http://res.cloudinary.com/nehe/image/upload/v1606929677/ecommerce_app_images/image_1606929656905_j02fzb.jpg",
+    "category": "Bags",
+    "details": "A bag or sack (such as a knapsack) often with a handle or strap that is used for holding books and other items Students who attended the event each received a bookbag filled with school supplies such as notebooks, folders, pencil pouches, pencils, pens and crayons",
+    "__v": 0
+  }
+]
