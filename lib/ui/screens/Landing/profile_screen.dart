@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/blocs/interface/i_auth_state.dart';
+import 'package:flutter_boilerplate/blocs/providers/auth_provider/i_auth_state.dart';
 import 'package:flutter_boilerplate/blocs/model/user.dart';
-import 'package:flutter_boilerplate/blocs/providers/auth_provider.dart';
+import 'package:flutter_boilerplate/blocs/providers/auth_provider/auth_provider.dart';
 import 'package:flutter_boilerplate/blocs/providers/user_provider.dart';
 import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
@@ -74,6 +74,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     );
   }
 }
+
 
 class Header extends ConsumerWidget {
   final User user;

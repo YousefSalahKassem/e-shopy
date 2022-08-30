@@ -1,23 +1,23 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 
-class Boarding {
+class BoardingModel {
   final String title;
   final String image;
 
-  Boarding({required this.title, required this.image});
+  BoardingModel({required this.title, required this.image});
 }
 
-List<Boarding> getBoardings= [
-  Boarding(
+List<BoardingModel> getBoardings= [
+  BoardingModel(
     title: LocaleKeys.firstGreeting.tr(),
     image: "assets/images/splash_1.png",
   ),
-  Boarding(
+  BoardingModel(
     title: LocaleKeys.secondGreeting.tr(),
     image: "assets/images/splash_2.png",
   ),
-  Boarding(
+  BoardingModel(
     title: LocaleKeys.thirdGreeting.tr(),
     image: "assets/images/splash_3.png",
   ),

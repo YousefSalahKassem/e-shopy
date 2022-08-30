@@ -14,6 +14,7 @@ class RemoteUtil {
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _streetController = TextEditingController();
   final TextEditingController _postalCodeController = TextEditingController();
+  final TextEditingController _searchField = TextEditingController();
 
   final GlobalKey<FormState> _loginKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _registerKey = GlobalKey<FormState>();
@@ -46,4 +47,6 @@ class RemoteUtil {
   TextEditingController get streetController => _streetController;
 
   TextEditingController get postalCodeController => _postalCodeController;
+
+  TextEditingController get searchField => _searchField;
 }

@@ -34,10 +34,7 @@ class AddressProvider with ChangeNotifier {
   ];
 
   Future<void> getUserCurrentLocation() async {
-    await Geolocator.requestPermission()
-        .then((value) {})
-        .onError((error, stackTrace) {
-    });
+    await Geolocator.requestPermission();
 
     await Geolocator.getCurrentPosition().then((value) async {
       markers.add(

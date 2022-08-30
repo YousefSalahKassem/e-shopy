@@ -2,10 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/interface/i_auth_provider.dart';
-import 'package:flutter_boilerplate/blocs/interface/i_auth_state.dart';
 import 'package:flutter_boilerplate/blocs/model/login_model.dart';
 import 'package:flutter_boilerplate/blocs/model/register_model.dart';
 import 'package:flutter_boilerplate/blocs/model/user.dart';
+import 'package:flutter_boilerplate/blocs/providers/auth_provider/i_auth_state.dart';
 import 'package:flutter_boilerplate/data/remote/apis/auth_api.dart';
 import 'package:flutter_boilerplate/data/remote/interface/i_authentication.dart';
 import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
@@ -33,27 +33,27 @@ class AuthProvider extends StateNotifier<IAuthState> implements IAuthProvider {
   AuthProvider(this._api, this._simpleLocalData, this._secureUserData, this._remoteUtil,) : super(const AuthProviderInitial());
 
   @override
-  Future<void> login(BuildContext context) async {
-    FocusScope.of(context).unfocus();
+  Future<bool> login() async {
     final loginRequest = LoginModel(
       email: _remoteUtil.emailController.text,
       password: _remoteUtil.passwordController.text,
     );
     state = const AuthProviderLoading();
     await _api.login(loginRequest).then((value) {
-      if (value
-          .toString()
-          .isNotEmpty) {
+      if (value.toString().isEmpty) {
+        return false;
+      }
+      else{
         _saveUserData(value);
         UiHelpers.showNotification('welcome ${value.user.name}',isError: false);
-        AutoRouter.of(context).replace(const LandingRoute());
+        return true;
       }
     });
+    return true;
   }
 
   @override
-  Future<void> register(BuildContext context) async {
-    FocusScope.of(context).unfocus();
+  Future<bool> register() async {
     final registerRequest = RegisterModel(
       email: _remoteUtil.emailController.text,
       password: _remoteUtil.passwordController.text,
@@ -62,17 +62,22 @@ class AuthProvider extends StateNotifier<IAuthState> implements IAuthProvider {
     await _api.register(registerRequest).then((value) {
       if (value
           .toString()
-          .isNotEmpty) {
+          .isEmpty) {
+        return false;
+      }
+      else {
         _saveUserData(value);
         UiHelpers.showNotification('welcome ${value.user.name}',isError: false);
-        AutoRouter.of(context).replace(const LandingRoute());
+        return true;
       }
     });
+    return true;
   }
 
   Future<void> _saveUserData(UserResponse user) async {
-    _simpleLocalData.writeJsonMap('userData', user.user.toJson());
+
     if (user.token.isNotEmpty) {
+      _simpleLocalData.writeJsonMap('userData', user.user.toJson());
       await _secureUserData.write(
         const StorageKey('token'),
         CodableString(user.token),

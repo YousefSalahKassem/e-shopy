@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_boilerplate/blocs/model/local/address_model.dart';
 import 'package:flutter_boilerplate/data/local/constants/tables.dart';
 import 'package:flutter_boilerplate/data/local/interface/i_database.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

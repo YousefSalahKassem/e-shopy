@@ -1,6 +1,8 @@
-import 'package:flutter/cupertino.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-@immutable
+part 'login_model.g.dart';
+
+@JsonSerializable()
 class LoginModel {
   final String email;
   final String password;
@@ -10,9 +12,7 @@ class LoginModel {
     required this.password,
   });
 
-  Map<String, dynamic> toJson() {
-    return {'email': email.trim(), 'password': password.trim()};
-  }
+  Map<String, dynamic> toJson() => _$LoginModelToJson(this);
 
   LoginModel copyWith({
     String? email,

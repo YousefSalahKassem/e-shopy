@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart' as core;
 
-class EndPoint implements core.EndPoints {
+class AppEndPoint implements core.EndPoints {
 
-  static final provider = Provider((ref)=>EndPoint());
+  static final provider = Provider((ref)=>AppEndPoint());
 
   @override
   // TODO: implement apiUrl

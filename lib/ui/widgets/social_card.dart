@@ -4,10 +4,10 @@ import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 
 class SocialCard extends StatelessWidget {
   const SocialCard({
-    Key? key,
+    super.key,
     required this.icon,
     required this.press,
-  }) : super(key: key);
+  });
 
   final String icon;
   final Function press;

@@ -11,11 +11,11 @@ import 'package:flutter_boilerplate/ui/widgets/no_account_text.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 
-class ForgotScreen extends ConsumerWidget {
+class ForgotScreen extends StatelessWidget {
   const ForgotScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Padding(
@@ -35,7 +35,7 @@ class ForgotScreen extends ConsumerWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: context.heightR(0.1)),
-            _forgotForm(context,ref),
+            const _ForgotPassword(),
           ],
         ),
       ),
@@ -43,38 +43,43 @@ class ForgotScreen extends ConsumerWidget {
   }
 }
 
-Widget _forgotForm(BuildContext context, WidgetRef ref) {
-  final notifier = ref.read(EditProvider.provider.notifier);
-  final reader = ref.read(RemoteUtil.provider);
-  return Form(
-    key: reader.registerKey,
-    child: Column(
-      children: [
-        TextFieldApp(
+class _ForgotPassword extends ConsumerWidget {
+  const _ForgotPassword();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final notifier = ref.read(EditProvider.provider.notifier);
+    final reader = ref.read(RemoteUtil.provider);
+    return Form(
+      key: reader.registerKey,
+      child: Column(
+        children: [
+          TextFieldApp(
             label: LocaleKeys.email.tr(),
             hint: LocaleKeys.enterEmail.tr(),
             valid: LocaleKeys.emailRequired.tr(),
             controller: reader.emailController,
             icon: Icons.email_outlined,
             type: TextInputType.emailAddress,
-        ),
-        SizedBox(height: context.heightR(0.03)),
-        SizedBox(height: context.heightR(0.1)),
-        DefaultButton(
-          text: LocaleKeys.resetPassword.tr(),
-          press: () {
-            if (reader.registerKey.currentState!.validate()) {
-              notifier.resetPassword(context);
-            }
-          },
-        ),
-        SizedBox(height: context.heightR(0.01)),
-        NoAccountText(
-          onPressed: () {
-            AutoRouter.of(context).push(const RegisterRoute());
-          },
-        ),
-      ],
-    ),
-  );
+          ),
+          SizedBox(height: context.heightR(0.03)),
+          SizedBox(height: context.heightR(0.1)),
+          DefaultButton(
+            text: LocaleKeys.resetPassword.tr(),
+            press: () {
+              if (reader.registerKey.currentState!.validate()) {
+                FocusScope.of(context).unfocus();
+                notifier.resetPassword().whenComplete(() => AutoRouter.of(context).replace(const LoginRoute()));
+              }
+            },
+          ),
+          SizedBox(height: context.heightR(0.01)),
+          NoAccountText(
+            onPressed: () {
+              AutoRouter.of(context).push(const RegisterRoute());
+            },
+          ),
+        ],
+      ),
+    );  }
 }

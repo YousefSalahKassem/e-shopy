@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/providers/edit_provider.dart';
 import 'package:flutter_boilerplate/generated/locale_keys.g.dart';
 import 'package:flutter_boilerplate/helpers/remote_util.dart';
+import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_boilerplate/themes/dimensions.dart';
 import 'package:flutter_boilerplate/ui/widgets/default_button.dart';
 import 'package:flutter_boilerplate/ui/widgets/default_text_field.dart';
@@ -41,12 +43,14 @@ class EditProfileScreen extends ConsumerWidget {
                   ),
                 ),
                 SizedBox(height: context.heightR(0.05)),
-                _userForm(context, ref),
+                const _UserForm(),
                 SizedBox(height: context.heightR(0.1)),
                 DefaultButton(
                   text: LocaleKeys.updateProfile.tr(),
                   press: () {
-                    ref.read(EditProvider.provider.notifier).changeName(context);
+                    FocusScope.of(context).unfocus();
+                    ref.read(EditProvider.provider.notifier).changeName()
+                        .whenComplete(() => AutoRouter.of(context).replace(const LandingRoute()));
                   },
                 ),
                 SizedBox(height: context.heightR(0.05)),
@@ -57,9 +61,13 @@ class EditProfileScreen extends ConsumerWidget {
   }
 }
 
-Widget _userForm(BuildContext context, WidgetRef ref) {
-  final reader = ref.watch(RemoteUtil.provider);
-  return Form(
+class _UserForm extends ConsumerWidget {
+  const _UserForm();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final reader = ref.watch(RemoteUtil.provider);
+    return Form(
       key: reader.updateUserKey,
       child: Column(
         children: [
@@ -73,5 +81,6 @@ Widget _userForm(BuildContext context, WidgetRef ref) {
           ),
         ],
       ),
-  );
+    );
+  }
 }

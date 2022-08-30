@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/data/remote/constants/endpoints.dart';
+import 'package:flutter_boilerplate/data/remote/constants/app_endpoints.dart';
 import 'package:flutter_boilerplate/data/token_holder.dart';
 import 'package:flutter_boilerplate/generated/codegen_loader.g.dart';
 import 'package:flutter_boilerplate/helpers/locale.dart';
@@ -18,7 +18,7 @@ void main() async {
   runApp(
     ProviderScope(
       overrides: [
-        core.EndPoints.provider.overrideWithValue(EndPoint()),
+        core.EndPoints.provider.overrideWithValue(AppEndPoint()),
         core.ITokenHolder.provider.overrideWithProvider(TokenHolder.provider),
       ],
       child: EasyLocalization(

@@ -11,11 +11,14 @@ class Tables{
 // favorite table
   static const String databaseFavorite = 'favorite.db';
   static const String favoriteTable = 'favorite';
-  static const String columnId = 'id';
+  static const String columnId = '_id';
   static const String columnName = 'name';
-  static const String columnImage='image';
+  static const String columnImage='imageUrl';
   static const String columnPrice='price';
-  static const String columnDescription='description';
+  static const String columnDescription='details';
+  static const String columnStatus='status';
+  static const String columnCategory='category';
+  static const String columnV='__v';
 
 // cart table
   static const String databaseCart = 'cart.db';

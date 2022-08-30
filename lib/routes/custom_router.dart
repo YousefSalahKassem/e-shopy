@@ -7,10 +7,12 @@ import 'package:flutter_boilerplate/ui/screens/Authentication/forgot_screen.dart
 import 'package:flutter_boilerplate/ui/screens/Authentication/login_screen.dart';
 import 'package:flutter_boilerplate/ui/screens/Authentication/register_screen.dart';
 import 'package:flutter_boilerplate/ui/screens/Authentication/splash_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Landing/Home/details_screen.dart';
 
 import 'package:flutter_boilerplate/ui/screens/Landing/cart_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Landing/category_screen.dart';
 import 'package:flutter_boilerplate/ui/screens/Landing/favourite_screen.dart';
-import 'package:flutter_boilerplate/ui/screens/Landing/home_screen.dart';
+import 'package:flutter_boilerplate/ui/screens/Landing/Home/home_screen.dart';
 import 'package:flutter_boilerplate/ui/screens/Landing/landing_screen.dart';
 import 'package:flutter_boilerplate/ui/screens/Landing/profile_screen.dart';
 import 'package:flutter_boilerplate/ui/screens/Settings/edit_profile_screen.dart';
@@ -38,6 +40,8 @@ import 'package:flutter_boilerplate/ui/screens/Settings/settings_screen.dart';
     AutoRoute(page: AddressScreen),
     AutoRoute(page: AddAddressScreen),
     AutoRoute(page: SettingsScreen),
+    AutoRoute(page: CategoryScreen),
+    AutoRoute(page: DetailsScreen),
   ],
 )
 class $AppRouter {}

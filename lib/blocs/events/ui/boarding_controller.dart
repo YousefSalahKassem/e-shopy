@@ -1,7 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/blocs/model/local/boarding_model.dart';
-import 'package:flutter_boilerplate/routes/custom_router.gr.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BoardingController with ChangeNotifier {
@@ -11,10 +9,8 @@ class BoardingController with ChangeNotifier {
   int _currentIndex = 0;
   final PageController _pageController = PageController();
 
-
-
-
   int get currentIndex => _currentIndex;
+
   PageController get pageIndex => _pageController;
 
   void setCurrentIndex(int index) {
@@ -22,14 +18,21 @@ class BoardingController with ChangeNotifier {
     notifyListeners();
   }
 
-  void nextPage(BuildContext context) {
-    if (_currentIndex == getBoardings.length - 1) {
-      context.replaceRoute(const LoginRoute());
-    } else {
+  Future<bool> nextPage() async {
+    if (_currentIndex != getBoardings.length - 1) {
       _pageController.nextPage(
-          duration: const Duration(milliseconds: 300), curve: Curves.easeIn,);
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeIn,
+      );
+      return false;
     }
     notifyListeners();
+    return true;
   }
 
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 }

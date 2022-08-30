@@ -2,7 +2,7 @@ import 'package:flutter_boilerplate/blocs/model/forgot_model.dart';
 import 'package:flutter_boilerplate/blocs/model/login_model.dart';
 import 'package:flutter_boilerplate/blocs/model/register_model.dart';
 import 'package:flutter_boilerplate/blocs/model/user.dart';
-import 'package:flutter_boilerplate/data/remote/constants/endpoints.dart';
+import 'package:flutter_boilerplate/data/remote/constants/app_endpoints.dart';
 import 'package:flutter_boilerplate/data/remote/interface/i_authentication.dart';
 import 'package:flutter_boilerplate/helpers/ui/ui_helpers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,7 +21,7 @@ class Authentication implements IAuthentication {
   @override
   Future<UserResponse> register(RegisterModel registerRequest) async {
     try {
-      final url = EndPoint.signUpUrl;
+      final url = AppEndPoint.signUpUrl;
 
       final response = await _remoteClient.request(
         core.RemoteMethod.POST,
@@ -45,7 +45,7 @@ class Authentication implements IAuthentication {
   @override
   Future<void> resetPassword(ForgotModel data) async {
     try {
-      final url = EndPoint.forgotPasswordUrl;
+      final url = AppEndPoint.forgotPasswordUrl;
 
       final response = await _remoteClient.request(
         core.RemoteMethod.POST,
@@ -72,16 +72,14 @@ class Authentication implements IAuthentication {
     String authToken,
     String userId,
   ) {
-    final url = EndPoint.changeNameUrl;
-    headers.putIfAbsent('Authorization', () => 'Bearer $authToken');
+    final url = AppEndPoint.changeNameUrl;
     final bodyObject = <String, String>{};
     bodyObject.putIfAbsent('name', () => userName);
     final response = _remoteClient.request(
       core.RemoteMethod.PATCH,
       '$url$userId',
       data: bodyObject,
-      headers: headers,
-      authPolicy: core.RemoteAuthPolicy.prohibited,
+      authToken: authToken,
     );
     return response;
   }
@@ -89,7 +87,7 @@ class Authentication implements IAuthentication {
   @override
   Future<UserResponse> login(LoginModel loginRequest) async {
     try {
-      final url = EndPoint.signInUrl;
+      final url = AppEndPoint.signInUrl;
       final response = await _remoteClient.request(
         core.RemoteMethod.POST,
         url,
@@ -110,7 +108,7 @@ class Authentication implements IAuthentication {
 
   @override
   Future<bool> checkTokenExpiry(String authToken) async {
-    final url = EndPoint.checkTokenExpiryUrl;
+    final url = AppEndPoint.checkTokenExpiryUrl;
     final token = <String, String>{};
     token.putIfAbsent('token', () => authToken);
     final response = await _remoteClient.request(
@@ -118,7 +116,6 @@ class Authentication implements IAuthentication {
       url,
       data: token,
       headers: headers,
-      authPolicy: core.RemoteAuthPolicy.prohibited,
     );
     if (response.statusCode == 200) {
       return true;

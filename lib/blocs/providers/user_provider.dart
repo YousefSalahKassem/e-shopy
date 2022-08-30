@@ -1,6 +1,6 @@
-import 'package:flutter_boilerplate/blocs/interface/i_auth_state.dart';
 import 'package:flutter_boilerplate/blocs/interface/i_user_provider.dart';
 import 'package:flutter_boilerplate/blocs/model/user.dart';
+import 'package:flutter_boilerplate/blocs/providers/auth_provider/i_auth_state.dart';
 import 'package:flutter_boilerplate/data/remote/apis/auth_api.dart';
 import 'package:flutter_boilerplate/data/remote/interface/i_authentication.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -25,39 +25,45 @@ class HelpCenter extends StatelessWidget {
       body: ListView.builder(
         itemCount: options.length,
         shrinkWrap: true,
-        itemBuilder: (context, index) => _cardItem(context, options[index]),
+        itemBuilder: (context, index) => _CardItem(item: options[index]),
       ),
     );
   }
 }
 
-Widget _cardItem(BuildContext context, QuestionModel item) {
-  return Container(
-    alignment: Alignment.center,
-    margin: const EdgeInsets.all(10.0),
-    width: double.infinity,
-    decoration: BoxDecoration(
-      color: Theme.of(context).cardColor,
-      borderRadius: BorderRadius.circular(10.0),
-      boxShadow: const [
-        BoxShadow(
-          color: Colors.black12,
-          offset: Offset(5.0, 5.0),
-          blurRadius: 10.0,
-          spreadRadius: 5.0,
+class _CardItem extends StatelessWidget {
+  final QuestionModel item;
+  const _CardItem({required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      margin: const EdgeInsets.all(10.0),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black12,
+            offset: Offset(5.0, 5.0),
+            blurRadius: 10.0,
+            spreadRadius: 5.0,
+          ),
+        ],
+      ),
+      child: ListTile(
+        leading: Icon(item.icon, size: sizeLarge, color: Theme.of(context).iconTheme.color,),
+        title: Text(
+          item.title,
+          style: Theme.of(context).textTheme.headline5,
         ),
-      ],
-    ),
-    child: ListTile(
-      leading: Icon(item.icon, size: sizeLarge, color: Theme.of(context).iconTheme.color,),
-      title: Text(
-        item.title,
-        style: Theme.of(context).textTheme.headline5,
+        subtitle: Text(
+          item.subtitle,
+          style: Theme.of(context).textTheme.headline6,
+        ),
       ),
-      subtitle: Text(
-        item.subtitle,
-        style: Theme.of(context).textTheme.headline6,
-      ),
-    ),
-  );
+    );
+  }
 }
