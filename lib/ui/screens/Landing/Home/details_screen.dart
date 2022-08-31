@@ -1,8 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/blocs/model/local/cart_model.dart';
 import 'package:flutter_boilerplate/blocs/model/product_model.dart';
+import 'package:flutter_boilerplate/blocs/providers/cart_provider/cart_provider.dart';
 import 'package:flutter_boilerplate/themes/flavor/light/colors.dart';
 import 'package:flutter_boilerplate/ui/widgets/default_button.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kortobaa_core_package/kortobaa_core_package.dart';
 
@@ -149,18 +152,35 @@ class ProductDescription extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: context.heightR(0.02), vertical: context.heightR(0.01)),
-                child: DefaultButton(
-                  text: "Add to Cart",
-                  press: () {
-                    AutoRouter.of(context).pop();
-                  },
-                ),
-              ),
+              _AddToCartButton(product: product),
             ],
           ),
         ),
+    );
+  }
+}
+
+class _AddToCartButton extends ConsumerWidget {
+  const _AddToCartButton({
+    required this.product,
+  });
+  final Product product;
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: context.heightR(0.02), vertical: context.heightR(0.01)),
+      child: DefaultButton(
+        text: "Add to Cart",
+        press: () {
+          ref.read(CartProvider.provider.notifier).insert(
+            CartModel(
+                quantity: 1,
+                id: product.id,
+            ),
+          );
+          AutoRouter.of(context).pop();
+        },
+      ),
     );
   }
 }

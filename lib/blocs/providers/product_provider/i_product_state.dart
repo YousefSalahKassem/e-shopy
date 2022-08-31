@@ -13,9 +13,4 @@ class ProductProviderLoaded extends IProductState{
   const ProductProviderLoaded(this.products);
 }
 
-class ProductFiltered extends IProductState{
-  final List<Product> products;
-  const ProductFiltered(this.products);
-}
-
 class ProductProviderError extends IProductState{}
